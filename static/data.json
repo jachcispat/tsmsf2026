@@ -1458,7 +1458,7 @@
         }
       ],
       "totalGoalsTip": 115,
-      "cachedTotal": 17.9855760121525
+      "cachedTotal": 23.306922312206222
     },
     {
       "id": "radimonaldo",
@@ -1759,7 +1759,7 @@
         }
       ],
       "totalGoalsTip": 180,
-      "cachedTotal": 7.24695086565476
+      "cachedTotal": 7.246950865654761
     },
     {
       "id": "martin-cach",
@@ -2060,7 +2060,7 @@
         }
       ],
       "totalGoalsTip": 201,
-      "cachedTotal": 4.77986265751241
+      "cachedTotal": 4.779862657512413
     },
     {
       "id": "plamenak",
@@ -2361,7 +2361,7 @@
         }
       ],
       "totalGoalsTip": 129,
-      "cachedTotal": 17.9855760121525
+      "cachedTotal": 23.306922312206222
     },
     {
       "id": "libor",
@@ -2662,7 +2662,7 @@
         }
       ],
       "totalGoalsTip": 200,
-      "cachedTotal": 15.307920242634
+      "cachedTotal": 15.307920242634035
     },
     {
       "id": "liborek",
@@ -2963,7 +2963,7 @@
         }
       ],
       "totalGoalsTip": 180,
-      "cachedTotal": 19.9334691413742
+      "cachedTotal": 19.933469141374164
     },
     {
       "id": "tomas-votruba",
@@ -3264,7 +3264,7 @@
         }
       ],
       "totalGoalsTip": 210,
-      "cachedTotal": 6.16772052035587
+      "cachedTotal": 6.1677205203558705
     },
     {
       "id": "maca",
@@ -3565,7 +3565,7 @@
         }
       ],
       "totalGoalsTip": 191,
-      "cachedTotal": 2.31277444937006
+      "cachedTotal": 2.312774449370065
     },
     {
       "id": "michal-konvalinka",
@@ -3866,7 +3866,7 @@
         }
       ],
       "totalGoalsTip": 191,
-      "cachedTotal": 2.31277444937006
+      "cachedTotal": 2.312774449370065
     },
     {
       "id": "stepan-cipyn",
@@ -4167,7 +4167,7 @@
         }
       ],
       "totalGoalsTip": 198,
-      "cachedTotal": 2.31277444937006
+      "cachedTotal": 2.312774449370065
     },
     {
       "id": "ferdinand-dusek",
@@ -4468,7 +4468,7 @@
         }
       ],
       "totalGoalsTip": 200,
-      "cachedTotal": 3.67825950395168
+      "cachedTotal": 3.6782595039516846
     },
     {
       "id": "wayne",
@@ -4769,7 +4769,7 @@
         }
       ],
       "totalGoalsTip": 199,
-      "cachedTotal": 11.8178554917966
+      "cachedTotal": 17.13920179185035
     },
     {
       "id": "jarda-s",
@@ -5070,609 +5070,7 @@
         }
       ],
       "totalGoalsTip": 100,
-      "cachedTotal": 3.67825950395168
-    },
-    {
-      "id": "tomas-zurek",
-      "name": "Tomáš Žůrek",
-      "type": "NORMÁLNÍ HRÁČ",
-      "payment": "ZAPLACENO!",
-      "predictionHomeColumn": "BK",
-      "predictionAwayColumn": "BM",
-      "pointsColumn": "BN",
-      "predictions": [
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        }
-      ],
-      "totalGoalsTip": null,
-      "cachedTotal": 0.0
-    },
-    {
-      "id": "stofy",
-      "name": "Štofy",
-      "type": "STŘÍBRNÝ HRÁČ",
-      "payment": "ZAPLACENO!",
-      "predictionHomeColumn": "BO",
-      "predictionAwayColumn": "BQ",
-      "pointsColumn": "BR",
-      "predictions": [
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        },
-        {
-          "home": null,
-          "away": null
-        }
-      ],
-      "totalGoalsTip": null,
-      "cachedTotal": 0.0
+      "cachedTotal": 3.6782595039516846
     }
   ],
   "teams": [
@@ -5686,7 +5084,7 @@
       ],
       "group": "A",
       "fifaPoints": 1681.03,
-      "flag": "flags/mexiko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAB1UlEQVR4nK2Uz2pTQRSHvzmZe9PEJNdETavYNDs31pUo+AAKbt34AH2FKgi+gPENunTlxpWgTyAuBKGIq4qlUv9Rgk1rmszcO8dFbpvUJuKiBwaGOWd+882Zc8aoKqdp5tzKnVVHQPIFEWH4u8/ayiPuXrvBIHUIAiEgc3PsPH/J1sOn2GoNQgYC+EDaSLj98XXH7hd54jBHJxTEkHllfvEiZxuNEwTJ+QXSXkZUBE0BAyZVvAOgY/XAp8r42iqCDhy93R4APnVENiZzjkIc093vsaueKDg0ZCPBEPDpSNFisMeTABhzxBzZeEQex7nbHAblI9+UT4WpphxCb2+8ZW31Hs86j0cezf0zbIZgviVzdLfe8enDOm9evWBze4NiqYT+Q9BOXTWCqmfz8zrv96pEy7e4Ulmgn3YpD/oYZCbkdELNsLZM80KTg3KVUrtN8+YylxeWEImAwERh/AchQgiectLi/nXYW2pTb17iTHGen8HP5BgJKulxOkDHWUrqLZJ6C8LYnQcxvvf4Ea0pRdZMJMSIYLKYWlL7GxqARqVGYiIiiVHJ61AyfF5etjLkgUMnWk8ZOsOPL9/4VV882Xo73/laK2DjPGECeEMaw1XAnPbn8Ad+Kq+0eqRRqAAAAABJRU5ErkJggg=="
     },
     {
       "name": "Jižní Afrika",
@@ -5697,7 +5095,7 @@
       ],
       "group": "A",
       "fifaPoints": 1429.73,
-      "flag": "flags/jizni-afrika.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAACjUlEQVR4nIWTS0iUURTHf/f7vvmmSRlFLRtfPWigokUQGUWaLkKNQgMRIiuScNFbgpQs6eHSAhsqCALLyk1tinYFYVjmwqCIHlJJlNKDbBrHZub77r0tZhYuHD1w4C7u+Z3//Z9zRVFr7bXwVITmiga61tUy3LgdGY1gL8hHxWJgGMwVBoqEMFn36FmzoG2HxnLIs206apo4nLGEaMcJIh8/YOfkoaULenagQBMzLQoeDwqje8VX6XFc+WtiSh7pOSe3vXogo1euy8yaOvlr/JuMuFJOai0nlZKTSs+SSgJY/pej5vOKvzS+LuFdOMDDgftsGH1Lz6HTlK1ew6eLnUjHQRgG6JmlCjSO5UmdsfWuMpPOY/mcGivm9uccIIIlBF272zjiZhG7dQNhGggEM71fAFMasi9cEiJjvldHp+KsLPLQdzKHgaxiDr4MgOFC9A8NlfVUB9cipYshRBoTBW48QXNplRBer1e7Thypkr1utmSzsmIh1YNLCGsPbmwSXCelY47RhPqFNb1psMCiKOBhaMKHo01clZywx589J8+rkxcsrTVSQePmDM4fzuPsjxJ6XueCimCaglDjUVZlBkk4EtMwZvQQBIl4PAl0lUFov59NtQXUDBfzLjwfnJ8EC5dyZ087Q3fjNIX6UbaFRqfdSY8pGXm1FmugK5eR/AWUPi3EUUDsOzvLq+ksP8CZ1iF6e19Ali+pLN2Ca8BWSYXdepnsG/ID/wDJ5abjbDQq2Fp1j/dvxrAW+ZFSJYvS+ajBa6WAfeN5puWLszy7hKv1x/nyxMf6lh4SSmMHcnEdhSFmgaUEGmYKGIS9P3/HadtSx+KJAJX72skpXoTPP49ELAzz0oOmh538KPwH5VMgkour3DkAAAAASUVORK5CYII="
     },
     {
       "name": "Jižní Korea",
@@ -5710,7 +5108,7 @@
       ],
       "group": "A",
       "fifaPoints": 1588.66,
-      "flag": "flags/jizni-korea.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAACqklEQVR4nJ2TT0hUURTGv3uPjG9GRUyERE1XleGf/oBEe81ZRBKBNCAuFIPA5QwEtmnRolQICULXui4p/6ImmJukkkiwhgYNDErqzQwz773Jc08LdRjH2vTB3Rzu9/Fxf/eoWCw2GggEYIyBiCAQCMDzPDAzlFLIl4iAiFBYWAjHcQAAWmuk02nU1dX1KRGRXIPrurAs61hQvhzHgd/vzx8rnUqlGAAbY9h1Xe7t7eWBgQHe3t5mw8wAssfsMW9tbXE4HOb+/v6sDwAf5EArpUhECACNjIyQbdu0trZG8XicNBGlPn6in8/nKbXxmXQBkW3bFI1GiZlpbGyMAJCIkFKKAECLCJRS8DwP6XQaiUQCoVAIjY2NiN19iA8tHdi4eQfrLdfx5d4wmpub0dPTg2g0ip2dHWQyGSilkH25VColuZqZmhKP92RnckFeoUpWTpyX9+XN8q60QdZQKYmXS5J0HJmdnj7iO8iBzid4NRiETxMmF9dhaR+q5TfWqQg9tZdxv6IJ314soNiy0NbejjyeAICCI4hyvsmbsko8Kz+LiyWEJ0U1iPuL8bYEuFZeg9N/uX+obEMRQSKRwKPBQcTtX+i7cQUzZbV4YNUiTgWAbQNacOlWELs/vmNoaBjJZPJYS304cBwHkUgES4uLeDo6hpaGU5gY7EZ9VSmKSONM7UlMPL6NC+dqMDM7j+XlJUQiEXiely2UhWKMERGR8fFx6erqkra2Nnm9uioiImnHk9jXXXFcT0REVlZWJBgMSjgclrm5ORERMcYcgcJKKQbAoVCIKyoquLOzkxsbGpjZsN/ycV11OVuFPmY23NTUxB0dHayU4tbWVs71A4BiZtH6COz/kjEGWmtVsLm52Z27u0SETCYDIvqnmZnh8/mwv5n7cl0X9fX1+APGlp/+LnC8GgAAAABJRU5ErkJggg=="
     },
     {
       "name": "Česko",
@@ -5722,7 +5120,7 @@
       ],
       "group": "A",
       "fifaPoints": 1501.38,
-      "flag": "flags/cesko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAB0UlEQVR4nK2SvWuTURTGf+ec+0ZsqB1apLgYxEXs4AduRcVVkI6KokjBP6E4KFj8oC4O4lArBcXJSZzEpeBQFESKoLTipKkVE2yNIWli3vseh9S2Qikp+MADB+7ld55zz5Xb488nRoYHKS3WabYiiQlblapSr9cpFAqX6D92129MvPH/JLRcqcQr15/FA0P34/RMMQIRiDFmq3UnrtVqEUATU7Od3fZurmTHzz+2a/deWivNzEwtjZkBHVlEDEAdiGmG5nOkQRm9M8XRc494++EbwRR38JhB1oEB/fuwWeYIEHrzvJ6ZZ/DsQ8YeTCOeIaagm1vy2wGQbYdvejNVWLdcNcXTiP9qcPDEPp4MH2JPl5IiawnWS6DebNBzZL+EDc/TSGYB6dvBwNMp0slJSjgRYaNPJUAjp/Q0X/APUHEAYsixd7nKWHGWk9UfVMRoORvC1qjt7KtAcyeqgQgXS5+5uvCJ3vib75Jg7pvD1ikojuLEkGN3o8at+VlOVUpUMZYkIbh3iFoBLotFLHCmXGT060f6Y5NFEhQn8YyOcSuNw0Dasstf5ji9tEBVAsvWRb5zDADi7VkBwsjP9xeGWmVe9XWTELH2lS0BjfaWdwF/AF6dFY+pf6k0AAAAAElFTkSuQmCC"
     },
     {
       "name": "Kanada",
@@ -5733,7 +5131,7 @@
       ],
       "group": "B",
       "fifaPoints": 1556.48,
-      "flag": "flags/kanada.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAB6UlEQVR4nK2UPWiUQRCGn9mf88t3P4iJnShW2kSEBAIiRtCIFrYWthYWYm2bytLGwkawsbYQJZaJRQSjEBtLC7EJgjE/d8ndfjtjcUfMmQNT5O12dud9Z/adXTEQhmBg/B8iB2NmJmaHyT48ZKU+8ymkDCGg3U0aN2Y59eoJpAQhIM5hKSExYqqQM3jP9+v36ays4mKJVJl2Gbm0vjwdjvdsKiawbGhWWlKjLAooir7kTmJr/jnNxw9hzO9VcsICtZRxarhsxNiPhw6aI4ohKIarekzsa+HbtXu0PyzT+PiFs+9f7MXbuaKD4VAcSgftEwJ/ZTFcDGh7h63Xi6CKL8dQ6eLrJRsv30It0Lx1GaJnlHth/8Kw/p1VmR93HwFGGJ8gMM7Oyle23i0hoca5n4uIk5GEbsghBKsyIlC/MoWR0PVthEhe38ZIlLPT4ByWlQMT9y8hCJYrXKvB6YVnNG9eJekaZhVJ12jdnuPMm6f4VgOqPJIwAHmYs6/hyoKT8w9o3pnD2glXRooL55Hi2ODciMEGQonzEQZ+CXUf9zbLmUnKmUlYWoXZi0OJdRcwBIfDYeig2fC7Jp+DAEHQrqOyHuXuLqQKMFSVPFHHb2zinPQr855fUtGJHhcFqYT2oI6jf3pH/Tn8Ab/HwnMxum6vAAAAAElFTkSuQmCC"
     },
     {
       "name": "Bosna a Hercegovina",
@@ -5746,7 +5144,7 @@
       ],
       "group": "B",
       "fifaPoints": 1385.84,
-      "flag": "flags/bosna-a-hercegovina.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAACEElEQVR4nK2UX2jNYRjHP+/7/n7nt53Oxv5pZbGU4gZllD/lQil3UkpKERJxsQsKpYnRrpRaLrYyF2IXa7sQjXIxJRYxCWskSZpW61jOnPN7n9/jYlu2dc6SfOvb0/v2fJ+3p/f5PgbUAMBUUFWMAZ25XgDG6JyzKmpUtUT6v8Fkmk48zxcSGmozbFzTSDpdyzJzkZZ9b8iOlxMGMkfgvSGqFFq7N3C5ZxNlmUlib0hHyvjT9qYgr+F6Hxg+fftJlBnn4K7V9D3cz+ZXHezYOgITBtysLsTAIiWKFPEp8ng8lnC6U0sSi/qC2MjK+5EvcqG9Vw7v2SZHuw5Ib/9KIVSJJ6yQQ8ghcc4IOaRQSASNhWQWAQs4DC5RdSYKXF7UHWvpcuePb3ct94+4Ww8aXFiduFisA5wBR2li5/0Sooq3AWfa7rB35zpuDp2js28JYW2C93PSi6JohgKj2V909z1m1Yo67n2+QmdPDUFNgpeFixYvqIorTzH07ivPXg6ztL6Sng+t3O6vp2yxJ5HSM2oBKUbxiQTVFTI4+FEGBt/KlrWNcvVRs9x9slxspYqoKaYjwIau1GtewNZV8Xr4O6M/Brh0cjfNHVBfd53qCg+kwMZgLdipsQlSpvDCmBnjzYMBEjAZQzab5VTbDa6dPcTp7jGqgiGi9CRGYyyGcNqG/996f5bDX0BnwpSk2HL4DXol8dr0FEZ1AAAAAElFTkSuQmCC"
     },
     {
       "name": "Katar",
@@ -5757,7 +5155,7 @@
       ],
       "group": "B",
       "fifaPoints": 1454.96,
-      "flag": "flags/katar.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAA/0lEQVR4nK2TQUrEQBBFX3W3hSO5gSJzqOh55g5eIODOHMBtth5BcOMRwoBKSHe5yExioA0JzN80VfX786u6S8xMyEAkm16EmZmY2eaLSwhVVV3nCs2hAmC/Xy92aJqfUJblh6oyOjUjxcj955G3p2f8+xVrujAnAHehKIrbHEHNoRGcB1ZM5UwJXdclVZ0qKdH3kS729BietEZvEhQRNyuIINgfiqyzeILLp2V2bEEws3gOUkpgjI8w+DSm6H+MLauqH+26wbDzSrG7YYfHSxglFwVPixDatn2dfRsgxUjbffMVDO8Tac0I/UC6/KYAPlupa+rHepPYg73Eizv8Bdddb8nQmQbfAAAAAElFTkSuQmCC"
     },
     {
       "name": "Švýcarsko",
@@ -5768,7 +5166,7 @@
       ],
       "group": "B",
       "fifaPoints": 1649.4,
-      "flag": "flags/svycarsko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAB9ElEQVR4nJWUPWuTURTHf+fe+zzJk9SkjaSii/hacXF1axDp4iI4+Q3UxU0QKYoK4hewaz+Ci5uYqFQ6iQURHBx0EZPYBKJJn+a+ODw1SSG19Wz3nnN+93DO+V+pLy6aWqNhX128cPPUdv9Zb2gtIgYAAigNIhACeAfIjivYQ5ExX+LCrUvrGyuNWs3UGg27kwg5OyQZbjMc2gwAIIL/3QVrEWOQ4kwGzoAkeHIqYtLM5CGIEEQyoAjBOYpLV9DVeeyP7/TXXiPajKDh78N7AUemFKIUwVqqd5aJzyyQfvzA17d1JDYE78C5qalTgf5XD7wnpCmuu0lwDtfp4LsdQj4FJaikcECg9xRrl9FzFUKaYqrziNaYI0cpXbuO5BPczxaD9TWIon8AFVnfrKV69wG5hfO7AuOz5zi2sgrAYOM9364uQZJkeZPdmlq391OvD+IfV+iBEBBjaD5eRpdnCekW1XuPiE+eJv38ifbTh0hSwG22UXEMwWd5U4GjmhX9d29GQ6ncuA3HT+BaTXovniP5QjaUfLJPhZPM4gwoRUhTdKkMWqNLZVRpFkkKmWL+Z23wPlteEZpP7qMrh7HtFmgNzo7Vsh9QQkAmpCVKGNRfElwmPVUojgcyGTsNmJqIgY/ZQo21TIC5yl6fA1FkSM3uXfwD+SrNWjnb+pgAAAAASUVORK5CYII="
     },
     {
       "name": "Brazílie",
@@ -5779,7 +5177,7 @@
       ],
       "group": "C",
       "fifaPoints": 1761.16,
-      "flag": "flags/brazilie.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAC00lEQVR4nH2UT2hcVRSHv3Pffe/5aCYzgdiFsRYXbW1LiklbYjGE0pKFKFWQLKpQqAsXVfyHCGJdqYtsLOiiXQiC4FJQUNBKLMU2hcQ2sYWONqSaKBZrO5km02nmvfvOdTGTmA7qhbO48J1zfufec450Hdt7sWEcILQfg8cINFSIjUc9aBtngFw8xUbEtdfHdtjbifamVsHfHUwEvBdILVGSsZiFEDpEFN/GIp7ItBJIpkrmV00yr9ap+rpRWUbf3X5F/3psXN9+aEa5g/q6qHWqsoZv+qquKF61QLzxYFwjNI90L5kLw9PmacWc/KbXPENuJvZPmf6umnGN0PgW3xYDu6LaisdllijIeWv7HC9tmOfl0WE++by/CSQBrz57nrMvfst75Q2MzvaQuQAbOtya6q0AeHBpxND6Bd7f9gs776vx3YUnKfsRHj+0wGI146eZCsc+GGDT/X/yzqFpnri3wmvlBxm/UYIoXf0qo0AxyPmo72dO77nEzs4aeV34+OsHuP7bH8zP1UjCmIMjW9h3uIevzm/F1YSBriXOPHqREw9foRAo+V0KEbQptJnJwNVfK8zNlsDepmyqnBxrsGtgMyMHtuKzJqiA+rY2EuBWbnh+agtD471MVgsEHZ6De2chL1AoRBRLlo5Swg/f1yjUvyQsec5VCgye3cGRHzexpIZgRaFvCsTGKWduFhk818ubN37njQMTXL5a4vgXu8F54s6Eo8+d5ql9kxyd2MjobA9ODWGckvFPG0v84aBv2Bw8BOLJW828u3uR430zJNc6KM93s23jdW6tr3NkejNTNzshygjEo17w4iku30P1lVNiaD0FoLkXFVAbZzpZKeiusT79LLC6f/iyfkqse07169TCOrVxqtLi1/oDSHRiyKfW/e/ohaEjyyxEDhH/r6NXXE6ovjAmdt0dc8kaw38vh5w0MyQmR+uCYtqY5nJIGs3736kcVDetWDIgAAAAAElFTkSuQmCC"
     },
     {
       "name": "Maroko",
@@ -5790,7 +5188,7 @@
       ],
       "group": "C",
       "fifaPoints": 1755.87,
-      "flag": "flags/maroko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABYElEQVR4nKWSPUsDQRCGn7nd0/gRYyJ+IZYGG7FVBH+DpWBhJ+hP8hf4F9IEBEVstI8gCDaCoEajd9m7G4s7scjeWfgWy+yy+8w7syPnczunoUv5r1xo2H2+OJJebUtrUYIipZdVQLQcJihRzbL2dSV2oEnqqAYGClmFO0EZFgktiBEEPMBM8tPYQJiCFvBR4O8a+DIqYIApzQFn2yFW872pcFo4HJUBXiaEl2nhdQLuF4Tb1YBGDK2+0oi0tAUjQAVEQIzS2bD0J4W9m4TOpqX5qexfOxBQ9TXJU7IAiULrA066jnoMd4uGmUg57jpmB5CWwLzAH2oA9BYCYgMrg4zICnfzQf6gfCD8PUQhBeqxcnDpaL9ntB8ylGJ8KmbSCxTAActv+csnEZb6eeyqDWJRTX0pAyAp4lB/48BrUPNfAmzNWjOegEpV3mqJKmLzYu1jc+wwHP41rn/LjRnWgW8LunwDqXms8QAAAABJRU5ErkJggg=="
     },
     {
       "name": "Haiti",
@@ -5801,7 +5199,7 @@
       ],
       "group": "C",
       "fifaPoints": 1291.71,
-      "flag": "flags/haiti.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABr0lEQVR4nKWTPWtUQRSGn3fu3Luou8qGiCAKFrp+IihoI6ilEtHSf2Fln9hY+QeExMrCRkgniEIwnYWtYmEKQcSAmhh33b0zcyzuzccmG4v1wHDgzDsP5z0zo+npax7gOuPHQp1nZhaCmkcffixLjQ2TIEbj0ETO5/f3O75fNk6UpWBcpoBgDJIHwIsy7UZzEnIQUyJzjpTAzHbwDIO67h3m3C5eUr+EboRmi7i2Cs0cl2cbh7cCHVXN/cGTyIeXK0hd4+LlY8zO3eDW1CpzT6bonDlM6hnJbWpjnXvUlk/bd8KwCzIcg94ad86e4nwnMP/0DZfO3ebm8YLw9ivF3n1ES5sdmtG2ogLOxhcUMWIaRkb7ycQvx6PXxvLSOx6/fMa97g/uplf42IKYNkajGChjG3iAFicvWFEOA02QBWPl4B4+HElYEJmHk0uJ/SsDYia07kpCIVBOtrnyaVF+5H0YRC8OLPe4+kVIla1+AdFtgY0IDxZgp0IGyYvfOdW2hEugEdpKUD+blrxvSNtmuE27nkdpJAQMXF4BvzX0PNd//BQncI6YW+3M/jGQMeIv7Ey0l5ctUs4AAAAASUVORK5CYII="
     },
     {
       "name": "Skotsko",
@@ -5812,7 +5210,7 @@
       ],
       "group": "C",
       "fifaPoints": 1498.35,
-      "flag": "flags/skotsko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAADPklEQVR4nG2TXWxURRiGn5kze9Z2j9uuARYhbdoSkELZtSKWaPEn6gaCifHKCyJVYk0tNibqhRqRBCKYaIya2oYmYkOvjPHKn4QqNghUwRq220qxGppC+TFqd7vdGvfsOTNenKUaw9zMxfflmTff94w4OjTUlFi3Pl3lRKzhX7Ls7MlwJVfEcUJ4ngEAAZjgVpagkC/REK9koDNBc12UXH7eH8tM3J5K3T+uamIRli+pxsgQDyYrGXy9mqd6M/wwMYuMhtHGLMKEEPydc7k3eSuHOxKsWlaBAeIhyYxjAyAPDJzn1M+zCMD1NOtXRjixt4X2rbXoQhGhNUoBvsYUijz/aANDe+5i1bIKSp5GAN9NzvLx8KUA+NWFAqk3Rzj0zQy2kvjaEFKSvvYNfPBMAhvw5lwiStLf1cy7OxsxBoyBkJK89cU0j7xzFkLBdFQsbvPnAnT0Zjg7leO9tnWElaDoaTofrmVD7c0c/GSS/Tsa2VgfpehpwkpSKPrs/nCcI19f5pYlguVOQFSuC1KC5dgc+nKKsYvzDDyXpGFpJZ5v2HJbjC2vtQDg+Yawkpy7UmDH+2nSv+aQ0ZuQooTrBgklBPF9bVBVYYYns9z58ik+PXMNyxJ42qCNwfMNliU4cuIyLa8Ok744j4raaK0xZRkWgf8/QoAU4kYlhBBcL92oQ14HWFLgzRVpXRNj5GArj22K4/sGJQVSCJQl8H3DE60rOP3GPdxRF6WUd5FS8t+3pW2D1uAXXJ7dXs+xPS3UL63A9TTKEhyfmGXr/tOMXJhDWcGyGldE+HbvZtoeqkHnXbQx2HYZmP3NJSygrzNJz64mLCnQBmwl6R6cJnXgDEdHf+e+fd/z0fEZwmW1Km2L/o4kb7c3YTRcK5QC4Pa1DoOvbKL9gZW4nsaSAtfzebpvjK6+MUpCoKI2f2nDru5RuvrPLc655Gle3FbL5y80Q6ns4UuPr6VxTQxDkGp8ZoEne0f58XwWWRVGa4PnA1IiHYvuz6ZIT89zuCPB6njw9TavjhG6uyYAXsouEPsjR5UT4eRklraeDFfnijjVITyv+O86y2qoasHJn66S2pdjYHeCjXVV5PIFsoVAxH8A8wdPB5Dyx2MAAAAASUVORK5CYII="
     },
     {
       "name": "Spojené státy",
@@ -5825,7 +5223,7 @@
       ],
       "group": "D",
       "fifaPoints": 1673.13,
-      "flag": "flags/spojene-staty.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABXklEQVR4nK2UPUqDQRCGn9mdaDD+RDGohYqot1CPYKEX0MozWAsewMt4AcFWsLSwDUZCSGLC97M7Fl8SNCRGxCl3h2efdwZWzIz/LDk4uqzVu93vp90ObG5x9HDPMXXqv4TdmTW0XF193VurwcDUABVoRzg8u+B8vUwPj07FGILQIQdYVEQrlYUFYozDe7wTkizgl8tU93coA15kCs9wTvBZAoBaDBZCTow2sBQwCHnAMFAhRAOZPGszcAJh8J5676TkPUHiqMmLoCUgSUnfmmQ44kRcEckh5DErgK1On34asdEMDRVHK81JNlZw1SUUmR4ZcIDmaQG8uToFpwg2mqEAmffsttrQeMc7N1rarNKTxyfmxTPeLhiZ9/RUme72NfLAMNneMJsAHELnZhgNl6LDLWuSS8nZbxNNNhTB5aEANp9fPtSEGbl+VBSg6wojuYbaX93G69asIf/9OXwCkhOSejoLOngAAAAASUVORK5CYII="
     },
     {
       "name": "Paraguay",
@@ -5836,7 +5234,7 @@
       ],
       "group": "D",
       "fifaPoints": 1503.5,
-      "flag": "flags/paraguay.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABUElEQVR4nK3RvUoDQRDA8f/s7d0lih8RDYagjUSws9BOEARRfAufxDyH72AlWIqKhVjYK2JhoWihYJGv29uxOA0idycEp5ud4cfMjmweHFj+Kc7abScn9a27MPF4GR0yaYqbnWL3/njZTjhphU7QUUEBcQaXZoDtJH0fJr4YVFBVRATyegQk8bikn4HxXM2ETgtBMYbQWpLEoerzwdRjZiay9OP5VavVKmjOaAi9bpen5xeazXniuDJ8/412Oh0mG3WxpjaJieO8TRHg9OqC24cbVlrr7G3v5HEAmCjIVh6Pyq+xtDCPMUu0FhqYkr5vR86vHzUarpIXQq/bp1KNS3vcoMvG2qKIrB6qprakGTACvqAuQAq1aeHtcl9sFAVu4INiUH+cIed3REBTiKIstxqMW+WPCcuqAqpA8AWO8X5kzd9giUcqUPkaX1RHg4riE1uMc5rwLFshAAAAAElFTkSuQmCC"
     },
     {
       "name": "Austrálie",
@@ -5847,7 +5245,7 @@
       ],
       "group": "D",
       "fifaPoints": 1580.67,
-      "flag": "flags/australie.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAACkklEQVR4nK2Ty29McRTHP+feO3c6M6a0NaalqEc06rVoERSJBRsiIQhhISQikVixsLJrCJZeCQtD/AGIR4QIYoF6p9Vqk1LKFBM6mrlz77k/ixmPhcSCb/JLTn7nd84v5+TzFUCMMQCICKXIIED5Gikl+ZuMMeZns/8l5+beAw9onMruc3fpzH7hfoOS0SSHn31kx4wa9qyYzf6ng5y//pRo3EWBoudjPJ9oZRyMwRghHoXci0yLc+ytNm+ryXN190ouBHFiJ4/T2tTAosXNLJ3XyOmOQe71dBFaLp6JoMMeM2dOYf6cKZw6ex07UYFqSCQsrUR6V20NPn0tkLCFulQlXbfbGV2fJp4eTZ9nqCXg6JDDwX4fJIQgJF1Xzbh0Fe2PXoEBohESFUK+M+M4bZUN9vrVc5hue9x6k2Pcu0+8ntdC7ZK5jO/uJvMqx+Un/RAOkkqNYtjz+fA+x4feARqaJrBmeQtHTlxCYi4A1sLp9Qz39LHmxA02XXlJmBzBxc4BlrZd4MyQw4LJKVKWwjePjSvn0zxjIuIHuNVJhvIFrt15DrbFT1KmNW0xXfkAFCRiEfMKBE6EohrQkLGTagm+5snmPSy7jJWv1NZVMyoZp+NxD4xMkHAh35kRq6tgwLaxHSEZc9m5ay2trbOwLMEZUcG7N1myeQ8sITSllRlgoC9LR88AMjIB4S/0LFdQC1T9QOvHVOmhfRt1+7olKkVfTYhabkTFEgVURBRfNT2mSptbGlVUFfj94Bhx7BADbgXd/TmWbWjj9fvPaDQGYpfs8sMkIqBKqqaK2U2TeNjei0Sd8psyNolpmx/4oUEQDIbitwJEHKJupDwc/OpYKiwWfUzhz2D/d+vJb9//s4wx5jtJWiTitWhwbQAAAABJRU5ErkJggg=="
     },
     {
       "name": "Turecko",
@@ -5860,7 +5258,7 @@
       ],
       "group": "D",
       "fifaPoints": 1599.04,
-      "flag": "flags/turecko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAB3ElEQVR4nJ2Tv2tTURzFP993b95LNCQNNRjFagpWBF2cVBREEUU6denqZP8BJ0cddVJ0cSni4uYguDl1EBGtWEkQHAShhYakNebZ+H7cr8OLzdQkeODChfs953K+nCOvj5176scJyv9DgChnufH97ZKt7SS3/ChBRYYTnocIqFPQ8V+JKpEPwJINNUljTVAEJDvpzy4uifH8ALOvMKDtLSyqRINnC2JAQDxIU1w/onz5PIXjdcLPTcK1r4jnDYyNMw5edhdwDhBOvHjE3PID7HSF/Nws+0+fBOcGouNhAcQY4naHo/duM71wndVT1+g11jC2iK2UUAXXC/F27e8ND0CdQ3I5DizO03n1hrDRJF+bwVZKJNu/mLp6gdnHd9E0nUxQAJzD/e5jSkXAZWTnACVub7HT/JatZhLBbFDZePKM8qWzVBcXiFqbuH5EcOQQ4YcvbDxcnmiPFkDTFFMu0Xr+Er9WpX7/DpX5K4SfGnRX3pO0t7CVqYksy0r1jO4Ge5BB//BBgvoMf36sE7c6eEFuVAwHwbZc3PwoFtX0XxsExVbKpNtdeu9W8QIfE+SyxoyCDhtlA2ONbxhWT0GCPOQLoIqqghljUxUxNhNcLwY3c5EdSxqJFGI/E/gLP7TA4DMn5WYAAAAASUVORK5CYII="
     },
     {
       "name": "Německo",
@@ -5871,7 +5269,7 @@
       ],
       "group": "E",
       "fifaPoints": 1730.37,
-      "flag": "flags/nemecko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAA6UlEQVR4nKXSMU7EQAyF4d/BS0IUaYVgiURHAdLWXCA3Sy5EwwlyAE5AmwY4ACHxZIZiIhq6mde58CdbtvR9rwBd15GacRwBGIbBSdM072aWjIkI27bRti3TND3puiyPaw4IBMDWFQB1iE/WgLCTFmKtJy0K8wUiiROK4H3gVosIvj7ccXBGhgjOYdc3ETyqUFIQMkCh4Edjv9osYJIHOsGqHbw6r5Te0kEE8Y6LJl5Z5rdDqEqLt0+NwPdyon7+EvUm7u+ZUjUJeNtXro8olzlgNJt1Bz8+65dSNU9jY3YV92eQEHJG+59fQ/NVa7zqBE4AAAAASUVORK5CYII="
     },
     {
       "name": "Curaçao",
@@ -5883,7 +5281,7 @@
       ],
       "group": "E",
       "fifaPoints": 1294.65,
-      "flag": "flags/curacao.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABB0lEQVR4nK2TvUoDURCFv5m9MQlBTWWaKCnEgDaiT+Az5A3yBpZWpkoeQxC0yANY26udoE0KfwuFIMb/ZO9YrEJWkGSXPTBcOMz9ODPcK6ztGmNSEbzFrKll5y3RuAP+awQpgQAxYC4QVpcXKOQdgUp6oKrA54j1lQrH+022NmuEDwNEkkMVfiYMlN79E9udI3q3fRqNDWacJh5fBTAzJKf0n9856J5y9/jC3Hwh8gERonNCAbjfAGbRTS2XeH0bsnd4AqV8RPPTJ3TY2J4MvDcQQWaLmLdEMAC5uVxM/0b+qFq/Fnd2UcmKR7UOwlI7s4R2tSMuKH9kxQPAhWG6H/GfdHJLMn0DxytPQYFwqvMAAAAASUVORK5CYII="
     },
     {
       "name": "Pobřeží slonoviny",
@@ -5896,7 +5294,7 @@
       ],
       "group": "E",
       "fifaPoints": 1532.98,
-      "flag": "flags/pobrezi-slonoviny.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABJElEQVR4nO2TMU4DMRBF36ztjUkkUESgQBRI3IWSK1CRQyBxAcQJ0nOE3ICangoJqACJhiXeZL1DsYt3SUpK+JI1nvH/X2NrLA+Xu7MhK2paZBbKEk5ncHwCsQQxRI14N+Dmbs7F/JrBcIdKv1WKqw1vV7dTezQqzpFAglgwFRxOYH/COsYHexRbK8pRTVXHZOhVAKa2CBpH0lOIQgA+Fk0eKzCWVaxwxrL4XMCyRkMF2hmqNjsrguGHYW8BiLRB0nGq67oQso07/RL/hn/B0Pams0U7oSKb7FRXFO24KQfrc2uQijSyYprfkbsmz0xDbGOeOzJnsc4Sa0ktWG1598X4zLPsOjAGQoDHFzDPEANgiES887w/vbJderw4Yu/F8tgYfgFU+GNsJfAitgAAAABJRU5ErkJggg=="
     },
     {
       "name": "Ekvádor",
@@ -5907,7 +5305,7 @@
       ],
       "group": "E",
       "fifaPoints": 1594.78,
-      "flag": "flags/ekvador.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABrUlEQVR4nK2UO09UURSFv33OuQ8QfIAWEwKFjY9oCGCM9iYae/0DJv4NE3+Fhb2dnYX+A5PRMUoCRiksQIySONwZHOY+lsUQ9eKdbk61k7P3OmutvfcxCWNiRwogTQ4Qwt76rXYcCRpgBZQlOINKEHxzjnOi24tYWH15LcyftjUSGgExILXRpRkcjBHjIISRc6HXL8sk1//CDfK8ovO+YiqN6PcHXF+Lca5uuYDgRNZ3pEBIQumjcEyygABZZrQ3enz+OMXyyoArl2Pm5koojtj/YSiSIz/C9v4scVxvjQQ+GLt7h2z1LrB05zbrmy+4+TPjMMSUhTD7+7Y30e17TgJ29sFz5fiaic5ENYy4uPCde79e0alarPptniV3+bQzj4tzKv1L0ZhmwM7T+xZ+cAaI6l2RwDteZzHnT51jdvMdnZUbtL+2wJ8Alcc0G10ORtHjSw8LKwzVTDQwUZWGTCxply/WwgmcF8hqBAwoE+PRhyfBvnFVMVXj1IyKjCGBmKIxA8BRsR+lLA7fWtiamXkTFRoDCIaACkgZt6Ue0ZuOWARMk908TEzwc5D0GyWrqgAJI77jAAAAAElFTkSuQmCC"
     },
     {
       "name": "Nizozemsko",
@@ -5919,7 +5317,7 @@
       ],
       "group": "F",
       "fifaPoints": 1757.87,
-      "flag": "flags/nizozemsko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAA6ElEQVR4nKWSMU4DQQxFn8eeTTaKhGgQ0HCNlLRI9JRU5FCcgB6JK3ANGgqKSCBAk52dWVNsuEDGlaun//wtL1ebx24sOMePADkaN2+vWztP5aHLBRc5HuhO7gDY2q94HcXx43kITpbZ0er3j9ahPWFd2Aw8ud6wmGi+4RAOeyrFl6oNuHn2tbJUFasp4atVM7CmBOs1FqMiITQDY5wtbfc10PftyikNXJz1yOXtk2c3pKEWR+ik8P58J/bxuadOBt7QswgaCgAWNdRJAq2PEw89WLBOZWpXDv/AU93dZyJQGxIqnY4A/AF8XVbQZV9ARgAAAABJRU5ErkJggg=="
     },
     {
       "name": "Japonsko",
@@ -5930,7 +5328,7 @@
       ],
       "group": "F",
       "fifaPoints": 1660.43,
-      "flag": "flags/japonsko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABrElEQVR4nKWSz2oUQRDGf9Xz196AIAvJQcnGP4fVg+Y1xLuCiCdFBF/AQ94h4EHEk6Dg0YsP4MFzRA+uIAshYtisJpHtcePOdHnYybKTcYToBwVN19dfVddX0u/3n1hr8d7TCFUQaUwbY8iyjE6nc1dUVZuVjg0xzrkCqIf3s3Mxcn+8n49Sh1BEglod78EYdl68YvvxcyaDb8SLbZbu36J9/dosX2mtHEl4VEsLjwSGr4+e8fnBQ4KkhUQhB/0t9t685fzuPkv3bs54tT8759RaW6pNhz8ZDNm4fJXC/cQkUfk4wI8PCE4usLrxmrB9qmJWlmVYa6VSQkun3buP5N/3MHGE5gWoonmOJBH5cJfs/acKfx5Hep5WM2ncvCYiSBJX+I2CYgRUaa1eIl05QzFySBwhgUHiGP/DkZ5bpnWlC6pT/l87FEFVCRZarKyvIXHMZDAk3x8xGexgbMrZ9TWMPYE2LHvVlEN4BSNkH3psP33Jr80vJMunWbxzA3vxwiw/j0NTxDmX1wT/AaVgKEVRqDH1fTouvPcYYyTs9Xq30zT9b8HxeEy32+U3w9nGfBy+Hq4AAAAASUVORK5CYII="
     },
     {
       "name": "Švédsko",
@@ -5941,7 +5339,7 @@
       ],
       "group": "F",
       "fifaPoints": 1514.77,
-      "flag": "flags/svedsko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAB8klEQVR4nH2TsU8UQRTGf292dpbj9jRUYEMjFcbCmFjYcAmtLfa21jZir72Frb2xUegMCf4DJhqhIRQ2JIYCCNxxOzszz+Lmkitufc1M8jK/+eb73sjGzutN3zgAqDy+cawPbni/84Xa3fDuYJuDow3qwbTXVa7ynHx6e2zPJvVPr4IAMnGktqRmzMbaGfXA0xbCeXuHy+aWmMxCmAJu4gBK26qxQQUAQVE1BAr6rqWqAhQQtUDVkHQxcHYWwFoT0Qw0oiRjsCYSkqARDIo1kcJEYj60qKxk4O14GZJh+uYE3nHRH01vNXDdVIRRnyBAKhbTFIJJU+Dzxz9QSaCCESXEgrXBNaVJEGD7/gmVJtxS0+khoki2Q/Q3SpWdnXd5ktcKKPJeOg2EBnigYq9GPZZbj84BRaA0EQTCxBDzFHSVCIy94y5gn354SZgLJQTL+soF+y8+0qtbXn1+xv6vh7he99jANJSjJ2CP/65CBiIK3jEOlqQCAn8uVzg9uwf1aBpep8yc8pJtk2dubICezRYoVEXAOE9Rtv9V6GZzGI0zKStUUVRKUuHo9xSWwVhLEgcSSNINjDOFFc2JIX89lKCRMrWcX1UMFFIbKaWhVE/qiEaBcqZw79G3zfnmYV5Xd/fY+n7IcAt2h18Zdrs3V2/4B02Q3YL922NSAAAAAElFTkSuQmCC"
     },
     {
       "name": "Tunisko",
@@ -5952,7 +5350,7 @@
       ],
       "group": "F",
       "fifaPoints": 1483.05,
-      "flag": "flags/tunisko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAB70lEQVR4nJ2TPWhTURTHf/fdm/dSk9fUj5pgxVCLTi4OUhFFXAQdpYuLImhmQZAOOhQcVPzYHIpz0bni4qQOasFOggimtm+oX0VNQ0zy8u47DokizQ2IZzyc87vnf87/qsflg7N+J0H4/1BAnDGcWH5RMaVmcsGPE0Qpd7WnUEohIpC6n1UixD4AFdOQxHYkQdgIVOAp7HqDtBPj+QE6n4M0hQ16lAhxL2VA6e7Q/RPaWp3CsUMM7Rmn8eYd9ZeL6NwmZ+3vnHFrUKQ/m0zcu4a/s0Sz+p7t56aoPVsgunILbygL4pbv9bG0Jqn9oFg5jd48zMr0DcLJA2RK2xi7dJ6tUyextTpK97W6gQCkisLRSVZv36d8c5pWNWL58nUQYeT4ESS1MOCIbiApklh0mKcdfSQ7USa3by8ohbTa7pbBQEFlMqw9eMSumYt8np2jtfSB0TOnSJtt1h7O4/n+QAv1HUVsiglDvs0/wR8rMn73Kq0oovm2SjR3h9rTBcxwHklTJ1A9H90vTmN7Hsn3GsGOItndZZpLK3Q+fUUXwp4X/4KIEPuGw18WlUHEOi1gLZktBex6nfqr13hBgBkJkcQ6tiR/bGQCbbSvcX89AeUHEHR9JyKg+62rRFC9vFnNB2czsQHtXMm/hYWO3wX8AlY0wdpGUL/4AAAAAElFTkSuQmCC"
     },
     {
       "name": "Írán",
@@ -5965,7 +5363,7 @@
       ],
       "group": "G",
       "fifaPoints": 1615.3,
-      "flag": "flags/iran.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABhElEQVR4nK2UvW5TQRCFvzN3c2Psa4XYSkMEQaJNR4WoUvAAPEjK8BBEPAXPgAQtNSUVBRYQRTQRcnBs7t8OxV4CQfFtkpFWu5o9M3vmzO7K3blN0/TVwVFlEbtBkkhkmo2ZHb45DsspLysT8D/T63zXMOpQhQzgOKzmiwY1/VHeRfZwvLAMgLA/eRRGwxExRhwwiehOJiN6RBJkhjftFdZCRDxJJdiok2j6fHbik+IurbcIXYZczmbUZz/Y2JlA0+L43/1uYTLOF+c8mNyT6lXpYZCvLebn2/eUJ9/Z3Ntl/OzpWly1/EU+HMjqrF++dpCzmH3BR4NeXBOSyJrPvvlwa4xHT7orlaI/Tcgyqq+nbO7t4k1qnrsjCe9qlhkX8zlbD+9LH5489ztFQYwxndABZQYewUF5TixLZJaSuCMTHiPIMHdWwXj87rXC8uOnpi4rXFp/9a5Q/sc6l5pIvbMNQNgeFSHPW7z3nvWYUsKqKFLC09xfhJu8O0ujCbAP6LY/h98hnaDcaGDd3gAAAABJRU5ErkJggg=="
     },
     {
       "name": "Nový Zéland",
@@ -5976,7 +5374,7 @@
       ],
       "group": "G",
       "fifaPoints": 1281.57,
-      "flag": "flags/novy-zeland.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAACTElEQVR4nK2TzUuUURTGf+e+77wzOX6EjaWJkbkwFYLQEA0TWrQNAlu0bWGrWtW6XRlt2hi1aFFUf4BQCUK2EiMXYjV+5KImBb9SZ0ZpPu49LeajCCIXPnDu4jnnnvtw7nMEEFUFQAQUoXwWaKSUpEj8A6poudl+wX97694HWlu58WKKuZUUk8c3ee5i3J9JMdhRxc0LJ7k9k+TlWJxwRYBVJZt3qFPCgVdSRjSAH5+Gu/yHy0Hn1dgOo9fPM2JrqHj0gLPtTfT2xeg/08KTeJKJxQmcCZNxPjbvaKgOc6wq4P1yGmPAOgi5osKh5LTdeJVlaxQG6ir58jHOqa0NKo7EWBgfY4Ac6/koQ/hoPgM5x8EgxIlKmMxnsaY8/ELDOzVt3uWL7bR5O7xLpGhc3uRbdzf1fZ00LczzbHGH19Mr4DaprY5gEOJru8SX0nS1HORQJMTo7DpexABgetsa2F38yqXHk1x5kyAfjTLyeZX+u+M8TVXQ01xLHTnIQ099lHNHo4gDP2JIbGWY3dgFI7iSI1o7rul8WlELftij1jgy4rGdzoATGpvryCXTrKWz4BVUiCoiYK0WfsQYomFIzw6LP/dTwAi+B9Ypq1YAh4kEGIGlxBp4HmKkaEzFqYADYwREcO63bUxYsMXHLGCNFEJVrXVqTRCyxkghB1bz2NOHD9jB9hrrVKwU7xUDXyXkqfzh9r+MqlBcFXACeMp6xhBPCYiPEy0UFGv8wMtNlbg9wcD3dJbENoRDpmzswFCa7/6unoDuVdt/oYr+AnyuBUXusx2XAAAAAElFTkSuQmCC"
     },
     {
       "name": "Belgie",
@@ -5987,7 +5385,7 @@
       ],
       "group": "G",
       "fifaPoints": 1734.71,
-      "flag": "flags/belgie.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAAzElEQVR4nO2UIVIEMRBFX/ckhBQCPxKD4yRchQuAhltwFwx3WIXgBGO2htQk3YhlwtSuRSD2V/36T71q1eLujOP4OE3Ts5lVVQmtwd0tvL2CN8ABARR2DzfsdxnNDub1eojhM4en+4/3F4AAUEphnmcARMAdlgWuEnAkvKwLtUR0MDAnKYRIj64gIl3Y1w9137DISbdR/jhn4Vn4H4RhBXf/WX5XDhU27N7LusfClBI5Z8wMVaE1iBH25fQ5fIVISQG9cDCnDJEa+l18A8txXSzyfTPbAAAAAElFTkSuQmCC"
     },
     {
       "name": "Egypt",
@@ -5998,7 +5396,7 @@
       ],
       "group": "G",
       "fifaPoints": 1563.24,
-      "flag": "flags/egypt.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABY0lEQVR4nKWSvW4TURCFv3P/Nl4HgSMhYTcUtJQpUlIh8RQ0Ie8ED5JXoKCho6GgsURjosTBm1zv3aHYpUjktZAZ3duNznxzzujy5dmntG0xDi8BOQbe/fh8EV407YeUW0w6XNCMnAC4CL9lZSvD9urZwDFGaGT1O4ayvvXlfh+hITnMCuBGCUsVesGnb86oOkY8FJKjlA0+HGNdy65OAffDLDVta0fej66zLT/Z3Hxj+uw1Qc9H++5K4ch76fZmbXU92b2sFb5/OSekE0q75tXpR4QGpoekm03D9MmxQqwSGiEUhVhFuvKLmGqcF7C7N1Z9zGG1WjGZPCa04XVQv+Xu+ivT+pSrq+ueUPA49aZpmM/naLFYWM4ZjaQsF5GEmWHddsQaI6XEcrkU3nsbDPmv7703MyPEGEvXdTsnP7Bgz2EDxBgBCM45L2l05X8pM8O5/hDDbDZ7n3M+WOxvpdSn/AcW45dmtPMrqQAAAABJRU5ErkJggg=="
     },
     {
       "name": "Španělsko",
@@ -6009,7 +5407,7 @@
       ],
       "group": "H",
       "fifaPoints": 1876.4,
-      "flag": "flags/spanelsko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAAxElEQVR4nK3TP05CQRDH8e/MDrCScAJLClpDQYInMF7CSs5D7T0IJ6DmEhTEjuq9B+6OxWpiYTf8DvCZfxk5vLx+jL0SzVWU5/1uY4+J90kFD2ACDArAxi4Xyh1BbLY8pywlwLX0nhreHZPnXMIt9n0iP32J1W4ENT5zHUYAGOqgHl+iNkADzL8x5KdCJH8M8yJ4kfDIXppop+2K7DW8wl6UxRrs9jktWuPgTds57GGq6R6for/gSeRtLInIryTgKjAHvgGy+kGQBAeu9gAAAABJRU5ErkJggg=="
     },
     {
       "name": "Kapverdy",
@@ -6021,7 +5419,7 @@
       ],
       "group": "H",
       "fifaPoints": 1366.13,
-      "flag": "flags/kapverdy.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAB3ElEQVR4nK2Uz2pTQRTGf2dm7tykaRKpkoqLNojFbgRX9Q36Arrpiwjd+uc1fALFNxBciKi4cCsoQdQQtdakaZJ7c2eOi3uN2NSNdlbDHPid7zvfYURVOcsj53buPMxV/h0AhKCstx29J/u33ITmzTz+B1BAVZnhAHAU04LwJ9CIEtWAgpgICH+djABB0XkFFCNOFpYVRYi5J6llOBuZTmpgA2IjnDIaEarGZc1l2ZyFQhUkCWx1+syiodOYMBg2GReOwx8tsPNK0u+jlcI8Ky24zW6HQg1COYvUzbhySXjz4SKfg2V7e8D3ccLKqIVY0BNAAWJUzq+aEvh0/wY1n5bVMEKPXzGr71FPciCSFSl2+gKXtsBvlf5OQFGYhbxs8HZ3T33U6j0geoS1bUKVvDGKxjFRHSJ1lrIRwYTAtNXg6uMH4r7cu4tP07JrGKLT12TpLt7loMo8ptjZS5xvlgo1AGYp6SLPyqu5fn8eF6EYkjSy0+3x/N0GEgzXup8YDNv0v66By5dS/rU2a23HwbPbiUv8issWQBAb6B1scnk958LqMe8HG2Qo1BLEuCXLIqBB8Wm1h3WOHtlqhwTQYOgfWrzzfPzmKYJiTaThRqfFUeoQSElKxll/Dj8B01HK7GbjErYAAAAASUVORK5CYII="
     },
     {
       "name": "Saúdská Arábie",
@@ -6032,7 +5430,7 @@
       ],
       "group": "H",
       "fifaPoints": 1421.43,
-      "flag": "flags/saudska-arabie.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAB50lEQVR4nKWTMW8TQRCFv9nd89mOjYkFKEhpItEQiR4pDRUtP4EqkeD/QEHNn6CiCR1CCAk6S0RCBsUJORLZ2He7OxR3OV8cFwim2L3TaN68fW9Gbj979Kog8L+RYDl++fbAzdK4PyciVUKqUwRUrxZJ40NVuUwr0C6zB05zH2gwjAohBogRjEFEUG2Uankb6zBiKji4hHcgttEbawy3ejcZdHpkswuKUNBJ2gAYIwhC6hKOL86Y5r8RMVf4u+UrBB89W4NN9vee0EpSPo9HeI2k1jHs3mCcnfB49yFfJ994/f4N5/MpLWcJDW1MDdjQ5Xt2Ql4s2N68w7DTY9gd0G11eLB9jw9HX4go/fYGaLxmTs1QAWMMs3xOmrYZZxPy4EEEayyHo4/c39phnE04+vmDs9k5IoYV35Du8z1dEGoVVZWWc5UEgdx7jBFijLjKiKgRHwPOuNqOFMv0xaE4VjuIkHtPCEU5NyJEX2riiwWoYpKUxLqG+2uevAzFWcvu3R36aQdFEYQYA/12DzHCu9En5kWOiPwNoBBiZJxNaLsEpRwIVSVxp2yk3bXMakBFg16TFk5nv1ZWpVodjRiXYETqYVYag20TZy3CKnlHsp5CvZLLZgpYbFk3yJOnef37bxGAVjXSfwAQodKQB+aiDwAAAABJRU5ErkJggg=="
     },
     {
       "name": "Uruguay",
@@ -6043,7 +5441,7 @@
       ],
       "group": "H",
       "fifaPoints": 1673.07,
-      "flag": "flags/uruguay.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABpUlEQVR4nK2Tz2oTURhHzzf3zkymCSIxLe3Cgljc+AKCEhQ3IkhfQBDX7nTThfgG6saFzyC40I2QJxBcSIsoWrWWooIZI/kz6WT+3M9Fta6SjOJ5gHN/516uAJb/hKoWNo7j1wsLEUhAWSrWKyldST00YL2KKoFkBHBKVFWdwvtXHfL0GysnL9Fstniw2ef57hATGpzTWSocQkNTHl4+IXaU7Lt3m0/Ye3GDmvnBztvrXFi/S6+f8OV7Hz+0OJ0jVDgiGQBW8bzJcJuG3yMMYFxsMRgMuNNe5fa5FUTmZ4vAKEkOhJ5R6ssX6e51SLLPRMtXOdpssf5om6dbXSTy0RnJAKjQCjK6G2cR1UzBJ40/UeQZjcVVsDU+9FK+DnOMEWYUH3YX6Zj22pLYW892ET/AmBCRGu5NTFk66oHB92Ru7m/8MqW9toTt7PQpvBDV8tdhAiI41fnL+PPKTS9j4zyIZqnih5WXTKOc7GPCSOyx+y+LXAKgwpxpC1VYtBkfb57B3rty2pqw9q++Q62XjwGw145PHhNV/WLTccnkQK1Vbv4v+Alj8qyRx17QFwAAAABJRU5ErkJggg=="
     },
     {
       "name": "Francie",
@@ -6054,7 +5452,7 @@
       ],
       "group": "I",
       "fifaPoints": 1877.32,
-      "flag": "flags/francie.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABLklEQVR4nO2TMU4DMRBF39izSVCEUEgo0nAAKug4AVegpCIVZ6GiQLkIiJKDUEFDJBqUrHdtrynWmwWlpIQv2SP/0f/ySPNlenm/9MnSQcVQOc/y5pyL0zmVj1gRiBGGQ/zTA/XdLRzsQ2wAEBqcUU4enxe61sNrlxRIraERQlUzmx8zm03YwdGU0FQIYyBmQyhpABaa/CbyzTAZAV9Trj+BCSE2qDUQAqjiypJNiIgP7a87Q5MYAwpiW6qDgAgdJ5J7uUrmRGSHAzC7M/0O/4Z/wVBTt+4ZKV+yXU35qRCBlPqzFeakqQ5sSIrkpFgjhAKKwSi/s8C2eR8WBY0qUiiYfrGTafs6SR9Xdewnt1iceN7fXnidljgfsdDGbDQirla44R5WBqD9cA7LGfAFsIRrlL1Jyz4AAAAASUVORK5CYII="
     },
     {
       "name": "Senegal",
@@ -6065,7 +5463,7 @@
       ],
       "group": "I",
       "fifaPoints": 1688.99,
-      "flag": "flags/senegal.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABnklEQVR4nJWUTYoUMRTHf0leqgub+W4RGbfCrETwDCN4CjdOX8I7CG5n6xW8g1dwKSoKOnYj3T1TU5W856Kmyhqke9o/hCQvyS/vg8QdvTs9b0TpJMC1CueHH3l+b8a1BQKKJQh7xsX7fT6/PUZ2EuT2jAPqKLz49GEqqyN3VhUOrAMqKTsmDy6ZjBegHlDIHg6U8XhEvUhESVh2LdCMugBgKnbVZJL2QMNAHVer1pDUEANVwwssKmNFIlrCbADsHcKF1umh3O2RG/TdoG+3z3jukAMy7p8r12kjMJnj0jxvlo+o8KQtwGuB4oy5RqbzE17PHzOdnfBTI9Jm+f+BlXnux5oncckextNiwUOpqcxv9FLWLxgonJYzXh1/40tdYgrBbfJvA7DTs2IBBpOiuWsrsEWVG/MYkG27Oos5ywzCMAyc4W5S71EcEPpSGFjXOtPNHBApYkhRe2bASCrEkUDpCepbSHZQKmUUyiBIAOPvS3GhzZ4cXISX9SDwAFTq+ZF3+Vo2VAQCQIbwO/NrucP3/RF+V/rPgQxNEQD4A+b6sIruGLe0AAAAAElFTkSuQmCC"
     },
     {
       "name": "Irák",
@@ -6076,7 +5474,7 @@
       ],
       "group": "I",
       "fifaPoints": 1447.14,
-      "flag": "flags/irak.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABbElEQVR4nKWSP2sUURTFf3fen9mNSthudxFsBdE6kEZLP4WV+Uzi1wjYCLZ2KghipYLs2smCmsm+mfeOxaxJ1gliNhce3OK8w/lz7cWdg+ex7RC7jwEpeB5/eX3kp033NKYOme1OKJEiAEf+lym3JrQ7H4ZI1nv0+cdPl9f/Uqizb9v7tsJc+55w/+EBdeHSDIUwqg1VjzAzpG20Aetqszddp5Fz/20vA5ehT3Nm5Jz5fNKgvfHAYFbm4+or779/Zs+POJze49mHYw6n93k0e0CRqC7ElE8auHUTH+qIXVD4B/Jy8YZXy7e0Ktzdv8271Se+tSt8cJhzA5Wh7mu25XKp8fhcIRKYsc4tN3xNqAKFQlcyIxc5zYmsMrDcNA2z2cxsPp8rpYT91bJhFJVNGXZWjGEDrCRijCwWC8M5p01013rOOUnChxByKUMLV50QAgC+qipnNrRxlZFEVfWH6CeTyZOU0rUVxti3/BsttaXQSKl/gwAAAABJRU5ErkJggg=="
     },
     {
       "name": "Norsko",
@@ -6087,7 +5485,7 @@
       ],
       "group": "I",
       "fifaPoints": 1550.94,
-      "flag": "flags/norsko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABzklEQVR4nKWUPYtTQRSGnzN7MveGzQYXNYhfxVY2ZhsjWlgstmvhX9Amha3Niv/AUrCx1mILtxBRWJDFRtHKxsLCUhsRYiDZuXPnWOQmZnPDIjgw1fvOM/POOTOy17lqPkRMBAQoCi7vPeHag2dsdjd4ev0CH/o75O11LCZqQwSJkXj2JLe+7Iv6EPGhqIACoaCVNzmMkFBaDY8/DPgQsVguBxYRFyIAaiJMJ9VMZogAGMkMY86zBMicpjgHzs0EnKsvmHqcLQdOdUDjYIgrAoYwucSAleXMbKEgpgFx4JdHRhAi5e/mBNh78ZjVLMMMDBCMVvcSqYjYaMz69hY3Xu2iPoNUP6EJiMGwLCb47vaOxeTmN6Qcjfn67Qd5plw838FlHsyqBPXEqUycPpFz8PyhuJrjP4e+7t+sR+5t0tm6z5XuBm8e3eXnp8//HFk/3r6HXyhK72AX11CkmfPr5Vve3emT66nji3Kmw7nv71Ftt9AjjR2QlZVqe0N8A3VttL12bGOztjo5ISlBSn/7MC08LzNmnkWtAs5rKmaI2RGAE5kUFcGJIFQeW9LYwDxDg9fqcqvPQYzheESm4IgMi0DIPM4rtviKppGdECvOH2AS18LWyD5jAAAAAElFTkSuQmCC"
     },
     {
       "name": "Argentina",
@@ -6098,7 +5496,7 @@
       ],
       "group": "J",
       "fifaPoints": 1874.81,
-      "flag": "flags/argentina.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABbUlEQVR4nK2Tv2pUQRjFf2fmm6x7jcFojBaxMGgKX8Ayhe9gZW8h+CiKYOEr+A4WgVSWNhL8E5BYSEB0ie6ae2fuZ3GvutHdNJsDAwPf4ceZjzN68PTlbZZYXDU8f3T3jdmV66+JA8AXoAnKMUCymM4ZNgBfAChBFgBWNxk8zgW6t3TphRROAeYOuLZshGQzgQ5ES4SYaEtDm5u5wLYp3XV09MOrajiD50iBr5/ec/j2Fetbd1jduNkn1n8Bx+MJK8uVggWwIFKcPpBigFI42H1M3rvPwe4TVFpSDP38r9+CsH4bIUX9G+1PAkuB6sI6bbvG8PxlounEfFq/OfrweeTDYYWfqI3AHUn8PBrx5eMeqxu3qC5ewt27N075hZhMxmxeXZEevth3nVIbhUhMS5Smxtsy04OE52Oe3bshA2+7dHNqUxpKrpHUJ5sn79c0qMKZFDvGDth8//YOO4PPnGvgGtrexhanddrZ8fwL8n6AwGmgi70AAAAASUVORK5CYII="
     },
     {
       "name": "Alžírsko",
@@ -6109,7 +5507,7 @@
       ],
       "group": "J",
       "fifaPoints": 1564.26,
-      "flag": "flags/alzirsko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAB7UlEQVR4nJWUPWtUQRSGnzNzN3e/3BVFNGGJG1YwiyQQDAlBWTsxIPhRBizsBLGzSIr8ATt/gYVNGhEEOzutrJSAH5BiEQTxQjQJu+69e+8ci5stNncX44GBgTk85z3vzBmprK9oKDEgHA3PWKLOL9avP2Lj2n2ipI9n7FCOqiIiBEFAvV4Xrycx0RhgLIpqH+sZCoU8Pj5GTCYPoNvtAmAEOYQNL1EBEVweeicL6V4MqGYUAjjn0q5GVRMF9cAmjrvbeZbab/i5WqZ6o4V39kwKlWxHABn9ooCFag+2thLuvA85mJ/Gn6nR+fCJeHdvIO14QKOgE/DwXcLMLqytwcer01SvLOM3L2BPlA4rH1NhYoAIWm3H64uCnPIpf/1Oe+4m3zafkHQ6qW9jFGY8FEAFQg9KESiKCvjNBu58DeP7/6fQuLTMy0uWW5+VqZ0e3YUGky+ecu7BPXDpuxsXGYXOgITwfNHQ+K08e+UR2rf8WLFM1KbwW8tjYSOBA2cShc1Vy+ys5fFkmeJ8k+LiHDY38Q+g4kYdiEIuFL6cjti5vUBl6TJ9l2TyBqM3eOCe5sSkBg/7okBiBAkN5T8xALkjcwxgTHoNxWIxBZYiu+2N8dgzlijOER502d/bJ4yjzOfgnMNaSxAEVCoV/gIGIKp5a/taiQAAAABJRU5ErkJggg=="
     },
     {
       "name": "Rakousko",
@@ -6120,7 +5518,7 @@
       ],
       "group": "J",
       "fifaPoints": 1593.45,
-      "flag": "flags/rakousko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAA4UlEQVR4nK3SPU7EQAyG4dczzmR3FYkSqKi4w1JByymo2ENxEGoquAMVFRW7QuJnSDLGFMkJMrhy9cg/n9yfbe/SWHCWlwBDo1y/PO30JJfbNBRcZDnozpAA2OmXuI3i+HIPwRlk2lHt4zNaXz+htTqBR1db2l+qb9iHuc+l+CrGCm6qHzNWMYpazvh6Uw1aztB1aEgNEkM1GFIDgJb9O2Wzrj5i+c5weow8nl96O1r1l/smcvH8IFreDoR/CHZJc2yCqgWnGgw6gynEmMTrQBzCFD197dqbZlCoiaLBmCbgD2ngXMjcln+tAAAAAElFTkSuQmCC"
     },
     {
       "name": "Jordánsko",
@@ -6131,7 +5529,7 @@
       ],
       "group": "J",
       "fifaPoints": 1391.45,
-      "flag": "flags/jordansko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABpUlEQVR4nK2UQWsTQRTHf292E+NOkyhJi3qsIhHBRBRvnryKIN4EBY+9efM7ePEDKHhNwd7EL9AKCnoRb3oSREjKlhjdbHZm9nnY0l6sbTEP3pyG//x/f+Y9URDYPf6zVFVFVRcgtV/ytNv78PzXd76UGUJEIkIAjvOMqmKtJU3T6/Kpe013ipyNImU432akDgADiDEgRwvDWstkMhHZ7PR94hUbx4zU8yobMyy2GZXu2LiqGseCRF5gnGXUC8fa6XPcnrV4t3KSpQd3sb3z+J9T1IfK7QGZO1cZkLfLV9VMM5L+JRq9VUbrr2lYywlVaitdlu/fofNkDerxP935MhCbSMzeh1Gt2ggEhSwgeUDyEmb+cN7dO7LVGWitVIpiTm3maDeafEsc72+eofnoHsnF1X3kvycHIrjfcx7feiiy2R34JA8seeFH27BxWRkOIsanBKYZ5DlEUQWiHDABCtpAn32O43YwUdqCl1cM631TCTkwHsS2oNk+HBfFhjoA8ZsL5uOLG4avZwUzA7sDwYAKQHkEMVCUKFSRLH709pbDAnQV1T/WbLODGZU4/gAAAABJRU5ErkJggg=="
     },
     {
       "name": "Portugalsko",
@@ -6142,7 +5540,7 @@
       ],
       "group": "K",
       "fifaPoints": 1763.83,
-      "flag": "flags/portugalsko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAB+klEQVR4nI2TPWtUURCGnzlz7t7NbhJ1EwtJgqCgKEICIn4UKjZaWCnWNhoQBDtrf4Ol/8A/YKOdIIIf4AdqYWESkhg3CYmb3N29e+8Zi6uyu9HVqQ7nHZ7zzpwZ2Xvr/IMOOd2hBq1IuLyccO/TBpuRQ40BEUg14szLD7M+icPNFgHpkr1BGjm8z5jKmgyLouHvODGjHQWAWW9pltPnEIOQRWxtQZJAoxpQDExACn0HUIoXPYjS40/oABOjDQ4c+s5a2kYXSmhQgloBkz4gID/vfL8QQuBKbZVaPTDR3GTeoH4uMPPMiNsecwObift1UDE6Hc/ZyTXujM9xOznB8ZN32XfoKqVtx+LRFi4vqv4voAEixpRPeD/vqM9M8/XUDZZPX6BSD2TjGe044AZ8Tg+waLixmXverY0RLyxCHJClb8S1FBsyXC7/dNjVQ8NE+Lxe5djhJV69eczF+/C2/gK91mDi6RDadIThgAxw+RsYECLN+bi9h/2VhLEjTWT+IdOjGVtPyow+H4HKYFifQzADdYFHK5PUhltUqhtcet0grMY4tf7x+zPQsLw71YCyZqx3yqzMjbB7ucVqJSDGjoHucWKF6DXyqkjvaBto5KhUhWjIUdbBuyxmiC+K9bvS6HqKon1JaQCzmC9xlUZJd2xndyg5qZY4CPwACI3NU7mBrLkAAAAASUVORK5CYII="
     },
     {
       "name": "DR Kongo",
@@ -6156,7 +5554,7 @@
       ],
       "group": "K",
       "fifaPoints": 1478.35,
-      "flag": "flags/dr-kongo.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAC5UlEQVR4nIXSX2jVZRzH8ffveZ7f+bdzzs7O6axCjUWGTtcuKpboLtawCTG7iLoIvBEWXawIzUTSzIuDhM6rsaIo8rIyKIomJZ3ZQEjKlC1WablSQe2cnT/bztl+v/P8nqeLDYlw7Hv94cX3++XjpN67MOnF0x1Oo248ExEh4QNgrcNKI50ArV08N8kTLeeD968Oy+QfLR+0DX/6ovLdMAsyDTrB09lRRst9gARR/x/jAAZhLcYkiWQqvOmPsPe7L0ldSjC9Jg6AsoGkPfoL66LTHF+TI4TP9OIDTCxsAMdilzlFA60jmEiEp5rOMPTbu3SOFTA30rBxnkbn/FLOIIk7PifW5tiUvMxxmeOlqycABfgILBgHTZps+hq5yjsMnBnHmUhDqImF3hly2wc4H3SRB1RUzvNjtYd8civRsMe5ucfJl3cgQ7dwLGgdhybYFfqYoz+fZN24R1BpRaz/h9Hezby+dpApr5uu2tTShos2TCz8N2NzWzlw7TDbU2NkoleY8bIgm9iQmeTYzWGeyU8SXMlC0udWf51Djw5yUj8HRQc3UcKVwRIosNRthC9KO0Es8lVpB+CiEjX2mGHe+P4zUj+EMF4G0Vngo55tHGwZ5Gb1QYStgDRomjF3fr08rqzS0FEIhdgWP8fQnyNsyd9AX78H7isxtTPG/vbDnK73QclDqRLakWAF/y2YkhiEMTR0hubUbd6qDfHy19/iXmwGJ0Gju8ix7n6OhgeoldNIUcUogUbetaOqrqOYcJxnY6d4e+JDHh6fQxez0FbgbO9D7Gs7woXZLVCdQ8oqwQrQHfCRzGVeqw2x63Qe8/u9EHOp9M1ypGs3I/YFKIZRskQgxaoYgPrm7EFaf5Uwk0VsLnDqycfY3/oKf1U24pgKQvkrnndXUPyUhuZZpp6XHOo4wOeL/VAKEKqMEZIAsSpiHQHLORW0l/mkp4NXE3u4XbyfmFPACrANCfirYxZEQ+EGHgD/Amv7HwrQWoCyAAAAAElFTkSuQmCC"
     },
     {
       "name": "Uzbekistán",
@@ -6167,7 +5565,7 @@
       ],
       "group": "K",
       "fifaPoints": 1465.34,
-      "flag": "flags/uzbekistan.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABOklEQVR4nK2UPU7EMBBG3yTOQrKAdhFINBSIjoZiKWg5AdRIHIGKe1ByBCo6OAJCIMEFkGigoWKzoCU/jj0UWUqyf3yNZcl+emOPLagKgAJCHR2Nv/NJo6CiquNXThHTPr9+bMcxO52Eh/cBYShsLC4A0C8rhrYCaXbVIKBtMz7ODvdMHi31jne3efvMyFNlq5sQiBCKoHmJLSpEhMY6RKhsVBv6NHV3z6+stkKSYsh3v8B6xQikuUXL8YaI8FXlNfCq1wmdeFYi8OsJTuvrEcDRYtwRKyAi5Jmp2apWwTTvmiA2+yKKlyXAzQ8DcC4GwNzcX2BMODNIVZFAyIclRwenyP7lZuWNAz+7nQZKK4+5PXkxpttdC9V4mvtiDFAUk9W9a9zAP3kzhx4jl6Jm/PvTE3TqP+DPKKo/k0WA40dkGE0AAAAASUVORK5CYII="
     },
     {
       "name": "Kolumbie",
@@ -6178,7 +5576,7 @@
       ],
       "group": "K",
       "fifaPoints": 1693.09,
-      "flag": "flags/kolumbie.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAA4UlEQVR4nKXTL1LDYBCG8edNtslHo5haBOAQOCQITsJgOBSCoyCoxjI4BLbI0PzdRaRcoN8e4De7M8/q63XzvF6NOMdPAfyOK87vd0+KjxTUHUSGKKBPcLWXtW3MzUg22A5BA5igRBnYAfwnzF24K3tD94W05qRHKbLBpugX8P3zktrGbLCfVtxcgzbrl+gHQzpejBB1NbFrH2WSU8jzQIS0lGyGEzi5N9vhNbRNd1H1c3bXQ11yu3+TXfjPnGIiMmIUQecGgIWlkmkCZdQdQdgB/D6tHtJgzMdzlEBXFZwBf5yQWNioe+KQAAAAAElFTkSuQmCC"
     },
     {
       "name": "Anglie",
@@ -6189,7 +5587,7 @@
       ],
       "group": "L",
       "fifaPoints": 1825.97,
-      "flag": "flags/anglie.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABy0lEQVR4nJ2Sv6oTQRSHv5md3dnduMm9JCo3gleE62N40/keWmhrI3ZiJza2Wugb2NoIkoC1DyAIuV7UoEHCDclmN/PHYiVgdrfx1wzzm2/OnDnnCEDRptPTahmNmIzHlTeZtOLeeyPm8/nnOI7rh8YhI8XZo2d8f/mK4YP7HD9/jCsNQskan+c5g8Hglur3+yetTwKHkWZpthxGmjRJIGnm0jQFQK2WS5ckdcpbiwgC1mXBBliXBc6Ynb+v1WpN1uuiwiyT9Q8Aqiqt1BpwSK2RSu38fYW9bnXt97sPxGFUz9A5hJQU03OkSimm5yzef9z5/8Ke3FuO7owQY33io9LiRXNtZKwRWuOLArcp6oAQCLtle7nP7Z+fhAqvDAiNxYvmiL4s8VuDTGOCg25DQBDGQr9XbRdfpj7RDWPjquJ/ffKCH6/fcHTvLtefPqyaIveb4lkXGw5u3hBKH18jCtpnW2UdvDeorEM0vNrKmW1Z8W5TGJJ6n521yCDAGweIanVu59f4TQFhhEo7ncb05N9O9uKEBYJenICUO39fl7KsynA2m73VWtcAby1BFPEtX/JLR6h8SXBxgS3LxsHO85zhcIjw3rdU5f/0B4BMsd6zKPGSAAAAAElFTkSuQmCC"
     },
     {
       "name": "Chorvatsko",
@@ -6200,7 +5598,7 @@
       ],
       "group": "L",
       "fifaPoints": 1717.07,
-      "flag": "flags/chorvatsko.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAByElEQVR4nK2UsWtTURTGf+e++17yKJiKlKaDg5ZAFFxsd6cOjo666OIm2MXJ0dFBcXGTgpP+BaJCd6kg1UVBpRVTDFZa0STv5b33OSSxeWnG3O2De7/z3d8595rAmNWSZJJm5gdgm4srWz6fntN1e/gwgG5BWIVuJrK4ips0UUGnGrL27c2qr+FWQhVM5jSg01im1RXu4hLt7TYXooITO9+RlasHcoQEAPjfP/fzMM9LhsKIyNi8u86nl9vUG8b7qIo/vUzz3n0yQmzshEN04sogyO7jp4pcUKooCaec1uc9zAdUf7RJaycJ8pRT588gC7BhSkk4Mw7ThMatG2Y9SZUpcAUkH7+wv/Ect7iAfh0wf+0KcfNsCbeGeA6yPvM+NDfNbMTQ7ezSy0Xa6dFNMqJW61jvRrqm/kA/evJKgfMlhgZkeUE9FGtf30ElwszxYqlJOwXvg7H9g4xZ2uX2zctmLFzPyCZ6POqiGXeurnLpzx6v4zoPn22Ngz4qL0FsqLXhLT63rjSfGMMhmKIQxd8EKhEkfdxchHN2BG7Mey6Cww8PzAdK3vqC44MtCAx8zaG8j1WNLE/5f1eVDYOhnv3TA83sc5DQPzQavyDMe3T8AAAAAElFTkSuQmCC"
     },
     {
       "name": "Ghana",
@@ -6211,7 +5609,7 @@
       ],
       "group": "L",
       "fifaPoints": 1346.31,
-      "flag": "flags/ghana.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAABfElEQVR4nKWSv24TQRCHv7ndPdtx4RakSGmtVJZBglfgEahowF2KKM+RFClTpImUF0CiTxW6SBH0SHQIsIQxl9u73aG4tZT4Li6ckVY7+2e++c3syqe912d5VaNsbwJ4Z3nz7XpmnxX1h9zXqMj2QFV8DsDMLqUOlTwRiOJTuA1LY0KpG4EioBt6IqqEnmmAo5d/6YWqG6gQdKUCMklOB7A0rvGLG6f9vKLzVQxg4fgcjt4DJRC7JMKdd/QnXmwoDBrqB8CoID24uYXTS/h4BV++wsFbmOyDlkntPWDwTcmZMxEx+mAYq2SV8mKqDHrKfKEM+8p02uwbq60YZxrp9ldpGWhslawKcQHjMVwcw885/F4Afk1dUlh4y3NAdg9faUVo91ogBrAWhjuw/Ad1DZmhnRxwGL6ffBb7o3B4so5ON1BK4E96IGnDVpaTvo3LYojErt/QZBeQrOHIKsn6HcClAyvOGkEeBcra/JjJSuHIu3cek5bbWQDy1Lb/3KOUhUoxanwAAAAASUVORK5CYII="
     },
     {
       "name": "Panama",
@@ -6222,7 +5620,7 @@
       ],
       "group": "L",
       "fifaPoints": 1540.64,
-      "flag": "flags/panama.png"
+      "flag": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAACDUlEQVR4nJ2SMWtUQRDHf7Oz7+75zpgEBBNi8AgiXiP6MaxsxFYImC6pLBUj2FhYiYViI4Kl+AVsLIyChaYRtDiLwBVBwkXfed693bHYSzxyRsGBXXaZ//52578j7Xb7UVEUxBgBMDMQQQALAc3rdB48pXPvIdn0LBYqDoYAg8xz8cvGim82m9cmFAeiNjWD7Q7I6hVWhUmgGYMaACu+LMvQaDQIIaLq2Hj/iTPNeWaPNSAEXJbxrf+DkkhmFWaHAC2tnYiogTon+vL1pl5avqOrtx/rTrdUxCmgIqKAgvxjgI/RsBgB4fSpOZaa8ywtnmDmWINqOMQ7wQBxDpwDZ5OemKUc4BtFnsTAyfnjvHl+l9G/oFoHIMOoYokr80M9jEOfgO82P1PPc8xA1RFjxDlHDBELEXOCE8/0+Qu4xhTEmDoBEJF94E9Nj5Ja67INhpb+Pr1/717UK+Frl1s3lllfvUJVBbxX9kuIBi4d7PV6FEUhXpwDHQeOlaIj3w7mRAjfe+jR4jd8FG4S8/eodrp07j+hvbZO+eEjFi1B/wdoFnF5nd1Xb9l+9gLxmqoYK8GbEfhDJyTA3jQy3znckYzFm2ssXF+hvjCXhGOWeO+9Vti4DWNJxXxGVsvSXhWA4tzZCW2e50kzm9vVQZjsLQBV6BdCr7tNZ2uLst9HVWE4TIIs29f2+31arRa/AKnzzYIuBfOdAAAAAElFTkSuQmCC"
     }
   ],
   "rules": [

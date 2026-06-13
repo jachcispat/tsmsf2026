@@ -20,9 +20,9 @@ html { scroll-behavior: smooth; }
 body { margin: 0; font-family: Calibri, Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
 button, input { font: inherit; }
 button { cursor: pointer; }
-.site-header { background: #fff; padding: 18px clamp(16px, 3vw, 42px); display: flex; gap: 24px; align-items: center; justify-content: space-between; border-bottom: 1px solid #dbe3f0; position: sticky; top: 0; z-index: 50; }
-.brand { display: flex; align-items: center; gap: 16px; min-width: 260px; }
-.logo { width: 74px; height: 74px; object-fit: contain; border-radius: 10px; background: #fff; }
+.site-header { background: #fff; padding: 12px clamp(16px, 3vw, 42px); display: flex; gap: 24px; align-items: center; justify-content: space-between; border-bottom: 1px solid #dbe3f0; position: sticky; top: 0; z-index: 50; }
+.brand { display: flex; align-items: center; gap: 20px; min-width: 300px; }
+.logo { width: 110px; height: 110px; object-fit: contain; border-radius: 14px; background: #fff; flex: none; }
 h1 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.25rem); line-height: 1; }
 .brand p, .card-header p { margin: 5px 0 0; color: var(--muted); }
 .sync-card { display: flex; align-items: center; gap: 12px; background: #f8fafc; border: 1px solid #d7e0eb; border-radius: 12px; padding: 10px 12px; min-width: min(520px, 100%); }
@@ -31,7 +31,7 @@ h1 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.25rem); line-height: 1; }
 .sync-card.ok .sync-dot { background: #16a34a; box-shadow: 0 0 0 4px rgba(22,163,74,.15); }
 .sync-card.warn .sync-dot { background: #dc2626; box-shadow: 0 0 0 4px rgba(220,38,38,.15); }
 .sync-card button { margin-left: auto; border: 0; border-radius: 8px; padding: 8px 12px; background: #111827; color: #fff; }
-.tabs { display: flex; gap: 6px; padding: 10px clamp(16px, 3vw, 42px); background: #fff; border-bottom: 1px solid #dbe3f0; position: sticky; top: 111px; z-index: 45; overflow-x: auto; }
+.tabs { display: flex; gap: 6px; padding: 10px clamp(16px, 3vw, 42px); background: #fff; border-bottom: 1px solid #dbe3f0; position: sticky; top: 135px; z-index: 45; overflow-x: auto; }
 .tab { border: 0; background: transparent; color: var(--muted); padding: 10px 14px; border-radius: 8px; white-space: nowrap; }
 .tab.is-active { background: #111827; color: white; }
 main { padding: 24px clamp(12px, 2.5vw, 38px) 48px; }
