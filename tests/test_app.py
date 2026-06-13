@@ -21,9 +21,12 @@ class SiteTests(unittest.TestCase):
     def test_source_counts(self):
         self.assertEqual(len(self.data['matches']), 72)
         self.assertEqual(len(self.data['teams']), 48)
-        self.assertEqual(len(self.data['participants']), 15)
+        self.assertEqual(len(self.data['participants']), 13)
         self.assertTrue(all(len(p['predictions']) == 72 for p in self.data['participants']))
         self.assertEqual(sum(1 for p in self.data['participants'] if any(x['home'] is not None for x in p['predictions'])), 13)
+        self.assertNotIn('Tomáš Žůrek', {p['name'] for p in self.data['participants']})
+        self.assertNotIn('Štofy', {p['name'] for p in self.data['participants']})
+        self.assertTrue(all(t['flag'].startswith('data:image/png;base64,') for t in self.data['teams']))
 
     def test_embedded_results(self):
         results = app.embedded_results()
@@ -47,6 +50,25 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(parsed[0]['away'], 'Česko')
         self.assertTrue(parsed[0]['completed'])
         self.assertEqual((parsed[0]['homeScore'], parsed[0]['awayScore']), (2,1))
+
+
+    def test_espn_live_parser(self):
+        sample = {
+            'events': [{
+                'id': 'live-1', 'date': '2026-06-14T19:00Z',
+                'status': {'displayClock': "37'", 'period': 1, 'type': {'state': 'in', 'completed': False, 'shortDetail': "37'"}},
+                'competitions': [{'competitors': [
+                    {'homeAway': 'home', 'score': '1', 'team': {'displayName': 'Brazil'}},
+                    {'homeAway': 'away', 'score': '0', 'team': {'displayName': 'Morocco'}},
+                ]}]
+            }]
+        }
+        parsed = app.parse_espn_events(sample)
+        self.assertEqual(len(parsed), 1)
+        self.assertTrue(parsed[0]['live'])
+        self.assertFalse(parsed[0]['completed'])
+        self.assertEqual((parsed[0]['homeScore'], parsed[0]['awayScore']), (1, 0))
+        self.assertEqual(parsed[0]['status'], "37'")
 
     def test_scoring_matches_cached_xlsx(self):
         participants = self.data['participants']

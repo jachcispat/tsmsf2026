@@ -22,11 +22,12 @@ PORT=8080 python app.py
 
 - Při každém načtení stránky zavolá frontend `/api/scores`.
 - Server stáhne zápasy z veřejného JSON rozhraní, které používá výsledková stránka ESPN pro soutěž `fifa.world`.
-- Výsledky se na serveru ukládají do dvouminutové paměťové cache a v prohlížeči se kontrolují každých pět minut.
+- Při živém zápasu se data na serveru obnovují nejvýše po 15 sekundách a prohlížeč je kontroluje každých 30 sekund. Mimo živé zápasy se stránka kontroluje každé dvě minuty.
 - Pokud zdroj není dostupný, použijí se dokončené výsledky uložené ve výchozím XLSX; stránka na to uživatele upozorní.
 
 ## Co se počítá
 
+- průběžné živé skóre, stav/minutu zápasu a dočasný přepočet bodů,
 - body za přesný výsledek / rozdíl / správného vítěze,
 - koeficient odvážnosti podle pravidel v tabulce,
 - průběžné pořadí všech hráčů,

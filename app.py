@@ -20,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
 DATA_PATH = STATIC_DIR / "data.json"
 PORT = int(os.environ.get("PORT", "8000"))
-CACHE_TTL_SECONDS = int(os.environ.get("SCORES_CACHE_SECONDS", "120"))
+CACHE_TTL_SECONDS = int(os.environ.get("SCORES_CACHE_SECONDS", "60"))
+LIVE_CACHE_TTL_SECONDS = int(os.environ.get("LIVE_SCORES_CACHE_SECONDS", "15"))
 
 with DATA_PATH.open("r", encoding="utf-8") as fh:
     SITE_DATA = json.load(fh)
@@ -106,6 +107,16 @@ def parse_espn_events(document: dict[str, Any]) -> list[dict[str, Any]]:
             except (TypeError, ValueError):
                 return None
 
+        status_text = (
+            status_type.get("shortDetail")
+            or status_type.get("detail")
+            or status_type.get("description")
+            or status.get("displayClock")
+            or ""
+        )
+        display_clock = status.get("displayClock") or competition.get("status", {}).get("displayClock") or ""
+        period = status.get("period") or competition.get("status", {}).get("period")
+
         parsed.append(
             {
                 "providerId": str(event.get("id", "")),
@@ -117,7 +128,9 @@ def parse_espn_events(document: dict[str, Any]) -> list[dict[str, Any]]:
                 "completed": completed,
                 "live": live,
                 "state": state,
-                "status": status_type.get("shortDetail") or status_type.get("detail") or status_type.get("description") or "",
+                "status": status_text,
+                "displayClock": display_clock,
+                "period": period,
             }
         )
     return parsed
@@ -126,10 +139,14 @@ def parse_espn_events(document: dict[str, Any]) -> list[dict[str, Any]]:
 def fetch_espn_scores() -> list[dict[str, Any]]:
     base = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
     ranges = ["20260611-20260618", "20260619-20260624", "20260625-20260628"]
-    urls = [f"{base}?{urllib.parse.urlencode({'limit': 200, 'dates': date_range})}" for date_range in ranges]
+    # Samostatný dotaz pro dnešek zvyšuje šanci, že se živý stav a minuta
+    # projeví okamžitě; rozsahové dotazy dál zajišťují kompletní turnaj.
+    today = datetime.now(timezone.utc).strftime("%Y%m%d")
+    query_dates = [today, *ranges]
+    urls = [f"{base}?{urllib.parse.urlencode({'limit': 200, 'dates': date_range})}" for date_range in query_dates]
     events: dict[str, dict[str, Any]] = {}
     errors: list[str] = []
-    with ThreadPoolExecutor(max_workers=3) as pool:
+    with ThreadPoolExecutor(max_workers=4) as pool:
         futures = {pool.submit(fetch_json, url): url for url in urls}
         for future in as_completed(futures):
             try:
@@ -192,9 +209,11 @@ def get_scores_payload(force: bool = False) -> dict[str, Any]:
             "warning": f"Živý zdroj výsledků není dostupný: {exc}",
         }
 
+    live_now = any(event.get("live") for event in payload.get("events", []))
+    ttl = LIVE_CACHE_TTL_SECONDS if live_now else CACHE_TTL_SECONDS
     with _cache_lock:
         _cache["payload"] = payload
-        _cache["expires"] = now + CACHE_TTL_SECONDS
+        _cache["expires"] = now + ttl
     return payload
 
 

@@ -30,6 +30,8 @@ h1 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.25rem); line-height: 1; }
 .sync-dot { width: 12px; height: 12px; border-radius: 999px; background: #f59e0b; flex: none; box-shadow: 0 0 0 4px rgba(245,158,11,.15); }
 .sync-card.ok .sync-dot { background: #16a34a; box-shadow: 0 0 0 4px rgba(22,163,74,.15); }
 .sync-card.warn .sync-dot { background: #dc2626; box-shadow: 0 0 0 4px rgba(220,38,38,.15); }
+.sync-card.live .sync-dot { background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,.18); animation: livePulse 1.2s infinite; }
+@keyframes livePulse { 50% { transform: scale(1.22); opacity: .65; } }
 .sync-card button { margin-left: auto; border: 0; border-radius: 8px; padding: 8px 12px; background: #111827; color: #fff; }
 .tabs { display: flex; gap: 6px; padding: 10px clamp(16px, 3vw, 42px); background: #fff; border-bottom: 1px solid #dbe3f0; position: sticky; top: 135px; z-index: 45; overflow-x: auto; }
 .tab { border: 0; background: transparent; color: var(--muted); padding: 10px 14px; border-radius: 8px; white-space: nowrap; }
@@ -99,8 +101,10 @@ table { border-collapse: collapse; }
 .prediction.empty { color: #94a3b8; }
 .points-cell { font-weight: 800; font-variant-numeric: tabular-nums; min-width: 50px; }
 .result-final { background: #dbeafe !important; font-weight: 800; }
-.result-live { background: #fef3c7 !important; font-weight: 800; }
-.match-status { display: block; font-size: 9px; color: #475569; }
+.result-live { background: #fee2e2 !important; color: #991b1b; font-weight: 900; animation: liveCell 1.8s infinite; }
+@keyframes liveCell { 50% { background: #fff7ed !important; } }
+.match-status { display: block; font-size: 9px; color: #b91c1c; white-space: nowrap; }
+.live-label { display: inline-block; font-size: 10px; color: #fff; background: #dc2626; border-radius: 999px; padding: 2px 6px; vertical-align: middle; }
 .sheet tfoot td { position: sticky; bottom: 0; background: #d9d9d9; font-weight: 800; z-index: 18; height: 34px; }
 .sheet tfoot .sticky { z-index: 25; background: #d9d9d9; }
 .groups-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 16px; }

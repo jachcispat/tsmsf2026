@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111827">
   <title>TSMSF 2026 - výsledky</title>
-  <link rel="stylesheet" href="styles.css?v=20260614-2">
+  <link rel="stylesheet" href="styles.css?v=20260614-live1">
 </head>
 <body>
   <header class="site-header">
@@ -19,7 +19,7 @@
       <span class="sync-dot" id="sync-dot"></span>
       <div>
         <strong id="sync-title">Načítám výsledky…</strong>
-        <small id="sync-detail">Při každém otevření stránky se ověří odehrané zápasy.</small>
+        <small id="sync-detail">Při každém otevření stránky se ověří i právě hrané zápasy.</small>
       </div>
       <button id="refresh-button" type="button">Obnovit</button>
     </div>
@@ -84,11 +84,11 @@
           <h2>Jak funguje automatická aktualizace</h2>
           <ol>
             <li>Při načtení stránky server stáhne aktuální zápasy MS 2026.</li>
-            <li>Dokončené výsledky spáruje podle obou týmů a termínu.</li>
-            <li>Frontend přepočítá koeficient odvážnosti, body hráčů, celkové pořadí a tabulky skupin.</li>
+            <li>Dokončené i živé výsledky spáruje podle obou týmů a termínu.</li>
+            <li>Frontend během zápasu průběžně přepočítá koeficient odvážnosti, body hráčů, celkové pořadí a tabulky skupin. Konečné jsou až po skončení zápasu.</li>
             <li>Pokud živý zdroj dočasně nefunguje, stránka použije poslední výsledky uložené ve výchozím XLSX a zobrazí upozornění.</li>
           </ol>
-          <p class="muted">Stránka automaticky znovu kontroluje výsledky každých pět minut.</p>
+          <p class="muted">Během živého zápasu stránka kontroluje skóre každých 30 sekund; mimo živé zápasy každé dvě minuty.</p>
         </article>
       </div>
     </section>
@@ -99,6 +99,6 @@
     <span id="footer-source">Zdroj výsledků se načítá…</span>
   </footer>
 
-  <script src="app.js?v=20260614-2" defer></script>
+  <script src="app.js?v=20260614-live1" defer></script>
 </body>
 </html>

@@ -7,6 +7,7 @@ const state = {
   calculations: null,
   league: 'all',
   search: '',
+  refreshTimer: null,
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -66,11 +67,16 @@ function calculateEverything() {
   const pointsByParticipant = new Map(state.data.participants.map(p => [p.id, Array(state.data.matches.length).fill(0)]));
   const coefficientByMatch = Array(state.data.matches.length).fill(0);
   const completed = [];
+  const live = [];
+  const scored = [];
 
   state.data.matches.forEach((match, index) => {
     const result = state.results.get(resultKey(match.home, match.away));
-    if (!result?.completed || !Number.isInteger(result.homeScore) || !Number.isInteger(result.awayScore)) return;
-    completed.push(index);
+    const hasScore = Number.isInteger(result?.homeScore) && Number.isInteger(result?.awayScore);
+    if (!hasScore || (!result?.completed && !result?.live)) return;
+    scored.push(index);
+    if (result.completed) completed.push(index);
+    if (result.live) live.push(index);
 
     let correctCount = 0;
     // Stejně jako původní XLSX: do jmenovatele koeficientu vstupují všechny
@@ -106,7 +112,7 @@ function calculateEverything() {
     });
   });
 
-  const actualGoals = completed.reduce((sum, idx) => {
+  const actualGoals = scored.reduce((sum, idx) => {
     const r = state.results.get(resultKey(state.data.matches[idx].home, state.data.matches[idx].away));
     return sum + r.homeScore + r.awayScore;
   }, 0);
@@ -132,7 +138,7 @@ function calculateEverything() {
     active: active.some(p => p.id === player.id),
   }));
 
-  state.calculations = {active, pointsByParticipant, coefficientByMatch, completed, actualGoals, bonuses, totals};
+  state.calculations = {active, pointsByParticipant, coefficientByMatch, completed, live, scored, actualGoals, bonuses, totals};
 }
 
 function calculateStandings() {
@@ -145,7 +151,7 @@ function calculateStandings() {
     const relevantMatches = state.data.matches.filter(m => m.group === group);
     relevantMatches.forEach(match => {
       const r = state.results.get(resultKey(match.home, match.away));
-      if (!r?.completed || !Number.isInteger(r.homeScore) || !Number.isInteger(r.awayScore)) return;
+      if ((!r?.completed && !r?.live) || !Number.isInteger(r?.homeScore) || !Number.isInteger(r?.awayScore)) return;
       const h = byName.get(match.home), a = byName.get(match.away);
       h.played++; a.played++; h.gf += r.homeScore; h.ga += r.awayScore; a.gf += r.awayScore; a.ga += r.homeScore;
       if (r.homeScore > r.awayScore) { h.wins++; h.points += 3; a.losses++; }
@@ -167,7 +173,7 @@ function calculateStandings() {
         relevantMatches.forEach(match => {
           if (!tiedNames.has(match.home) || !tiedNames.has(match.away)) return;
           const r = state.results.get(resultKey(match.home, match.away));
-          if (!r?.completed) return;
+          if (!r?.completed && !r?.live) return;
           const h=mini.get(match.home), a=mini.get(match.away);
           h.gf+=r.homeScore; h.ga+=r.awayScore; a.gf+=r.awayScore; a.ga+=r.homeScore;
           if (r.homeScore>r.awayScore) h.points+=3; else if (r.homeScore<r.awayScore) a.points+=3; else {h.points++;a.points++;}
@@ -197,19 +203,29 @@ function pointColor(value, max) {
 function renderSync() {
   const card = $('#sync-card');
   const api = state.api;
+  const liveEvents = (api?.events || []).filter(event => event.live);
   card.classList.toggle('ok', Boolean(api?.ok));
   card.classList.toggle('warn', api && !api.ok);
-  $('#sync-title').textContent = api?.ok ? 'Výsledky jsou aktuální' : 'Používám záložní výsledky';
-  $('#sync-detail').textContent = api?.warning || `Aktualizováno ${new Date(api.updatedAt).toLocaleString('cs-CZ', {timeZone:'Europe/Prague'})}`;
-  $('#footer-source').textContent = api?.source === 'ESPN' ? 'Automatické výsledky: ESPN' : 'Záložní výsledky z výchozího XLSX';
+  card.classList.toggle('live', liveEvents.length > 0);
+  $('#sync-title').textContent = liveEvents.length
+    ? `Živě ${liveEvents.length} ${liveEvents.length === 1 ? 'zápas' : 'zápasy'}`
+    : api?.ok ? 'Výsledky jsou aktuální' : 'Používám záložní výsledky';
+  if (liveEvents.length) {
+    const liveText = liveEvents.map(event => `${event.home} ${event.homeScore}:${event.awayScore} ${event.away}${event.status ? ` (${event.status})` : ''}`).join(' • ');
+    $('#sync-detail').textContent = `${liveText} — obnova každých 30 s`;
+  } else {
+    $('#sync-detail').textContent = api?.warning || `Aktualizováno ${new Date(api.updatedAt).toLocaleString('cs-CZ', {timeZone:'Europe/Prague'})}`;
+  }
+  $('#footer-source').textContent = api?.source === 'ESPN' ? 'Automatické a živé výsledky: ESPN' : 'Záložní výsledky z výchozího XLSX';
 }
 
 function renderKpis() {
   const completed = state.calculations.completed.length;
   const leader = [...state.calculations.totals].sort((a,b) => b.total-a.total)[0];
   const next = state.data.matches.find(m => !state.results.get(resultKey(m.home,m.away))?.completed && new Date(m.kickoff) > new Date());
+  const liveCount = state.calculations.live.length;
   const items = [
-    [completed, `odehráno z ${state.data.matches.length}`],
+    [liveCount ? `${completed} + ${liveCount} živě` : completed, `odehráno z ${state.data.matches.length}`],
     [state.calculations.actualGoals, 'vstřelených branek'],
     [leader ? formatPoints(leader.total) : '0,0', leader ? `vede ${leader.name}` : 'průběžné body'],
     [next ? formatDateTime(next.kickoff) : '—', next ? `${next.home} - ${next.away}` : 'další zápas'],
@@ -268,14 +284,15 @@ function renderMatches() {
     const r = state.results.get(resultKey(m.home,m.away));
     const scoreText = r && Number.isInteger(r.homeScore) && Number.isInteger(r.awayScore) ? `${r.homeScore}:${r.awayScore}` : ' : ';
     const resultClass = r?.completed ? 'result-final' : r?.live ? 'result-live' : '';
-    const status = r?.live ? '<span class="match-status">ŽIVĚ</span>' : '';
+    const liveStatus = r?.status || r?.displayClock || '';
+    const status = r?.live ? `<span class="match-status">ŽIVĚ${liveStatus ? ` · ${escapeHtml(liveStatus)}` : ''}</span>` : '';
     const participantCells = participants.map(p => {
       const tip = p.predictions[idx];
       const tipText = Number.isInteger(tip.home) && Number.isInteger(tip.away) ? `${tip.home}:${tip.away}` : '—';
       const pts = state.calculations.pointsByParticipant.get(p.id)[idx] || 0;
       const colors = pointColor(pts, maxPoint);
       return `<td class="prediction ${typeClass(p.type)} ${tipText==='—'?'empty':''}" data-player="${escapeHtml(p.name.toLowerCase())}">
-        <span>${tipText}</span><br><span class="points-cell" style="background:${colors.bg};color:${colors.fg}">${r?.completed ? formatPoints(pts) : ''}</span>
+        <span>${tipText}</span><br><span class="points-cell" style="background:${colors.bg};color:${colors.fg}">${(r?.completed || r?.live) ? formatPoints(pts) : ''}</span>
       </td>`;
     }).join('');
     return `<tr data-search="${escapeHtml(`${m.home} ${m.away}`.toLowerCase())}">
@@ -284,7 +301,7 @@ function renderMatches() {
       <td class="sticky col-home"><div class="team away"><span>${escapeHtml(m.home)}</span>${flagFor(m.home)}</div></td>
       <td class="sticky col-result ${resultClass}">${scoreText}${status}</td>
       <td class="sticky col-away"><div class="team">${flagFor(m.away)}<span>${escapeHtml(m.away)}</span></div></td>
-      <td class="sticky col-coef">${r?.completed ? formatPoints(state.calculations.coefficientByMatch[idx],2) : ''}</td>
+      <td class="sticky col-coef">${(r?.completed || r?.live) ? formatPoints(state.calculations.coefficientByMatch[idx],2) : ''}</td>
       ${participantCells}
     </tr>`;
   }).join('');
@@ -310,11 +327,14 @@ function applyMatchFilter() {
 
 function renderGroups() {
   const standings = calculateStandings();
-  $('#groups-grid').innerHTML = Object.entries(standings).map(([group,teams]) => `<article class="card group-card">
-    <div class="group-title"><h2>Skupina ${group}</h2><span>${teams.reduce((s,t)=>s+t.played,0)/2}/6 zápasů</span></div>
+  $('#groups-grid').innerHTML = Object.entries(standings).map(([group,teams]) => {
+    const groupLive = state.data.matches.some(match => match.group === group && state.results.get(resultKey(match.home,match.away))?.live);
+    return `<article class="card group-card">
+    <div class="group-title"><h2>Skupina ${group}${groupLive ? ' <small class="live-label">ŽIVĚ</small>' : ''}</h2><span>${teams.reduce((s,t)=>s+t.played,0)/2}/6 zápasů${groupLive ? ' · průběžně' : ''}</span></div>
     <table class="group-table"><thead><tr><th>#</th><th>Tým</th><th>Z</th><th>V</th><th>R</th><th>P</th><th>Skóre</th><th>+/-</th><th>B</th></tr></thead>
     <tbody>${teams.map((t,i)=>`<tr class="${i<2?'qualifying':''}"><td>${i+1}</td><td><div class="team">${flagFor(t.name)}<span>${escapeHtml(t.name)}</span></div></td><td>${t.played}</td><td>${t.wins}</td><td>${t.draws}</td><td>${t.losses}</td><td>${t.gf}:${t.ga}</td><td>${t.gf-t.ga}</td><td><strong>${t.points}</strong></td></tr>`).join('')}</tbody></table>
-  </article>`).join('');
+  </article>`;
+  }).join('');
 }
 
 function renderRules() {
@@ -342,10 +362,16 @@ function mergeApiResults(api) {
   // Live provider overrides the fallback.
   (api.events || []).forEach(event => {
     if (!event.home || !event.away) return;
-    const hasScore = Number.isInteger(event.homeScore) && Number.isInteger(event.awayScore);
-    if (!event.completed && !event.live && !hasScore) return;
+    if (!event.completed && !event.live) return;
     state.results.set(resultKey(event.home,event.away), event);
   });
+}
+
+function scheduleNextRefresh() {
+  if (state.refreshTimer) clearTimeout(state.refreshTimer);
+  const hasLive = (state.api?.events || []).some(event => event.live);
+  const delay = hasLive ? 30 * 1000 : 2 * 60 * 1000;
+  state.refreshTimer = setTimeout(() => loadScores(false), delay);
 }
 
 async function loadScores(force = false) {
@@ -361,6 +387,7 @@ async function loadScores(force = false) {
   }
   mergeApiResults(state.api);
   renderAll();
+  scheduleNextRefresh();
 }
 
 function setupUi() {
@@ -384,7 +411,6 @@ async function init() {
   state.data = await dataResponse.json();
   setupUi();
   await loadScores(false);
-  setInterval(() => loadScores(false), 5 * 60 * 1000);
 }
 
 init().catch(error => {
