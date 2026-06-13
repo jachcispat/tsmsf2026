@@ -1,0 +1,6261 @@
+{
+  "title": "TSMSF 2026",
+  "subtitle": "Tipovací soutěž - výsledky a průběžné pořadí",
+  "sourceWorkbook": "TSMSF_2026_DEN2_BODY_bile_jednotne_formatovani.xlsx",
+  "generatedAt": "2026-06-13T19:46:42.554384+00:00",
+  "timezone": "Europe/Prague",
+  "matches": [
+    {
+      "id": 1,
+      "row": 3,
+      "dayLabel": "Čt",
+      "dateLabel": "Čer 11, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-11T21:00:00+02:00",
+      "home": "Mexiko",
+      "away": "Jižní Afrika",
+      "group": "A",
+      "fallbackResult": {
+        "home": 2,
+        "away": 0,
+        "completed": true
+      }
+    },
+    {
+      "id": 2,
+      "row": 4,
+      "dayLabel": "Pá",
+      "dateLabel": "Čer 12, 2026",
+      "timeLabel": "04:00",
+      "kickoff": "2026-06-12T04:00:00+02:00",
+      "home": "Jižní Korea",
+      "away": "Česko",
+      "group": "A",
+      "fallbackResult": {
+        "home": 2,
+        "away": 1,
+        "completed": true
+      }
+    },
+    {
+      "id": 3,
+      "row": 5,
+      "dayLabel": "Pá",
+      "dateLabel": "Čer 12, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-12T21:00:00+02:00",
+      "home": "Kanada",
+      "away": "Bosna a Hercegovina",
+      "group": "B",
+      "fallbackResult": {
+        "home": 1,
+        "away": 1,
+        "completed": true
+      }
+    },
+    {
+      "id": 4,
+      "row": 6,
+      "dayLabel": "So",
+      "dateLabel": "Čer 13, 2026",
+      "timeLabel": "03:00",
+      "kickoff": "2026-06-13T03:00:00+02:00",
+      "home": "Spojené státy",
+      "away": "Paraguay",
+      "group": "D",
+      "fallbackResult": {
+        "home": 4,
+        "away": 1,
+        "completed": true
+      }
+    },
+    {
+      "id": 5,
+      "row": 7,
+      "dayLabel": "So",
+      "dateLabel": "Čer 13, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-13T21:00:00+02:00",
+      "home": "Katar",
+      "away": "Švýcarsko",
+      "group": "B",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 6,
+      "row": 8,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 14, 2026",
+      "timeLabel": "00:00",
+      "kickoff": "2026-06-14T00:00:00+02:00",
+      "home": "Brazílie",
+      "away": "Maroko",
+      "group": "C",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 7,
+      "row": 9,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 14, 2026",
+      "timeLabel": "03:00",
+      "kickoff": "2026-06-14T03:00:00+02:00",
+      "home": "Haiti",
+      "away": "Skotsko",
+      "group": "C",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 8,
+      "row": 10,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 14, 2026",
+      "timeLabel": "06:00",
+      "kickoff": "2026-06-14T06:00:00+02:00",
+      "home": "Austrálie",
+      "away": "Turecko",
+      "group": "D",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 9,
+      "row": 11,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 14, 2026",
+      "timeLabel": "19:00",
+      "kickoff": "2026-06-14T19:00:00+02:00",
+      "home": "Německo",
+      "away": "Curaçao",
+      "group": "E",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 10,
+      "row": 12,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 14, 2026",
+      "timeLabel": "22:00",
+      "kickoff": "2026-06-14T22:00:00+02:00",
+      "home": "Nizozemsko",
+      "away": "Japonsko",
+      "group": "F",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 11,
+      "row": 13,
+      "dayLabel": "Po",
+      "dateLabel": "Čer 15, 2026",
+      "timeLabel": "01:00",
+      "kickoff": "2026-06-15T01:00:00+02:00",
+      "home": "Pobřeží slonoviny",
+      "away": "Ekvádor",
+      "group": "E",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 12,
+      "row": 14,
+      "dayLabel": "Po",
+      "dateLabel": "Čer 15, 2026",
+      "timeLabel": "04:00",
+      "kickoff": "2026-06-15T04:00:00+02:00",
+      "home": "Švédsko",
+      "away": "Tunisko",
+      "group": "F",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 13,
+      "row": 15,
+      "dayLabel": "Po",
+      "dateLabel": "Čer 15, 2026",
+      "timeLabel": "18:00",
+      "kickoff": "2026-06-15T18:00:00+02:00",
+      "home": "Španělsko",
+      "away": "Kapverdy",
+      "group": "H",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 14,
+      "row": 16,
+      "dayLabel": "Po",
+      "dateLabel": "Čer 15, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-15T21:00:00+02:00",
+      "home": "Belgie",
+      "away": "Egypt",
+      "group": "G",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 15,
+      "row": 17,
+      "dayLabel": "Út",
+      "dateLabel": "Čer 16, 2026",
+      "timeLabel": "00:00",
+      "kickoff": "2026-06-16T00:00:00+02:00",
+      "home": "Saúdská Arábie",
+      "away": "Uruguay",
+      "group": "H",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 16,
+      "row": 18,
+      "dayLabel": "Út",
+      "dateLabel": "Čer 16, 2026",
+      "timeLabel": "03:00",
+      "kickoff": "2026-06-16T03:00:00+02:00",
+      "home": "Írán",
+      "away": "Nový Zéland",
+      "group": "G",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 17,
+      "row": 19,
+      "dayLabel": "Út",
+      "dateLabel": "Čer 16, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-16T21:00:00+02:00",
+      "home": "Francie",
+      "away": "Senegal",
+      "group": "I",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 18,
+      "row": 20,
+      "dayLabel": "St",
+      "dateLabel": "Čer 17, 2026",
+      "timeLabel": "00:00",
+      "kickoff": "2026-06-17T00:00:00+02:00",
+      "home": "Irák",
+      "away": "Norsko",
+      "group": "I",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 19,
+      "row": 21,
+      "dayLabel": "St",
+      "dateLabel": "Čer 17, 2026",
+      "timeLabel": "03:00",
+      "kickoff": "2026-06-17T03:00:00+02:00",
+      "home": "Argentina",
+      "away": "Alžírsko",
+      "group": "J",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 20,
+      "row": 22,
+      "dayLabel": "St",
+      "dateLabel": "Čer 17, 2026",
+      "timeLabel": "06:00",
+      "kickoff": "2026-06-17T06:00:00+02:00",
+      "home": "Rakousko",
+      "away": "Jordánsko",
+      "group": "J",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 21,
+      "row": 23,
+      "dayLabel": "St",
+      "dateLabel": "Čer 17, 2026",
+      "timeLabel": "19:00",
+      "kickoff": "2026-06-17T19:00:00+02:00",
+      "home": "Portugalsko",
+      "away": "DR Kongo",
+      "group": "K",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 22,
+      "row": 24,
+      "dayLabel": "St",
+      "dateLabel": "Čer 17, 2026",
+      "timeLabel": "22:00",
+      "kickoff": "2026-06-17T22:00:00+02:00",
+      "home": "Anglie",
+      "away": "Chorvatsko",
+      "group": "L",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 23,
+      "row": 25,
+      "dayLabel": "Čt",
+      "dateLabel": "Čer 18, 2026",
+      "timeLabel": "01:00",
+      "kickoff": "2026-06-18T01:00:00+02:00",
+      "home": "Ghana",
+      "away": "Panama",
+      "group": "L",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 24,
+      "row": 26,
+      "dayLabel": "Čt",
+      "dateLabel": "Čer 18, 2026",
+      "timeLabel": "04:00",
+      "kickoff": "2026-06-18T04:00:00+02:00",
+      "home": "Uzbekistán",
+      "away": "Kolumbie",
+      "group": "K",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 25,
+      "row": 27,
+      "dayLabel": "Čt",
+      "dateLabel": "Čer 18, 2026",
+      "timeLabel": "18:00",
+      "kickoff": "2026-06-18T18:00:00+02:00",
+      "home": "Česko",
+      "away": "Jižní Afrika",
+      "group": "A",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 26,
+      "row": 28,
+      "dayLabel": "Čt",
+      "dateLabel": "Čer 18, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-18T21:00:00+02:00",
+      "home": "Švýcarsko",
+      "away": "Bosna a Hercegovina",
+      "group": "B",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 27,
+      "row": 29,
+      "dayLabel": "Pá",
+      "dateLabel": "Čer 19, 2026",
+      "timeLabel": "00:00",
+      "kickoff": "2026-06-19T00:00:00+02:00",
+      "home": "Kanada",
+      "away": "Katar",
+      "group": "B",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 28,
+      "row": 30,
+      "dayLabel": "Pá",
+      "dateLabel": "Čer 19, 2026",
+      "timeLabel": "03:00",
+      "kickoff": "2026-06-19T03:00:00+02:00",
+      "home": "Mexiko",
+      "away": "Jižní Korea",
+      "group": "A",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 29,
+      "row": 31,
+      "dayLabel": "Pá",
+      "dateLabel": "Čer 19, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-19T21:00:00+02:00",
+      "home": "Spojené státy",
+      "away": "Austrálie",
+      "group": "D",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 30,
+      "row": 32,
+      "dayLabel": "So",
+      "dateLabel": "Čer 20, 2026",
+      "timeLabel": "00:00",
+      "kickoff": "2026-06-20T00:00:00+02:00",
+      "home": "Skotsko",
+      "away": "Maroko",
+      "group": "C",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 31,
+      "row": 33,
+      "dayLabel": "So",
+      "dateLabel": "Čer 20, 2026",
+      "timeLabel": "02:30",
+      "kickoff": "2026-06-20T02:30:00+02:00",
+      "home": "Brazílie",
+      "away": "Haiti",
+      "group": "C",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 32,
+      "row": 34,
+      "dayLabel": "So",
+      "dateLabel": "Čer 20, 2026",
+      "timeLabel": "05:00",
+      "kickoff": "2026-06-20T05:00:00+02:00",
+      "home": "Turecko",
+      "away": "Paraguay",
+      "group": "D",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 33,
+      "row": 35,
+      "dayLabel": "So",
+      "dateLabel": "Čer 20, 2026",
+      "timeLabel": "19:00",
+      "kickoff": "2026-06-20T19:00:00+02:00",
+      "home": "Nizozemsko",
+      "away": "Švédsko",
+      "group": "F",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 34,
+      "row": 36,
+      "dayLabel": "So",
+      "dateLabel": "Čer 20, 2026",
+      "timeLabel": "22:00",
+      "kickoff": "2026-06-20T22:00:00+02:00",
+      "home": "Německo",
+      "away": "Pobřeží slonoviny",
+      "group": "E",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 35,
+      "row": 37,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 21, 2026",
+      "timeLabel": "02:00",
+      "kickoff": "2026-06-21T02:00:00+02:00",
+      "home": "Ekvádor",
+      "away": "Curaçao",
+      "group": "E",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 36,
+      "row": 38,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 21, 2026",
+      "timeLabel": "06:00",
+      "kickoff": "2026-06-21T06:00:00+02:00",
+      "home": "Tunisko",
+      "away": "Japonsko",
+      "group": "F",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 37,
+      "row": 39,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 21, 2026",
+      "timeLabel": "18:00",
+      "kickoff": "2026-06-21T18:00:00+02:00",
+      "home": "Španělsko",
+      "away": "Saúdská Arábie",
+      "group": "H",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 38,
+      "row": 40,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 21, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-21T21:00:00+02:00",
+      "home": "Belgie",
+      "away": "Írán",
+      "group": "G",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 39,
+      "row": 41,
+      "dayLabel": "Po",
+      "dateLabel": "Čer 22, 2026",
+      "timeLabel": "00:00",
+      "kickoff": "2026-06-22T00:00:00+02:00",
+      "home": "Uruguay",
+      "away": "Kapverdy",
+      "group": "H",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 40,
+      "row": 42,
+      "dayLabel": "Po",
+      "dateLabel": "Čer 22, 2026",
+      "timeLabel": "03:00",
+      "kickoff": "2026-06-22T03:00:00+02:00",
+      "home": "Nový Zéland",
+      "away": "Egypt",
+      "group": "G",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 41,
+      "row": 43,
+      "dayLabel": "Po",
+      "dateLabel": "Čer 22, 2026",
+      "timeLabel": "19:00",
+      "kickoff": "2026-06-22T19:00:00+02:00",
+      "home": "Argentina",
+      "away": "Rakousko",
+      "group": "J",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 42,
+      "row": 44,
+      "dayLabel": "Po",
+      "dateLabel": "Čer 22, 2026",
+      "timeLabel": "23:00",
+      "kickoff": "2026-06-22T23:00:00+02:00",
+      "home": "Francie",
+      "away": "Irák",
+      "group": "I",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 43,
+      "row": 45,
+      "dayLabel": "Út",
+      "dateLabel": "Čer 23, 2026",
+      "timeLabel": "02:00",
+      "kickoff": "2026-06-23T02:00:00+02:00",
+      "home": "Norsko",
+      "away": "Senegal",
+      "group": "I",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 44,
+      "row": 46,
+      "dayLabel": "Út",
+      "dateLabel": "Čer 23, 2026",
+      "timeLabel": "05:00",
+      "kickoff": "2026-06-23T05:00:00+02:00",
+      "home": "Jordánsko",
+      "away": "Alžírsko",
+      "group": "J",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 45,
+      "row": 47,
+      "dayLabel": "Út",
+      "dateLabel": "Čer 23, 2026",
+      "timeLabel": "19:00",
+      "kickoff": "2026-06-23T19:00:00+02:00",
+      "home": "Portugalsko",
+      "away": "Uzbekistán",
+      "group": "K",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 46,
+      "row": 48,
+      "dayLabel": "Út",
+      "dateLabel": "Čer 23, 2026",
+      "timeLabel": "22:00",
+      "kickoff": "2026-06-23T22:00:00+02:00",
+      "home": "Anglie",
+      "away": "Ghana",
+      "group": "L",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 47,
+      "row": 49,
+      "dayLabel": "St",
+      "dateLabel": "Čer 24, 2026",
+      "timeLabel": "01:00",
+      "kickoff": "2026-06-24T01:00:00+02:00",
+      "home": "Panama",
+      "away": "Chorvatsko",
+      "group": "L",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 48,
+      "row": 50,
+      "dayLabel": "St",
+      "dateLabel": "Čer 24, 2026",
+      "timeLabel": "04:00",
+      "kickoff": "2026-06-24T04:00:00+02:00",
+      "home": "Kolumbie",
+      "away": "DR Kongo",
+      "group": "K",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 49,
+      "row": 51,
+      "dayLabel": "St",
+      "dateLabel": "Čer 24, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-24T21:00:00+02:00",
+      "home": "Švýcarsko",
+      "away": "Kanada",
+      "group": "B",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 50,
+      "row": 52,
+      "dayLabel": "St",
+      "dateLabel": "Čer 24, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-24T21:00:00+02:00",
+      "home": "Bosna a Hercegovina",
+      "away": "Katar",
+      "group": "B",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 51,
+      "row": 53,
+      "dayLabel": "Čt",
+      "dateLabel": "Čer 25, 2026",
+      "timeLabel": "00:00",
+      "kickoff": "2026-06-25T00:00:00+02:00",
+      "home": "Maroko",
+      "away": "Haiti",
+      "group": "C",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 52,
+      "row": 54,
+      "dayLabel": "Čt",
+      "dateLabel": "Čer 25, 2026",
+      "timeLabel": "00:00",
+      "kickoff": "2026-06-25T00:00:00+02:00",
+      "home": "Skotsko",
+      "away": "Brazílie",
+      "group": "C",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 53,
+      "row": 55,
+      "dayLabel": "Čt",
+      "dateLabel": "Čer 25, 2026",
+      "timeLabel": "03:00",
+      "kickoff": "2026-06-25T03:00:00+02:00",
+      "home": "Jižní Afrika",
+      "away": "Jižní Korea",
+      "group": "A",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 54,
+      "row": 56,
+      "dayLabel": "Čt",
+      "dateLabel": "Čer 25, 2026",
+      "timeLabel": "03:00",
+      "kickoff": "2026-06-25T03:00:00+02:00",
+      "home": "Česko",
+      "away": "Mexiko",
+      "group": "A",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 55,
+      "row": 57,
+      "dayLabel": "Čt",
+      "dateLabel": "Čer 25, 2026",
+      "timeLabel": "22:00",
+      "kickoff": "2026-06-25T22:00:00+02:00",
+      "home": "Curaçao",
+      "away": "Pobřeží slonoviny",
+      "group": "E",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 56,
+      "row": 58,
+      "dayLabel": "Čt",
+      "dateLabel": "Čer 25, 2026",
+      "timeLabel": "22:00",
+      "kickoff": "2026-06-25T22:00:00+02:00",
+      "home": "Ekvádor",
+      "away": "Německo",
+      "group": "E",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 57,
+      "row": 59,
+      "dayLabel": "Pá",
+      "dateLabel": "Čer 26, 2026",
+      "timeLabel": "01:00",
+      "kickoff": "2026-06-26T01:00:00+02:00",
+      "home": "Tunisko",
+      "away": "Nizozemsko",
+      "group": "F",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 58,
+      "row": 60,
+      "dayLabel": "Pá",
+      "dateLabel": "Čer 26, 2026",
+      "timeLabel": "01:00",
+      "kickoff": "2026-06-26T01:00:00+02:00",
+      "home": "Japonsko",
+      "away": "Švédsko",
+      "group": "F",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 59,
+      "row": 61,
+      "dayLabel": "Pá",
+      "dateLabel": "Čer 26, 2026",
+      "timeLabel": "04:00",
+      "kickoff": "2026-06-26T04:00:00+02:00",
+      "home": "Turecko",
+      "away": "Spojené státy",
+      "group": "D",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 60,
+      "row": 62,
+      "dayLabel": "Pá",
+      "dateLabel": "Čer 26, 2026",
+      "timeLabel": "04:00",
+      "kickoff": "2026-06-26T04:00:00+02:00",
+      "home": "Paraguay",
+      "away": "Austrálie",
+      "group": "D",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 61,
+      "row": 63,
+      "dayLabel": "Pá",
+      "dateLabel": "Čer 26, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-26T21:00:00+02:00",
+      "home": "Norsko",
+      "away": "Francie",
+      "group": "I",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 62,
+      "row": 64,
+      "dayLabel": "Pá",
+      "dateLabel": "Čer 26, 2026",
+      "timeLabel": "21:00",
+      "kickoff": "2026-06-26T21:00:00+02:00",
+      "home": "Senegal",
+      "away": "Irák",
+      "group": "I",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 63,
+      "row": 65,
+      "dayLabel": "So",
+      "dateLabel": "Čer 27, 2026",
+      "timeLabel": "02:00",
+      "kickoff": "2026-06-27T02:00:00+02:00",
+      "home": "Kapverdy",
+      "away": "Saúdská Arábie",
+      "group": "H",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 64,
+      "row": 66,
+      "dayLabel": "So",
+      "dateLabel": "Čer 27, 2026",
+      "timeLabel": "02:00",
+      "kickoff": "2026-06-27T02:00:00+02:00",
+      "home": "Uruguay",
+      "away": "Španělsko",
+      "group": "H",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 65,
+      "row": 67,
+      "dayLabel": "So",
+      "dateLabel": "Čer 27, 2026",
+      "timeLabel": "05:00",
+      "kickoff": "2026-06-27T05:00:00+02:00",
+      "home": "Nový Zéland",
+      "away": "Belgie",
+      "group": "G",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 66,
+      "row": 68,
+      "dayLabel": "So",
+      "dateLabel": "Čer 27, 2026",
+      "timeLabel": "05:00",
+      "kickoff": "2026-06-27T05:00:00+02:00",
+      "home": "Egypt",
+      "away": "Írán",
+      "group": "G",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 67,
+      "row": 69,
+      "dayLabel": "So",
+      "dateLabel": "Čer 27, 2026",
+      "timeLabel": "23:00",
+      "kickoff": "2026-06-27T23:00:00+02:00",
+      "home": "Panama",
+      "away": "Anglie",
+      "group": "L",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 68,
+      "row": 70,
+      "dayLabel": "So",
+      "dateLabel": "Čer 27, 2026",
+      "timeLabel": "23:00",
+      "kickoff": "2026-06-27T23:00:00+02:00",
+      "home": "Chorvatsko",
+      "away": "Ghana",
+      "group": "L",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 69,
+      "row": 71,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 28, 2026",
+      "timeLabel": "01:30",
+      "kickoff": "2026-06-28T01:30:00+02:00",
+      "home": "Kolumbie",
+      "away": "Portugalsko",
+      "group": "K",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 70,
+      "row": 72,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 28, 2026",
+      "timeLabel": "01:30",
+      "kickoff": "2026-06-28T01:30:00+02:00",
+      "home": "DR Kongo",
+      "away": "Uzbekistán",
+      "group": "K",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 71,
+      "row": 73,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 28, 2026",
+      "timeLabel": "04:00",
+      "kickoff": "2026-06-28T04:00:00+02:00",
+      "home": "Alžírsko",
+      "away": "Rakousko",
+      "group": "J",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    },
+    {
+      "id": 72,
+      "row": 74,
+      "dayLabel": "Ne",
+      "dateLabel": "Čer 28, 2026",
+      "timeLabel": "04:00",
+      "kickoff": "2026-06-28T04:00:00+02:00",
+      "home": "Jordánsko",
+      "away": "Argentina",
+      "group": "J",
+      "fallbackResult": {
+        "home": null,
+        "away": null,
+        "completed": false
+      }
+    }
+  ],
+  "participants": [
+    {
+      "id": "olhot",
+      "name": "Olhot",
+      "type": "NORMÁLNÍ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "K",
+      "predictionAwayColumn": "M",
+      "pointsColumn": "N",
+      "predictions": [
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        }
+      ],
+      "totalGoalsTip": 115,
+      "cachedTotal": 17.9855760121525
+    },
+    {
+      "id": "radimonaldo",
+      "name": "Radimonaldo",
+      "type": "STŘÍBRNÝ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "O",
+      "predictionAwayColumn": "Q",
+      "pointsColumn": "R",
+      "predictions": [
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 5,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 5,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        }
+      ],
+      "totalGoalsTip": 180,
+      "cachedTotal": 7.24695086565476
+    },
+    {
+      "id": "martin-cach",
+      "name": "Martin Cach",
+      "type": "ZLATÝ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "S",
+      "predictionAwayColumn": "U",
+      "pointsColumn": "V",
+      "predictions": [
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 5,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 4
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 4
+        }
+      ],
+      "totalGoalsTip": 201,
+      "cachedTotal": 4.77986265751241
+    },
+    {
+      "id": "plamenak",
+      "name": "Plameňák",
+      "type": "ZLATÝ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "W",
+      "predictionAwayColumn": "Y",
+      "pointsColumn": "Z",
+      "predictions": [
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 4
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 6,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 5,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 5,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 2
+        }
+      ],
+      "totalGoalsTip": 129,
+      "cachedTotal": 17.9855760121525
+    },
+    {
+      "id": "libor",
+      "name": "Libor",
+      "type": "ZLATÝ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "AA",
+      "predictionAwayColumn": "AC",
+      "pointsColumn": "AD",
+      "predictions": [
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        }
+      ],
+      "totalGoalsTip": 200,
+      "cachedTotal": 15.307920242634
+    },
+    {
+      "id": "liborek",
+      "name": "Liborek",
+      "type": "NORMÁLNÍ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "AE",
+      "predictionAwayColumn": "AG",
+      "pointsColumn": "AH",
+      "predictions": [
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 4,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 4,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 3,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 3
+        },
+        {
+          "home": 3,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 4
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 4
+        }
+      ],
+      "totalGoalsTip": 180,
+      "cachedTotal": 19.9334691413742
+    },
+    {
+      "id": "tomas-votruba",
+      "name": "Tomáš Votruba",
+      "type": "ZLATÝ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "AI",
+      "predictionAwayColumn": "AK",
+      "pointsColumn": "AL",
+      "predictions": [
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 6,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 4
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 4
+        },
+        {
+          "home": 3,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        }
+      ],
+      "totalGoalsTip": 210,
+      "cachedTotal": 6.16772052035587
+    },
+    {
+      "id": "maca",
+      "name": "Máca",
+      "type": "ZLATÝ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "AM",
+      "predictionAwayColumn": "AO",
+      "pointsColumn": "AP",
+      "predictions": [
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 5,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 6,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 5,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 4,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 3
+        }
+      ],
+      "totalGoalsTip": 191,
+      "cachedTotal": 2.31277444937006
+    },
+    {
+      "id": "michal-konvalinka",
+      "name": "Michal Konvalinka",
+      "type": "STŘÍBRNÝ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "AQ",
+      "predictionAwayColumn": "AS",
+      "pointsColumn": "AT",
+      "predictions": [
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 5,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 4
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 4
+        }
+      ],
+      "totalGoalsTip": 191,
+      "cachedTotal": 2.31277444937006
+    },
+    {
+      "id": "stepan-cipyn",
+      "name": "Štěpán Cipýn",
+      "type": "ZLATÝ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "AU",
+      "predictionAwayColumn": "AW",
+      "pointsColumn": "AX",
+      "predictions": [
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 3
+        }
+      ],
+      "totalGoalsTip": 198,
+      "cachedTotal": 2.31277444937006
+    },
+    {
+      "id": "ferdinand-dusek",
+      "name": "Ferdinand Dušek",
+      "type": "ZLATÝ HRÁČ",
+      "payment": "NEZAPLACENO!",
+      "predictionHomeColumn": "AY",
+      "predictionAwayColumn": "BA",
+      "pointsColumn": "BB",
+      "predictions": [
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 4,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 4,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 5,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 5,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        }
+      ],
+      "totalGoalsTip": 200,
+      "cachedTotal": 3.67825950395168
+    },
+    {
+      "id": "wayne",
+      "name": "Wayne",
+      "type": "ZLATÝ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "BC",
+      "predictionAwayColumn": "BE",
+      "pointsColumn": "BF",
+      "predictions": [
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 3
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 3
+        },
+        {
+          "home": 3,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 4,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 7,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 4,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 5,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 3,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        }
+      ],
+      "totalGoalsTip": 199,
+      "cachedTotal": 11.8178554917966
+    },
+    {
+      "id": "jarda-s",
+      "name": "Jarda S",
+      "type": "NORMÁLNÍ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "BG",
+      "predictionAwayColumn": "BI",
+      "pointsColumn": "BJ",
+      "predictions": [
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 9,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 4
+        },
+        {
+          "home": 0,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 4
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 7,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 6
+        },
+        {
+          "home": 9,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 5
+        },
+        {
+          "home": 0,
+          "away": 9
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 4
+        },
+        {
+          "home": 0,
+          "away": 9
+        },
+        {
+          "home": 4,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 5,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 9
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 9
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 4,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 3,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 0,
+          "away": 9
+        },
+        {
+          "home": 0,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 1,
+          "away": 3
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 1
+        },
+        {
+          "home": 2,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 2
+        },
+        {
+          "home": 0,
+          "away": 9
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 2,
+          "away": 2
+        },
+        {
+          "home": 1,
+          "away": 0
+        },
+        {
+          "home": 0,
+          "away": 0
+        },
+        {
+          "home": 3,
+          "away": 0
+        },
+        {
+          "home": 9,
+          "away": 0
+        }
+      ],
+      "totalGoalsTip": 100,
+      "cachedTotal": 3.67825950395168
+    },
+    {
+      "id": "tomas-zurek",
+      "name": "Tomáš Žůrek",
+      "type": "NORMÁLNÍ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "BK",
+      "predictionAwayColumn": "BM",
+      "pointsColumn": "BN",
+      "predictions": [
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        }
+      ],
+      "totalGoalsTip": null,
+      "cachedTotal": 0.0
+    },
+    {
+      "id": "stofy",
+      "name": "Štofy",
+      "type": "STŘÍBRNÝ HRÁČ",
+      "payment": "ZAPLACENO!",
+      "predictionHomeColumn": "BO",
+      "predictionAwayColumn": "BQ",
+      "pointsColumn": "BR",
+      "predictions": [
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        },
+        {
+          "home": null,
+          "away": null
+        }
+      ],
+      "totalGoalsTip": null,
+      "cachedTotal": 0.0
+    }
+  ],
+  "teams": [
+    {
+      "name": "Mexiko",
+      "englishName": "Mexico",
+      "aliases": [
+        "Mexico",
+        "México",
+        "Mexiko"
+      ],
+      "group": "A",
+      "fifaPoints": 1681.03,
+      "flag": "flags/mexiko.png"
+    },
+    {
+      "name": "Jižní Afrika",
+      "englishName": "South Africa",
+      "aliases": [
+        "South Africa",
+        "Jižní Afrika"
+      ],
+      "group": "A",
+      "fifaPoints": 1429.73,
+      "flag": "flags/jizni-afrika.png"
+    },
+    {
+      "name": "Jižní Korea",
+      "englishName": "South Korea",
+      "aliases": [
+        "South Korea",
+        "Korea Republic",
+        "Korea Rep",
+        "Jižní Korea"
+      ],
+      "group": "A",
+      "fifaPoints": 1588.66,
+      "flag": "flags/jizni-korea.png"
+    },
+    {
+      "name": "Česko",
+      "englishName": "Czechia",
+      "aliases": [
+        "Czechia",
+        "Czech Republic",
+        "Česko"
+      ],
+      "group": "A",
+      "fifaPoints": 1501.38,
+      "flag": "flags/cesko.png"
+    },
+    {
+      "name": "Kanada",
+      "englishName": "Canada",
+      "aliases": [
+        "Canada",
+        "Kanada"
+      ],
+      "group": "B",
+      "fifaPoints": 1556.48,
+      "flag": "flags/kanada.png"
+    },
+    {
+      "name": "Bosna a Hercegovina",
+      "englishName": "Bosnia and Herzegovina",
+      "aliases": [
+        "Bosnia and Herzegovina",
+        "Bosnia-Herzegovina",
+        "Bosnia & Herzegovina",
+        "Bosna a Hercegovina"
+      ],
+      "group": "B",
+      "fifaPoints": 1385.84,
+      "flag": "flags/bosna-a-hercegovina.png"
+    },
+    {
+      "name": "Katar",
+      "englishName": "Qatar",
+      "aliases": [
+        "Qatar",
+        "Katar"
+      ],
+      "group": "B",
+      "fifaPoints": 1454.96,
+      "flag": "flags/katar.png"
+    },
+    {
+      "name": "Švýcarsko",
+      "englishName": "Switzerland",
+      "aliases": [
+        "Switzerland",
+        "Švýcarsko"
+      ],
+      "group": "B",
+      "fifaPoints": 1649.4,
+      "flag": "flags/svycarsko.png"
+    },
+    {
+      "name": "Brazílie",
+      "englishName": "Brazil",
+      "aliases": [
+        "Brazil",
+        "Brazílie"
+      ],
+      "group": "C",
+      "fifaPoints": 1761.16,
+      "flag": "flags/brazilie.png"
+    },
+    {
+      "name": "Maroko",
+      "englishName": "Morocco",
+      "aliases": [
+        "Morocco",
+        "Maroko"
+      ],
+      "group": "C",
+      "fifaPoints": 1755.87,
+      "flag": "flags/maroko.png"
+    },
+    {
+      "name": "Haiti",
+      "englishName": "Haiti",
+      "aliases": [
+        "Haiti",
+        "Haiti"
+      ],
+      "group": "C",
+      "fifaPoints": 1291.71,
+      "flag": "flags/haiti.png"
+    },
+    {
+      "name": "Skotsko",
+      "englishName": "Scotland",
+      "aliases": [
+        "Scotland",
+        "Skotsko"
+      ],
+      "group": "C",
+      "fifaPoints": 1498.35,
+      "flag": "flags/skotsko.png"
+    },
+    {
+      "name": "Spojené státy",
+      "englishName": "United States",
+      "aliases": [
+        "United States",
+        "USA",
+        "United States of America",
+        "Spojené státy"
+      ],
+      "group": "D",
+      "fifaPoints": 1673.13,
+      "flag": "flags/spojene-staty.png"
+    },
+    {
+      "name": "Paraguay",
+      "englishName": "Paraguay",
+      "aliases": [
+        "Paraguay",
+        "Paraguay"
+      ],
+      "group": "D",
+      "fifaPoints": 1503.5,
+      "flag": "flags/paraguay.png"
+    },
+    {
+      "name": "Austrálie",
+      "englishName": "Australia",
+      "aliases": [
+        "Australia",
+        "Austrálie"
+      ],
+      "group": "D",
+      "fifaPoints": 1580.67,
+      "flag": "flags/australie.png"
+    },
+    {
+      "name": "Turecko",
+      "englishName": "Turkey",
+      "aliases": [
+        "Turkey",
+        "Türkiye",
+        "Turkiye",
+        "Turecko"
+      ],
+      "group": "D",
+      "fifaPoints": 1599.04,
+      "flag": "flags/turecko.png"
+    },
+    {
+      "name": "Německo",
+      "englishName": "Germany",
+      "aliases": [
+        "Germany",
+        "Německo"
+      ],
+      "group": "E",
+      "fifaPoints": 1730.37,
+      "flag": "flags/nemecko.png"
+    },
+    {
+      "name": "Curaçao",
+      "englishName": "Curacao",
+      "aliases": [
+        "Curacao",
+        "Curaçao",
+        "Curaçao"
+      ],
+      "group": "E",
+      "fifaPoints": 1294.65,
+      "flag": "flags/curacao.png"
+    },
+    {
+      "name": "Pobřeží slonoviny",
+      "englishName": "Ivory Coast",
+      "aliases": [
+        "Ivory Coast",
+        "Côte d'Ivoire",
+        "Cote d Ivoire",
+        "Pobřeží slonoviny"
+      ],
+      "group": "E",
+      "fifaPoints": 1532.98,
+      "flag": "flags/pobrezi-slonoviny.png"
+    },
+    {
+      "name": "Ekvádor",
+      "englishName": "Ecuador",
+      "aliases": [
+        "Ecuador",
+        "Ekvádor"
+      ],
+      "group": "E",
+      "fifaPoints": 1594.78,
+      "flag": "flags/ekvador.png"
+    },
+    {
+      "name": "Nizozemsko",
+      "englishName": "Netherlands",
+      "aliases": [
+        "Netherlands",
+        "Holland",
+        "Nizozemsko"
+      ],
+      "group": "F",
+      "fifaPoints": 1757.87,
+      "flag": "flags/nizozemsko.png"
+    },
+    {
+      "name": "Japonsko",
+      "englishName": "Japan",
+      "aliases": [
+        "Japan",
+        "Japonsko"
+      ],
+      "group": "F",
+      "fifaPoints": 1660.43,
+      "flag": "flags/japonsko.png"
+    },
+    {
+      "name": "Švédsko",
+      "englishName": "Sweden",
+      "aliases": [
+        "Sweden",
+        "Švédsko"
+      ],
+      "group": "F",
+      "fifaPoints": 1514.77,
+      "flag": "flags/svedsko.png"
+    },
+    {
+      "name": "Tunisko",
+      "englishName": "Tunisia",
+      "aliases": [
+        "Tunisia",
+        "Tunisko"
+      ],
+      "group": "F",
+      "fifaPoints": 1483.05,
+      "flag": "flags/tunisko.png"
+    },
+    {
+      "name": "Írán",
+      "englishName": "Iran",
+      "aliases": [
+        "Iran",
+        "IR Iran",
+        "Iran, Islamic Republic of",
+        "Írán"
+      ],
+      "group": "G",
+      "fifaPoints": 1615.3,
+      "flag": "flags/iran.png"
+    },
+    {
+      "name": "Nový Zéland",
+      "englishName": "New Zealand",
+      "aliases": [
+        "New Zealand",
+        "Nový Zéland"
+      ],
+      "group": "G",
+      "fifaPoints": 1281.57,
+      "flag": "flags/novy-zeland.png"
+    },
+    {
+      "name": "Belgie",
+      "englishName": "Belgium",
+      "aliases": [
+        "Belgium",
+        "Belgie"
+      ],
+      "group": "G",
+      "fifaPoints": 1734.71,
+      "flag": "flags/belgie.png"
+    },
+    {
+      "name": "Egypt",
+      "englishName": "Egypt",
+      "aliases": [
+        "Egypt",
+        "Egypt"
+      ],
+      "group": "G",
+      "fifaPoints": 1563.24,
+      "flag": "flags/egypt.png"
+    },
+    {
+      "name": "Španělsko",
+      "englishName": "Spain",
+      "aliases": [
+        "Spain",
+        "Španělsko"
+      ],
+      "group": "H",
+      "fifaPoints": 1876.4,
+      "flag": "flags/spanelsko.png"
+    },
+    {
+      "name": "Kapverdy",
+      "englishName": "Cape Verde",
+      "aliases": [
+        "Cape Verde",
+        "Cabo Verde",
+        "Kapverdy"
+      ],
+      "group": "H",
+      "fifaPoints": 1366.13,
+      "flag": "flags/kapverdy.png"
+    },
+    {
+      "name": "Saúdská Arábie",
+      "englishName": "Saudi Arabia",
+      "aliases": [
+        "Saudi Arabia",
+        "Saúdská Arábie"
+      ],
+      "group": "H",
+      "fifaPoints": 1421.43,
+      "flag": "flags/saudska-arabie.png"
+    },
+    {
+      "name": "Uruguay",
+      "englishName": "Uruguay",
+      "aliases": [
+        "Uruguay",
+        "Uruguay"
+      ],
+      "group": "H",
+      "fifaPoints": 1673.07,
+      "flag": "flags/uruguay.png"
+    },
+    {
+      "name": "Francie",
+      "englishName": "France",
+      "aliases": [
+        "France",
+        "Francie"
+      ],
+      "group": "I",
+      "fifaPoints": 1877.32,
+      "flag": "flags/francie.png"
+    },
+    {
+      "name": "Senegal",
+      "englishName": "Senegal",
+      "aliases": [
+        "Senegal",
+        "Senegal"
+      ],
+      "group": "I",
+      "fifaPoints": 1688.99,
+      "flag": "flags/senegal.png"
+    },
+    {
+      "name": "Irák",
+      "englishName": "Iraq",
+      "aliases": [
+        "Iraq",
+        "Irák"
+      ],
+      "group": "I",
+      "fifaPoints": 1447.14,
+      "flag": "flags/irak.png"
+    },
+    {
+      "name": "Norsko",
+      "englishName": "Norway",
+      "aliases": [
+        "Norway",
+        "Norsko"
+      ],
+      "group": "I",
+      "fifaPoints": 1550.94,
+      "flag": "flags/norsko.png"
+    },
+    {
+      "name": "Argentina",
+      "englishName": "Argentina",
+      "aliases": [
+        "Argentina",
+        "Argentina"
+      ],
+      "group": "J",
+      "fifaPoints": 1874.81,
+      "flag": "flags/argentina.png"
+    },
+    {
+      "name": "Alžírsko",
+      "englishName": "Algeria",
+      "aliases": [
+        "Algeria",
+        "Alžírsko"
+      ],
+      "group": "J",
+      "fifaPoints": 1564.26,
+      "flag": "flags/alzirsko.png"
+    },
+    {
+      "name": "Rakousko",
+      "englishName": "Austria",
+      "aliases": [
+        "Austria",
+        "Rakousko"
+      ],
+      "group": "J",
+      "fifaPoints": 1593.45,
+      "flag": "flags/rakousko.png"
+    },
+    {
+      "name": "Jordánsko",
+      "englishName": "Jordan",
+      "aliases": [
+        "Jordan",
+        "Jordánsko"
+      ],
+      "group": "J",
+      "fifaPoints": 1391.45,
+      "flag": "flags/jordansko.png"
+    },
+    {
+      "name": "Portugalsko",
+      "englishName": "Portugal",
+      "aliases": [
+        "Portugal",
+        "Portugalsko"
+      ],
+      "group": "K",
+      "fifaPoints": 1763.83,
+      "flag": "flags/portugalsko.png"
+    },
+    {
+      "name": "DR Kongo",
+      "englishName": "DR Congo",
+      "aliases": [
+        "DR Congo",
+        "Congo DR",
+        "Congo, DR",
+        "Democratic Republic of the Congo",
+        "DR Kongo"
+      ],
+      "group": "K",
+      "fifaPoints": 1478.35,
+      "flag": "flags/dr-kongo.png"
+    },
+    {
+      "name": "Uzbekistán",
+      "englishName": "Uzbekistan",
+      "aliases": [
+        "Uzbekistan",
+        "Uzbekistán"
+      ],
+      "group": "K",
+      "fifaPoints": 1465.34,
+      "flag": "flags/uzbekistan.png"
+    },
+    {
+      "name": "Kolumbie",
+      "englishName": "Colombia",
+      "aliases": [
+        "Colombia",
+        "Kolumbie"
+      ],
+      "group": "K",
+      "fifaPoints": 1693.09,
+      "flag": "flags/kolumbie.png"
+    },
+    {
+      "name": "Anglie",
+      "englishName": "England",
+      "aliases": [
+        "England",
+        "Anglie"
+      ],
+      "group": "L",
+      "fifaPoints": 1825.97,
+      "flag": "flags/anglie.png"
+    },
+    {
+      "name": "Chorvatsko",
+      "englishName": "Croatia",
+      "aliases": [
+        "Croatia",
+        "Chorvatsko"
+      ],
+      "group": "L",
+      "fifaPoints": 1717.07,
+      "flag": "flags/chorvatsko.png"
+    },
+    {
+      "name": "Ghana",
+      "englishName": "Ghana",
+      "aliases": [
+        "Ghana",
+        "Ghana"
+      ],
+      "group": "L",
+      "fifaPoints": 1346.31,
+      "flag": "flags/ghana.png"
+    },
+    {
+      "name": "Panama",
+      "englishName": "Panama",
+      "aliases": [
+        "Panama",
+        "Panama"
+      ],
+      "group": "L",
+      "fifaPoints": 1540.64,
+      "flag": "flags/panama.png"
+    }
+  ],
+  "rules": [
+    "Pravidla:",
+    "Každý může tipovat pouze jednou.",
+    "Registrační poplatek činí 50,- NEBO 100,- NEBO 200,- KČ -  VIZ DÁLE!!!",
+    "Rozdělení peněz:",
+    "25% 2. místo",
+    "15% 3. místo",
+    "10% honorář pro správce TS za dlouhé hodiny nad monitorem",
+    "10% charita -  Je dobrým zvykem ve světě hazardu dávat část výtěžku na dobrou věc. ",
+    "Určení charity vybírá bramborový medailista a ten, kdo je poslední se stará o doručení, zpravidla se jedná u zvířecí útulek v Košířích.",
+    "Tipuje se přesný výsledek základní hrací doby stejně jako počet vstřelených gólů v základní hrací době.",
+    "Uhodnutí vítěze 1 bod",
+    "Uhodnutí remízi 3 body",
+    "Uhodnutí rozdílu skóre 3 body",
+    "Uhodnutí přesného výsledku 5 bodů",
+    "x= (počet sázejících/ počet bodujících)*(1/pátá odmocnina z (počtu sázejících/počtu bodujících))",
+    "např. pokud 10 lidí z 10 uhodne, že Rusko porazí Česko, má každý znich 1 bod (resp. 3 nebo 5 dle přesnosti tipu)",
+    "pokud 1 z deseti uhodne, že Česko porazí Rusko, má 10 bodů (resp. 30 nebo 50) (x= 10/1=10)",
+    "Uhodnutí celkového počtu vstřelených branek - 1/3 PRŮMĚRU NA HRÁČE ZÍSKANÝCH bodů **",
+    "* Součet všech nastřílených branek v základních hracích dobách.",
+    "** Pokud nikdo neuhodne přesný počet branek, získají 1/6 PRŮMĚRU NA HRÁČE ZÍSKANÝCH bodů ti, co budou svým tipem nejblíže.",
+    "V opačném případě máme novinku právě pro Tebe:",
+    "Můžeš si vybrat jestli vsadíš jako normální hráč - 50,-, stříbrný hráč - 100,- nebo zlatý hráč - 200,-",
+    "Pokud ale vsadíš 100,-, resp. 200,- staneš se členem STŘÍBRNÉ, resp. ZLATÉ LIGY!",
+    "Každý z členů STŘÍBRNÉ / ZLATÉ LIGY vlastně hraje další tipovací soutěž s příslošníky dané ligy."
+  ],
+  "scoring": {
+    "correctOutcome": 1,
+    "correctGoalDifference": 3,
+    "exactScore": 5,
+    "totalGoalsExactShare": 0.3333333333333333,
+    "totalGoalsNearestShare": 0.16666666666666666
+  }
+}

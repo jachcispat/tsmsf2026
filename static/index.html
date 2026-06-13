@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>TSMSF 2026 - výsledky</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <img src="logo.png" alt="TSMSF 2026" class="logo">
+      <div>
+        <h1>TSMSF 2026</h1>
+        <p>Výsledky, tipy a průběžné pořadí</p>
+      </div>
+    </div>
+    <div class="sync-card" id="sync-card" aria-live="polite">
+      <span class="sync-dot" id="sync-dot"></span>
+      <div>
+        <strong id="sync-title">Načítám výsledky…</strong>
+        <small id="sync-detail">Při každém otevření stránky se ověří odehrané zápasy.</small>
+      </div>
+      <button id="refresh-button" type="button">Obnovit</button>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Hlavní části">
+    <button class="tab is-active" data-panel="overview">Přehled</button>
+    <button class="tab" data-panel="matches">Zápasy a tipy</button>
+    <button class="tab" data-panel="groups">Skupiny</button>
+    <button class="tab" data-panel="rules">Pravidla</button>
+  </nav>
+
+  <main>
+    <section id="panel-overview" class="panel is-active">
+      <div class="kpis" id="kpis"></div>
+      <div class="overview-grid">
+        <article class="card leaderboard-card">
+          <div class="card-header">
+            <div>
+              <h2>Průběžné pořadí</h2>
+              <p>Body se přepočítají ihned po načtení nového výsledku.</p>
+            </div>
+            <div class="league-filter" id="league-filter">
+              <button data-league="all" class="is-active">Celkem</button>
+              <button data-league="silver">Stříbrná liga</button>
+              <button data-league="gold">Zlatá liga</button>
+            </div>
+          </div>
+          <div class="table-wrap compact"><table class="leaderboard" id="leaderboard"></table></div>
+        </article>
+
+        <article class="card next-matches-card">
+          <div class="card-header"><div><h2>Nejbližší zápasy</h2><p>Časy jsou uvedeny v SELČ.</p></div></div>
+          <div id="next-matches" class="next-matches"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="panel-matches" class="panel">
+      <article class="card full-width">
+        <div class="card-header">
+          <div>
+            <h2>Zápasy, tipy a body</h2>
+            <p>Tabulka zachovává logiku původního XLSX. První sloupce jsou při posunu připnuté.</p>
+          </div>
+          <label class="search-label">Filtrovat tým nebo hráče <input id="match-search" type="search" placeholder="např. Česko nebo Libor"></label>
+        </div>
+        <div class="sheet-wrap" id="sheet-wrap"><table class="sheet" id="matches-table"></table></div>
+      </article>
+    </section>
+
+    <section id="panel-groups" class="panel">
+      <div class="groups-grid" id="groups-grid"></div>
+    </section>
+
+    <section id="panel-rules" class="panel">
+      <div class="rules-layout">
+        <article class="card rules-card">
+          <h2>Pravidla bodování</h2>
+          <div id="rules-list"></div>
+        </article>
+        <article class="card rules-card">
+          <h2>Jak funguje automatická aktualizace</h2>
+          <ol>
+            <li>Při načtení stránky server stáhne aktuální zápasy MS 2026.</li>
+            <li>Dokončené výsledky spáruje podle obou týmů a termínu.</li>
+            <li>Frontend přepočítá koeficient odvážnosti, body hráčů, celkové pořadí a tabulky skupin.</li>
+            <li>Pokud živý zdroj dočasně nefunguje, stránka použije poslední výsledky uložené ve výchozím XLSX a zobrazí upozornění.</li>
+          </ol>
+          <p class="muted">Stránka automaticky znovu kontroluje výsledky každých pět minut.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>TSMSF 2026</span>
+    <span id="footer-source">Zdroj výsledků se načítá…</span>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

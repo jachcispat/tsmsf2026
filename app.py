@@ -1,0 +1,252 @@
+from __future__ import annotations
+
+import json
+import mimetypes
+import os
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import time
+import unicodedata
+import urllib.error
+import urllib.parse
+import urllib.request
+from datetime import datetime, timedelta, timezone
+from http import HTTPStatus
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from typing import Any
+
+BASE_DIR = Path(__file__).resolve().parent
+STATIC_DIR = BASE_DIR / "static"
+DATA_PATH = STATIC_DIR / "data.json"
+PORT = int(os.environ.get("PORT", "8000"))
+CACHE_TTL_SECONDS = int(os.environ.get("SCORES_CACHE_SECONDS", "120"))
+
+with DATA_PATH.open("r", encoding="utf-8") as fh:
+    SITE_DATA = json.load(fh)
+
+_cache_lock = threading.Lock()
+_cache: dict[str, Any] = {"expires": 0.0, "payload": None}
+
+
+def normalize_name(value: str) -> str:
+    value = unicodedata.normalize("NFKD", value or "")
+    value = value.encode("ascii", "ignore").decode("ascii").lower()
+    return "".join(ch for ch in value if ch.isalnum())
+
+
+TEAM_ALIAS_TO_CZECH: dict[str, str] = {}
+for team in SITE_DATA["teams"]:
+    for alias in team.get("aliases", []):
+        TEAM_ALIAS_TO_CZECH[normalize_name(alias)] = team["name"]
+    TEAM_ALIAS_TO_CZECH[normalize_name(team["englishName"])] = team["name"]
+    TEAM_ALIAS_TO_CZECH[normalize_name(team["name"])] = team["name"]
+
+
+def map_team(name: str) -> str | None:
+    key = normalize_name(name)
+    direct = TEAM_ALIAS_TO_CZECH.get(key)
+    if direct:
+        return direct
+    # Conservative fuzzy fallback: unique containment only.
+    candidates = {
+        czech
+        for alias, czech in TEAM_ALIAS_TO_CZECH.items()
+        if len(alias) >= 5 and (alias in key or key in alias)
+    }
+    return next(iter(candidates)) if len(candidates) == 1 else None
+
+
+def fetch_json(url: str) -> dict[str, Any]:
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "TSMSF2026/1.0 (+https://tsmsf2026.cz)",
+            "Accept": "application/json",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=20) as response:
+        if response.status != 200:
+            raise RuntimeError(f"HTTP {response.status} from score provider")
+        return json.loads(response.read().decode("utf-8"))
+
+
+def parse_espn_events(document: dict[str, Any]) -> list[dict[str, Any]]:
+    parsed: list[dict[str, Any]] = []
+    for event in document.get("events", []):
+        competitions = event.get("competitions") or []
+        if not competitions:
+            continue
+        competition = competitions[0]
+        competitors = competition.get("competitors") or []
+        home = next((c for c in competitors if c.get("homeAway") == "home"), None)
+        away = next((c for c in competitors if c.get("homeAway") == "away"), None)
+        if not home or not away:
+            continue
+
+        home_name = (home.get("team") or {}).get("displayName") or (home.get("team") or {}).get("shortDisplayName") or ""
+        away_name = (away.get("team") or {}).get("displayName") or (away.get("team") or {}).get("shortDisplayName") or ""
+        mapped_home = map_team(home_name)
+        mapped_away = map_team(away_name)
+        if not mapped_home or not mapped_away:
+            continue
+
+        status = event.get("status") or competition.get("status") or {}
+        status_type = status.get("type") or {}
+        state = status_type.get("state") or "pre"
+        completed = bool(status_type.get("completed")) or state == "post"
+        live = state == "in"
+
+        def score_of(competitor: dict[str, Any]) -> int | None:
+            raw = competitor.get("score")
+            if isinstance(raw, dict):
+                raw = raw.get("value") or raw.get("displayValue")
+            try:
+                return int(float(raw))
+            except (TypeError, ValueError):
+                return None
+
+        parsed.append(
+            {
+                "providerId": str(event.get("id", "")),
+                "date": event.get("date") or competition.get("date"),
+                "home": mapped_home,
+                "away": mapped_away,
+                "homeScore": score_of(home),
+                "awayScore": score_of(away),
+                "completed": completed,
+                "live": live,
+                "state": state,
+                "status": status_type.get("shortDetail") or status_type.get("detail") or status_type.get("description") or "",
+            }
+        )
+    return parsed
+
+
+def fetch_espn_scores() -> list[dict[str, Any]]:
+    base = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
+    ranges = ["20260611-20260618", "20260619-20260624", "20260625-20260628"]
+    urls = [f"{base}?{urllib.parse.urlencode({'limit': 200, 'dates': date_range})}" for date_range in ranges]
+    events: dict[str, dict[str, Any]] = {}
+    errors: list[str] = []
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        futures = {pool.submit(fetch_json, url): url for url in urls}
+        for future in as_completed(futures):
+            try:
+                document = future.result()
+                for event in parse_espn_events(document):
+                    key = event["providerId"] or f'{event["date"]}|{event["home"]}|{event["away"]}'
+                    events[key] = event
+            except Exception as exc:
+                errors.append(str(exc))
+    if not events:
+        raise RuntimeError("Score provider returned no World Cup events" + (f" ({'; '.join(errors)})" if errors else ""))
+    return list(events.values())
+
+
+def embedded_results() -> list[dict[str, Any]]:
+    results = []
+    for match in SITE_DATA["matches"]:
+        fallback = match["fallbackResult"]
+        if fallback["completed"]:
+            results.append(
+                {
+                    "providerId": f'embedded-{match["id"]}',
+                    "date": match["kickoff"],
+                    "home": match["home"],
+                    "away": match["away"],
+                    "homeScore": fallback["home"],
+                    "awayScore": fallback["away"],
+                    "completed": True,
+                    "live": False,
+                    "state": "post",
+                    "status": "Výsledek uložený ve výchozí tabulce",
+                }
+            )
+    return results
+
+
+def get_scores_payload(force: bool = False) -> dict[str, Any]:
+    now = time.time()
+    with _cache_lock:
+        if not force and _cache["payload"] is not None and now < _cache["expires"]:
+            return _cache["payload"]
+
+    try:
+        events = fetch_espn_scores()
+        payload = {
+            "ok": True,
+            "source": "ESPN",
+            "sourceUrl": "https://www.espn.com/soccer/scoreboard/_/league/fifa.world",
+            "updatedAt": datetime.now(timezone.utc).isoformat(),
+            "events": events,
+            "warning": None,
+        }
+    except Exception as exc:  # fallback is deliberate: site must still load.
+        payload = {
+            "ok": False,
+            "source": "embedded",
+            "sourceUrl": None,
+            "updatedAt": datetime.now(timezone.utc).isoformat(),
+            "events": embedded_results(),
+            "warning": f"Živý zdroj výsledků není dostupný: {exc}",
+        }
+
+    with _cache_lock:
+        _cache["payload"] = payload
+        _cache["expires"] = now + CACHE_TTL_SECONDS
+    return payload
+
+
+class Handler(BaseHTTPRequestHandler):
+    server_version = "TSMSF2026/1.0"
+
+    def send_json(self, payload: dict[str, Any], status: int = 200) -> None:
+        body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def do_GET(self) -> None:
+        parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == "/api/scores":
+            force = urllib.parse.parse_qs(parsed.query).get("force") == ["1"]
+            self.send_json(get_scores_payload(force=force))
+            return
+        if parsed.path == "/api/health":
+            self.send_json({"ok": True, "service": "tsmsf2026", "time": datetime.now(timezone.utc).isoformat()})
+            return
+
+        requested = parsed.path.lstrip("/") or "index.html"
+        safe = Path(requested)
+        if any(part in {"..", ""} for part in safe.parts):
+            self.send_error(HTTPStatus.BAD_REQUEST)
+            return
+        file_path = (STATIC_DIR / safe).resolve()
+        if STATIC_DIR.resolve() not in file_path.parents and file_path != STATIC_DIR.resolve():
+            self.send_error(HTTPStatus.FORBIDDEN)
+            return
+        if not file_path.is_file():
+            self.send_error(HTTPStatus.NOT_FOUND)
+            return
+
+        content = file_path.read_bytes()
+        content_type, _ = mimetypes.guess_type(file_path.name)
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", (content_type or "application/octet-stream") + ("; charset=utf-8" if content_type and content_type.startswith("text/") else ""))
+        self.send_header("Content-Length", str(len(content)))
+        self.send_header("Cache-Control", "no-cache" if file_path.name in {"index.html", "app.js", "data.json"} else "public, max-age=86400")
+        self.end_headers()
+        self.wfile.write(content)
+
+    def log_message(self, fmt: str, *args: Any) -> None:
+        print(f"[{self.log_date_time_string()}] {fmt % args}")
+
+
+if __name__ == "__main__":
+    print(f"TSMSF 2026 běží na http://0.0.0.0:{PORT}")
+    ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()
