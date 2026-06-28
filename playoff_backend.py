@@ -14,6 +14,7 @@ from typing import Any
 BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
 PLAYOFF_DATA_PATH = STATIC_DIR / "playoff-data.json"
+INITIAL_SUBMISSIONS_PATH = STATIC_DIR / "playoff-initial-submissions.json"
 DATA_DIR = Path(os.environ.get("DATA_DIR", BASE_DIR / "data"))
 SUBMISSIONS_PATH = DATA_DIR / "playoff_submissions.json"
 EXPORT_PATH = DATA_DIR / "tipy-playoff-ms-2026.xlsx"
@@ -101,6 +102,20 @@ def read_submissions() -> list[dict[str, Any]]:
         return data if isinstance(data, list) else []
     except Exception:
         return []
+
+
+def read_initial_submissions() -> list[dict[str, Any]]:
+    """Read bundled seed submissions imported from the provided XLSX."""
+    try:
+        data = json.loads(INITIAL_SUBMISSIONS_PATH.read_text(encoding="utf-8"))
+        return data if isinstance(data, list) else []
+    except Exception:
+        return []
+
+
+def all_submissions() -> list[dict[str, Any]]:
+    """Bundled seed submissions + stored live form submissions."""
+    return [*read_initial_submissions(), *read_submissions()]
 
 
 def write_submissions(items: list[dict[str, Any]]) -> None:
@@ -221,7 +236,7 @@ def public_submission(item: dict[str, Any]) -> dict[str, Any]:
 
 
 def public_table_payload() -> dict[str, Any]:
-    submissions = read_submissions()
+    submissions = all_submissions()
     latest = latest_submissions_by_email(submissions)
     return {
         "ok": True,
@@ -328,7 +343,7 @@ def write_xlsx(path: Path, sheets: dict[str, list[list[Any]]]) -> None:
 
 
 def export_submissions() -> Path:
-    submissions = read_submissions()
+    submissions = all_submissions()
     write_xlsx(EXPORT_PATH, export_rows(submissions))
     return EXPORT_PATH
 

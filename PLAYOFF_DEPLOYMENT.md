@@ -134,3 +134,11 @@ Po nasazení zkontroluj:
 ## E-mail přes Seznam.cz
 
 Podrobný postup je v `RENDER_EMAIL_SEZNAM.md`. Heslo nikdy nedávej do GitHubu, nastav ho jen na Renderu jako `SMTP_PASS`.
+
+
+## Oprava 404 a předvyplněná play-off tabulka
+
+V této verzi server vrací `index.html` i pro přímé adresy `/playoff` a `/playoff-results`.
+Když se při otevření `/api/playoff-table` nebo `/api/playoff-submit` objeví 404, znamená to téměř vždy, že na GitHubu/Renderu stále běží starý `app.py`.
+
+Soubor `static/playoff-initial-submissions.json` obsahuje předvyplněný tip importovaný z dodaného XLSX. Veřejná záložka „Play-off tabulka” ho načte i před prvním odeslaným formulářem.

@@ -310,8 +310,10 @@ class Handler(BaseHTTPRequestHandler):
             self.send_file_response(xlsx_path, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "tipy-playoff-ms-2026.xlsx")
             return
         if parsed.path == "/api/playoff-submissions-count":
-            items = playoff_backend.read_submissions()
-            self.send_json({"ok": True, "count": len(items), "storagePath": str(playoff_backend.SUBMISSIONS_PATH)})
+            items = playoff_backend.all_submissions()
+            stored = playoff_backend.read_submissions()
+            seeded = playoff_backend.read_initial_submissions()
+            self.send_json({"ok": True, "count": len(items), "storedCount": len(stored), "seedCount": len(seeded), "storagePath": str(playoff_backend.SUBMISSIONS_PATH)})
             return
         if parsed.path == "/api/playoff-mail-config":
             cfg = playoff_backend.smtp_config()
@@ -321,7 +323,13 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json({"ok": True, "service": "tsmsf2026", "time": datetime.now(timezone.utc).isoformat()})
             return
 
+        # Clean SPA-like routes such as /playoff and /playoff-results should
+        # serve index.html. Without this, direct opening those URLs returns 404
+        # even though the client-side tab exists.
+        clean_routes = {"overview", "matches", "groups", "rules", "playoff", "playoff-results"}
         requested = parsed.path.lstrip("/") or "index.html"
+        if requested in clean_routes:
+            requested = "index.html"
         safe = Path(requested)
         if any(part in {"..", ""} for part in safe.parts):
             self.send_error(HTTPStatus.BAD_REQUEST)
