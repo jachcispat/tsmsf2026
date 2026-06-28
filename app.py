@@ -119,14 +119,25 @@ def parse_espn_events(document: dict[str, Any]) -> list[dict[str, Any]]:
         display_clock = status.get("displayClock") or competition.get("status", {}).get("displayClock") or ""
         period = status.get("period") or competition.get("status", {}).get("period")
 
+        home_score = score_of(home)
+        away_score = score_of(away)
+        winner_name = None
+        if home.get("winner") is True:
+            winner_name = mapped_home
+        elif away.get("winner") is True:
+            winner_name = mapped_away
+        elif completed and isinstance(home_score, int) and isinstance(away_score, int) and home_score != away_score:
+            winner_name = mapped_home if home_score > away_score else mapped_away
+
         parsed.append(
             {
                 "providerId": str(event.get("id", "")),
                 "date": event.get("date") or competition.get("date"),
                 "home": mapped_home,
                 "away": mapped_away,
-                "homeScore": score_of(home),
-                "awayScore": score_of(away),
+                "homeScore": home_score,
+                "awayScore": away_score,
+                "winner": winner_name,
                 "completed": completed,
                 "live": live,
                 "state": state,
@@ -140,7 +151,14 @@ def parse_espn_events(document: dict[str, Any]) -> list[dict[str, Any]]:
 
 def fetch_espn_scores() -> list[dict[str, Any]]:
     base = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
-    ranges = ["20260611-20260618", "20260619-20260624", "20260625-20260628"]
+    ranges = [
+        "20260611-20260618",
+        "20260619-20260624",
+        "20260625-20260630",
+        "20260701-20260705",
+        "20260706-20260711",
+        "20260712-20260719",
+    ]
     # Samostatný dotaz pro dnešek zvyšuje šanci, že se živý stav a minuta
     # projeví okamžitě; rozsahové dotazy dál zajišťují kompletní turnaj.
     today = datetime.now(timezone.utc).strftime("%Y%m%d")
@@ -176,6 +194,7 @@ def embedded_results() -> list[dict[str, Any]]:
                     "away": match["away"],
                     "homeScore": fallback["home"],
                     "awayScore": fallback["away"],
+                    "winner": match["home"] if fallback["home"] > fallback["away"] else match["away"] if fallback["away"] > fallback["home"] else None,
                     "completed": True,
                     "live": False,
                     "state": "post",
@@ -281,6 +300,9 @@ class Handler(BaseHTTPRequestHandler):
             force = urllib.parse.parse_qs(parsed.query).get("force") == ["1"]
             self.send_json(get_scores_payload(force=force))
             return
+        if parsed.path == "/api/playoff-table":
+            self.send_json(playoff_backend.public_table_payload())
+            return
         if parsed.path == "/api/playoff-export":
             query = urllib.parse.parse_qs(parsed.query)
             if playoff_backend.ADMIN_TOKEN and query.get("token", [""])[0] != playoff_backend.ADMIN_TOKEN:
@@ -314,7 +336,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-Type", (content_type or "application/octet-stream") + ("; charset=utf-8" if content_type and content_type.startswith("text/") else ""))
         self.send_header("Content-Length", str(len(content)))
-        self.send_header("Cache-Control", "no-cache" if file_path.name in {"index.html", "app.js", "data.json", "playoff.js", "playoff.css", "playoff-data.json"} else "public, max-age=86400")
+        self.send_header("Cache-Control", "no-cache" if file_path.name in {"index.html", "app.js", "data.json", "playoff.js", "playoff.css", "playoff-data.json", "playoff-table.js", "playoff-table.css"} else "public, max-age=86400")
         self.end_headers()
         self.wfile.write(content)
 

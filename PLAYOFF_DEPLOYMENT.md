@@ -1,6 +1,6 @@
 # Nasazení záložky Pavouk / Play-off na GitHub + Render
 
-Tento balíček rozšiřuje původní web TSMSF 2026 o záložku **Pavouk (Play-off)**.
+Tento balíček rozšiřuje původní web TSMSF 2026 o záložku **Pavouk (Play-off)** a novou záložku **Play-off tabulka**.
 Původní skupinová část, přehled, pravidla, automatické výsledky a tabulky zůstávají zachované.
 
 ## Co je přidané
@@ -14,7 +14,10 @@ Původní skupinová část, přehled, pravidla, automatické výsledky a tabulk
 - zápas o 3. místo automaticky z poražených semifinalistů,
 - uložení odeslaných tipů do JSON,
 - export všech tipů do XLSX,
-- automatické odeslání XLSX exportu na e-mail správce, pokud jsou nastavené SMTP údaje.
+- automatické odeslání XLSX exportu na e-mail správce, pokud jsou nastavené SMTP údaje,
+- nová záložka `📊 Play-off tabulka` vytvořená z odeslaných formulářů,
+- veřejné pořadí a tabulka tipů bez zobrazení e-mailových adres,
+- automatické přepočítání bodů podle skutečných výsledků play-off, jakmile je poskytovatel výsledků vrátí.
 
 ## Soubory, které nahraď na GitHubu
 
@@ -27,6 +30,8 @@ static/index.html
 static/app.js
 static/playoff.js
 static/playoff.css
+static/playoff-table.js
+static/playoff-table.css
 static/playoff-data.json
 .env.example
 README.md
@@ -44,7 +49,7 @@ Původní soubory `static/data.json`, `static/styles.css`, `static/logo.png`, `s
 4. Udělej commit, například:
 
 ```bash
-git add app.py playoff_backend.py static/index.html static/app.js static/playoff.js static/playoff.css static/playoff-data.json .env.example README.md PLAYOFF_DEPLOYMENT.md docs/playoff-preview.png
+git add app.py playoff_backend.py static/index.html static/app.js static/playoff.js static/playoff.css static/playoff-table.js static/playoff-table.css static/playoff-data.json .env.example README.md PLAYOFF_DEPLOYMENT.md docs/playoff-preview.png
 git commit -m "Add playoff prediction form"
 git push
 ```
@@ -54,6 +59,12 @@ git push
 
 ```text
 https://tsmsf2026.onrender.com/#playoff
+```
+
+Tabulku z odeslaných formulářů otevři přes:
+
+```text
+https://tsmsf2026.onrender.com/#playoff-results
 ```
 
 ## Nastavení e-mailu na Renderu
@@ -115,4 +126,6 @@ Po nasazení zkontroluj:
 4. výběr vítěze v dalších kolech nabízí jen možné týmy,
 5. formulář vyžaduje jméno a e-mail,
 6. po odeslání vznikne export XLSX,
-7. e-mail odejde pouze tehdy, když jsou správně nastavené SMTP proměnné.
+7. e-mail odejde pouze tehdy, když jsou správně nastavené SMTP proměnné,
+8. záložka `Play-off tabulka` zobrazuje poslední odeslaný formulář každého hráče,
+9. export XLSX stále obsahuje e-maily, veřejná tabulka je nezobrazuje.

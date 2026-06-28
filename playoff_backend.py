@@ -160,6 +160,51 @@ def validate_submission(body: dict[str, Any]) -> tuple[dict[str, Any], list[str]
     return payload, errors
 
 
+
+
+def latest_submissions_by_email(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Return only the latest submission per e-mail address for public tables.
+
+    Export keeps all submitted rows, but the visible competition table should not
+    double-count repeated corrections from the same participant.
+    """
+    latest: dict[str, dict[str, Any]] = {}
+    for item in items:
+        email = clean(item.get("email")).lower()
+        key = email or clean(item.get("id"))
+        previous = latest.get(key)
+        if not previous or clean(item.get("submittedAt")) >= clean(previous.get("submittedAt")):
+            latest[key] = item
+    return sorted(latest.values(), key=lambda x: (clean(x.get("name")).lower(), clean(x.get("submittedAt"))))
+
+
+def public_submission(item: dict[str, Any]) -> dict[str, Any]:
+    """Sanitized submission for the public web table.
+
+    E-mail addresses stay only in the XLSX export and JSON storage, not in the
+    public page.
+    """
+    return {
+        "id": clean(item.get("id")),
+        "submittedAt": clean(item.get("submittedAt")),
+        "name": clean(item.get("name")),
+        "betType": clean(item.get("betType")),
+        "predictions": item.get("predictions") if isinstance(item.get("predictions"), dict) else {},
+        "bonuses": item.get("bonuses") if isinstance(item.get("bonuses"), dict) else {},
+    }
+
+
+def public_table_payload() -> dict[str, Any]:
+    submissions = read_submissions()
+    latest = latest_submissions_by_email(submissions)
+    return {
+        "ok": True,
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "totalSubmissions": len(submissions),
+        "activeSubmissions": len(latest),
+        "submissions": [public_submission(item) for item in latest],
+    }
+
 def bet_label(bet_id: str) -> str:
     for item in PLAYOFF_DATA.get("betTypes", []):
         if item.get("id") == bet_id:
