@@ -1,0 +1,1189 @@
+{
+  "title": "TSMSF 2026 – Pavouk / Play-off",
+  "betTypes": [
+    {
+      "id": "normal",
+      "label": "NORMÁLNÍ HRÁČ",
+      "fee": 50,
+      "className": "normal"
+    },
+    {
+      "id": "silver",
+      "label": "STŘÍBRNÝ HRÁČ",
+      "fee": 100,
+      "className": "silver"
+    },
+    {
+      "id": "gold",
+      "label": "ZLATÝ HRÁČ",
+      "fee": 200,
+      "className": "gold"
+    }
+  ],
+  "scoring": [
+    "Uhodnutí postupujícího do osmifinále: 1 bod",
+    "Uhodnutí postupujícího do čtvrtfinále: 2 body",
+    "Uhodnutí postupujícího do semifinále: 3 body",
+    "Uhodnutí postupujícího do finále: 4 body",
+    "Uhodnutí bronzového medailisty: 5 bodů",
+    "Uhodnutí vítěze turnaje: 6 bodů",
+    "Počet prodloužení: 2 body",
+    "Počet penaltových rozstřelů: 2 body",
+    "Celkový počet vstřelených branek: 8 bodů"
+  ],
+  "matches": [
+    {
+      "id": "A",
+      "index": 1,
+      "round": "1/16 finále",
+      "dateTime": "28. 6. 2026   21:00",
+      "day": "Ne",
+      "home": "Jižní Afrika",
+      "away": "Kanada",
+      "homeCode": "RSA",
+      "awayCode": "CAN",
+      "winnerOptions": [
+        "Jižní Afrika",
+        "Kanada"
+      ],
+      "scoreFields": {
+        "homeGoals": "G4",
+        "awayGoals": "I4"
+      },
+      "winnerField": "G5:I5",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "B",
+      "index": 2,
+      "round": "1/16 finále",
+      "dateTime": "29. 6. 2026   22:30",
+      "day": "Po",
+      "home": "Německo",
+      "away": "Paraguay",
+      "homeCode": "GER",
+      "awayCode": "PAR",
+      "winnerOptions": [
+        "Německo",
+        "Paraguay"
+      ],
+      "scoreFields": {
+        "homeGoals": "G6",
+        "awayGoals": "I6"
+      },
+      "winnerField": "G7:I7",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "C",
+      "index": 3,
+      "round": "1/16 finále",
+      "dateTime": "30. 6. 2026   03:00",
+      "day": "Út",
+      "home": "Nizozemsko",
+      "away": "Maroko",
+      "homeCode": "NED",
+      "awayCode": "MAR",
+      "winnerOptions": [
+        "Nizozemsko",
+        "Maroko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G8",
+        "awayGoals": "I8"
+      },
+      "winnerField": "G9:I9",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "D",
+      "index": 4,
+      "round": "1/16 finále",
+      "dateTime": "29. 6. 2026   19:00",
+      "day": "Po",
+      "home": "Brazílie",
+      "away": "Japonsko",
+      "homeCode": "BRA",
+      "awayCode": "JPN",
+      "winnerOptions": [
+        "Brazílie",
+        "Japonsko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G10",
+        "awayGoals": "I10"
+      },
+      "winnerField": "G11:I11",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "E",
+      "index": 5,
+      "round": "1/16 finále",
+      "dateTime": "30. 6. 2026   23:00",
+      "day": "Út",
+      "home": "Francie",
+      "away": "Švédsko",
+      "homeCode": "FRA",
+      "awayCode": "SWE",
+      "winnerOptions": [
+        "Francie",
+        "Švédsko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G12",
+        "awayGoals": "I12"
+      },
+      "winnerField": "G13:I13",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "F",
+      "index": 6,
+      "round": "1/16 finále",
+      "dateTime": "30. 6. 2026   19:00",
+      "day": "Út",
+      "home": "Pobřeží slonoviny",
+      "away": "Norsko",
+      "homeCode": "CIV",
+      "awayCode": "NOR",
+      "winnerOptions": [
+        "Pobřeží slonoviny",
+        "Norsko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G14",
+        "awayGoals": "I14"
+      },
+      "winnerField": "G15:I15",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "G",
+      "index": 7,
+      "round": "1/16 finále",
+      "dateTime": "1. 7. 2026   03:00",
+      "day": "St",
+      "home": "Mexiko",
+      "away": "Ekvádor",
+      "homeCode": "MEX",
+      "awayCode": "ECU",
+      "winnerOptions": [
+        "Mexiko",
+        "Ekvádor"
+      ],
+      "scoreFields": {
+        "homeGoals": "G16",
+        "awayGoals": "I16"
+      },
+      "winnerField": "G17:I17",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "H",
+      "index": 8,
+      "round": "1/16 finále",
+      "dateTime": "1. 7. 2026   18:00",
+      "day": "St",
+      "home": "Anglie",
+      "away": "DR Kongo",
+      "homeCode": "ENG",
+      "awayCode": "COD",
+      "winnerOptions": [
+        "Anglie",
+        "DR Kongo"
+      ],
+      "scoreFields": {
+        "homeGoals": "G18",
+        "awayGoals": "I18"
+      },
+      "winnerField": "G19:I19",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "I",
+      "index": 9,
+      "round": "1/16 finále",
+      "dateTime": "2. 7. 2026   02:00",
+      "day": "Čt",
+      "home": "Spojené státy",
+      "away": "Bosna a Hercegovina",
+      "homeCode": "USA",
+      "awayCode": "BIH",
+      "winnerOptions": [
+        "Spojené státy",
+        "Bosna a Hercegovina"
+      ],
+      "scoreFields": {
+        "homeGoals": "G20",
+        "awayGoals": "I20"
+      },
+      "winnerField": "G21:I21",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "J",
+      "index": 10,
+      "round": "1/16 finále",
+      "dateTime": "1. 7. 2026   22:00",
+      "day": "St",
+      "home": "Belgie",
+      "away": "Senegal",
+      "homeCode": "BEL",
+      "awayCode": "SEN",
+      "winnerOptions": [
+        "Belgie",
+        "Senegal"
+      ],
+      "scoreFields": {
+        "homeGoals": "G22",
+        "awayGoals": "I22"
+      },
+      "winnerField": "G23:I23",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "K",
+      "index": 11,
+      "round": "1/16 finále",
+      "dateTime": "3. 7. 2026   01:00",
+      "day": "Pá",
+      "home": "Portugalsko",
+      "away": "Chorvatsko",
+      "homeCode": "POR",
+      "awayCode": "CRO",
+      "winnerOptions": [
+        "Portugalsko",
+        "Chorvatsko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G24",
+        "awayGoals": "I24"
+      },
+      "winnerField": "G25:I25",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "L",
+      "index": 12,
+      "round": "1/16 finále",
+      "dateTime": "2. 7. 2026   21:00",
+      "day": "Čt",
+      "home": "Španělsko",
+      "away": "Rakousko",
+      "homeCode": "ESP",
+      "awayCode": "AUT",
+      "winnerOptions": [
+        "Španělsko",
+        "Rakousko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G26",
+        "awayGoals": "I26"
+      },
+      "winnerField": "G27:I27",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "M",
+      "index": 13,
+      "round": "1/16 finále",
+      "dateTime": "3. 7. 2026   05:00",
+      "day": "Pá",
+      "home": "Švýcarsko",
+      "away": "Alžírsko",
+      "homeCode": "SUI",
+      "awayCode": "ALG",
+      "winnerOptions": [
+        "Švýcarsko",
+        "Alžírsko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G28",
+        "awayGoals": "I28"
+      },
+      "winnerField": "G29:I29",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "N",
+      "index": 14,
+      "round": "1/16 finále",
+      "dateTime": "4. 7. 2026   00:00",
+      "day": "So",
+      "home": "Argentina",
+      "away": "Kapverdy",
+      "homeCode": "ARG",
+      "awayCode": "CPV",
+      "winnerOptions": [
+        "Argentina",
+        "Kapverdy"
+      ],
+      "scoreFields": {
+        "homeGoals": "G30",
+        "awayGoals": "I30"
+      },
+      "winnerField": "G31:I31",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "O",
+      "index": 15,
+      "round": "1/16 finále",
+      "dateTime": "4. 7. 2026   03:30",
+      "day": "So",
+      "home": "Kolumbie",
+      "away": "Ghana",
+      "homeCode": "COL",
+      "awayCode": "GHA",
+      "winnerOptions": [
+        "Kolumbie",
+        "Ghana"
+      ],
+      "scoreFields": {
+        "homeGoals": "G32",
+        "awayGoals": "I32"
+      },
+      "winnerField": "G33:I33",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "P",
+      "index": 16,
+      "round": "1/16 finále",
+      "dateTime": "3. 7. 2026   20:00",
+      "day": "Pá",
+      "home": "Austrálie",
+      "away": "Egypt",
+      "homeCode": "AUS",
+      "awayCode": "EGY",
+      "winnerOptions": [
+        "Austrálie",
+        "Egypt"
+      ],
+      "scoreFields": {
+        "homeGoals": "G34",
+        "awayGoals": "I34"
+      },
+      "winnerField": "G35:I35",
+      "homeSource": null,
+      "awaySource": null
+    },
+    {
+      "id": "Q",
+      "index": 17,
+      "round": "Osmifinále",
+      "dateTime": "4. 7. 2026   23:00",
+      "day": "So",
+      "home": "Vítěz B",
+      "away": "Vítěz E",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Německo",
+        "Paraguay",
+        "Francie",
+        "Švédsko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G37",
+        "awayGoals": "I37"
+      },
+      "winnerField": "G38:I38",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "B"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "E"
+      }
+    },
+    {
+      "id": "R",
+      "index": 18,
+      "round": "Osmifinále",
+      "dateTime": "4. 7. 2026   19:00",
+      "day": "So",
+      "home": "Vítěz A",
+      "away": "Vítěz C",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Jižní Afrika",
+        "Kanada",
+        "Nizozemsko",
+        "Maroko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G39",
+        "awayGoals": "I39"
+      },
+      "winnerField": "G40:I40",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "A"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "C"
+      }
+    },
+    {
+      "id": "S",
+      "index": 19,
+      "round": "Osmifinále",
+      "dateTime": "5. 7. 2026   22:00",
+      "day": "Ne",
+      "home": "Vítěz D",
+      "away": "Vítěz F",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Brazílie",
+        "Japonsko",
+        "Pobřeží slonoviny",
+        "Norsko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G41",
+        "awayGoals": "I41"
+      },
+      "winnerField": "G42:I42",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "D"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "F"
+      }
+    },
+    {
+      "id": "T",
+      "index": 20,
+      "round": "Osmifinále",
+      "dateTime": "6. 7. 2026   02:00",
+      "day": "Po",
+      "home": "Vítěz G",
+      "away": "Vítěz H",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Mexiko",
+        "Ekvádor",
+        "Anglie",
+        "DR Kongo"
+      ],
+      "scoreFields": {
+        "homeGoals": "G43",
+        "awayGoals": "I43"
+      },
+      "winnerField": "G44:I44",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "G"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "H"
+      }
+    },
+    {
+      "id": "U",
+      "index": 21,
+      "round": "Osmifinále",
+      "dateTime": "6. 7. 2026   21:00",
+      "day": "Po",
+      "home": "Vítěz K",
+      "away": "Vítěz L",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Portugalsko",
+        "Chorvatsko",
+        "Španělsko",
+        "Rakousko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G45",
+        "awayGoals": "I45"
+      },
+      "winnerField": "G46:I46",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "K"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "L"
+      }
+    },
+    {
+      "id": "V",
+      "index": 22,
+      "round": "Osmifinále",
+      "dateTime": "7. 7. 2026   02:00",
+      "day": "Út",
+      "home": "Vítěz I",
+      "away": "Vítěz J",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Spojené státy",
+        "Bosna a Hercegovina",
+        "Belgie",
+        "Senegal"
+      ],
+      "scoreFields": {
+        "homeGoals": "G47",
+        "awayGoals": "I47"
+      },
+      "winnerField": "G48:I48",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "I"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "J"
+      }
+    },
+    {
+      "id": "W",
+      "index": 23,
+      "round": "Osmifinále",
+      "dateTime": "7. 7. 2026   18:00",
+      "day": "Út",
+      "home": "Vítěz N",
+      "away": "Vítěz P",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Argentina",
+        "Kapverdy",
+        "Austrálie",
+        "Egypt"
+      ],
+      "scoreFields": {
+        "homeGoals": "G49",
+        "awayGoals": "I49"
+      },
+      "winnerField": "G50:I50",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "N"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "P"
+      }
+    },
+    {
+      "id": "X",
+      "index": 24,
+      "round": "Osmifinále",
+      "dateTime": "7. 7. 2026   22:00",
+      "day": "Út",
+      "home": "Vítěz M",
+      "away": "Vítěz O",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Švýcarsko",
+        "Alžírsko",
+        "Kolumbie",
+        "Ghana"
+      ],
+      "scoreFields": {
+        "homeGoals": "G51",
+        "awayGoals": "I51"
+      },
+      "winnerField": "G52:I52",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "M"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "O"
+      }
+    },
+    {
+      "id": "Y",
+      "index": 25,
+      "round": "Čtvrtfinále",
+      "dateTime": "9. 7. 2026   22:00",
+      "day": "Čt",
+      "home": "Vítěz Q",
+      "away": "Vítěz R",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Německo",
+        "Paraguay",
+        "Francie",
+        "Švédsko",
+        "Jižní Afrika",
+        "Kanada",
+        "Nizozemsko",
+        "Maroko"
+      ],
+      "scoreFields": {
+        "homeGoals": "G54",
+        "awayGoals": "I54"
+      },
+      "winnerField": "G55:I55",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "Q"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "R"
+      }
+    },
+    {
+      "id": "Z",
+      "index": 26,
+      "round": "Čtvrtfinále",
+      "dateTime": "10. 7. 2026   21:00",
+      "day": "Pá",
+      "home": "Vítěz U",
+      "away": "Vítěz V",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Portugalsko",
+        "Chorvatsko",
+        "Španělsko",
+        "Rakousko",
+        "Spojené státy",
+        "Bosna a Hercegovina",
+        "Belgie",
+        "Senegal"
+      ],
+      "scoreFields": {
+        "homeGoals": "G56",
+        "awayGoals": "I56"
+      },
+      "winnerField": "G57:I57",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "U"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "V"
+      }
+    },
+    {
+      "id": "AA",
+      "index": 27,
+      "round": "Čtvrtfinále",
+      "dateTime": "11. 7. 2026   23:00",
+      "day": "So",
+      "home": "Vítěz S",
+      "away": "Vítěz T",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Brazílie",
+        "Japonsko",
+        "Pobřeží slonoviny",
+        "Norsko",
+        "Mexiko",
+        "Ekvádor",
+        "Anglie",
+        "DR Kongo"
+      ],
+      "scoreFields": {
+        "homeGoals": "G58",
+        "awayGoals": "I58"
+      },
+      "winnerField": "G59:I59",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "S"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "T"
+      }
+    },
+    {
+      "id": "AB",
+      "index": 28,
+      "round": "Čtvrtfinále",
+      "dateTime": "12. 7. 2026   03:00",
+      "day": "Ne",
+      "home": "Vítěz W",
+      "away": "Vítěz X",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Argentina",
+        "Kapverdy",
+        "Austrálie",
+        "Egypt",
+        "Švýcarsko",
+        "Alžírsko",
+        "Kolumbie",
+        "Ghana"
+      ],
+      "scoreFields": {
+        "homeGoals": "G60",
+        "awayGoals": "I60"
+      },
+      "winnerField": "G61:I61",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "W"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "X"
+      }
+    },
+    {
+      "id": "AC",
+      "index": 29,
+      "round": "Semifinále",
+      "dateTime": "14. 7. 2026   21:00",
+      "day": "Út",
+      "home": "Vítěz Y",
+      "away": "Vítěz Z",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Německo",
+        "Paraguay",
+        "Francie",
+        "Švédsko",
+        "Jižní Afrika",
+        "Kanada",
+        "Nizozemsko",
+        "Maroko",
+        "Portugalsko",
+        "Chorvatsko",
+        "Španělsko",
+        "Rakousko",
+        "Spojené státy",
+        "Bosna a Hercegovina",
+        "Belgie",
+        "Senegal"
+      ],
+      "scoreFields": {
+        "homeGoals": "G63",
+        "awayGoals": "I63"
+      },
+      "winnerField": "G64:I64",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "Y"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "Z"
+      }
+    },
+    {
+      "id": "AD",
+      "index": 30,
+      "round": "Semifinále",
+      "dateTime": "15. 7. 2026   21:00",
+      "day": "St",
+      "home": "Vítěz AA",
+      "away": "Vítěz AB",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Brazílie",
+        "Japonsko",
+        "Pobřeží slonoviny",
+        "Norsko",
+        "Mexiko",
+        "Ekvádor",
+        "Anglie",
+        "DR Kongo",
+        "Argentina",
+        "Kapverdy",
+        "Austrálie",
+        "Egypt",
+        "Švýcarsko",
+        "Alžírsko",
+        "Kolumbie",
+        "Ghana"
+      ],
+      "scoreFields": {
+        "homeGoals": "G65",
+        "awayGoals": "I65"
+      },
+      "winnerField": "G66:I66",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "AA"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "AB"
+      }
+    },
+    {
+      "id": "BR",
+      "index": 31,
+      "round": "O třetí místo",
+      "dateTime": "18. 7. 2026   23:00",
+      "day": "So",
+      "home": "Poražený AC",
+      "away": "Poražený AD",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Jižní Afrika",
+        "Kanada",
+        "Německo",
+        "Paraguay",
+        "Nizozemsko",
+        "Maroko",
+        "Brazílie",
+        "Japonsko",
+        "Francie",
+        "Švédsko",
+        "Pobřeží slonoviny",
+        "Norsko",
+        "Mexiko",
+        "Ekvádor",
+        "Anglie",
+        "DR Kongo",
+        "Spojené státy",
+        "Bosna a Hercegovina",
+        "Belgie",
+        "Senegal",
+        "Portugalsko",
+        "Chorvatsko",
+        "Španělsko",
+        "Rakousko",
+        "Švýcarsko",
+        "Alžírsko",
+        "Argentina",
+        "Kapverdy",
+        "Kolumbie",
+        "Ghana",
+        "Austrálie",
+        "Egypt"
+      ],
+      "scoreFields": {
+        "homeGoals": "G68",
+        "awayGoals": "I68"
+      },
+      "winnerField": "G69:I69",
+      "homeSource": {
+        "type": "loser",
+        "matchId": "AC"
+      },
+      "awaySource": {
+        "type": "loser",
+        "matchId": "AD"
+      }
+    },
+    {
+      "id": "FIN",
+      "index": 32,
+      "round": "Finále",
+      "dateTime": "19. 7. 2026   21:00",
+      "day": "Ne",
+      "home": "Vítěz AC",
+      "away": "Vítěz AD",
+      "homeCode": null,
+      "awayCode": null,
+      "winnerOptions": [
+        "Jižní Afrika",
+        "Kanada",
+        "Německo",
+        "Paraguay",
+        "Nizozemsko",
+        "Maroko",
+        "Brazílie",
+        "Japonsko",
+        "Francie",
+        "Švédsko",
+        "Pobřeží slonoviny",
+        "Norsko",
+        "Mexiko",
+        "Ekvádor",
+        "Anglie",
+        "DR Kongo",
+        "Spojené státy",
+        "Bosna a Hercegovina",
+        "Belgie",
+        "Senegal",
+        "Portugalsko",
+        "Chorvatsko",
+        "Španělsko",
+        "Rakousko",
+        "Švýcarsko",
+        "Alžírsko",
+        "Argentina",
+        "Kapverdy",
+        "Kolumbie",
+        "Ghana",
+        "Austrálie",
+        "Egypt"
+      ],
+      "scoreFields": {
+        "homeGoals": "G71",
+        "awayGoals": "I71"
+      },
+      "winnerField": "G72:I72",
+      "homeSource": {
+        "type": "winner",
+        "matchId": "AC"
+      },
+      "awaySource": {
+        "type": "winner",
+        "matchId": "AD"
+      }
+    }
+  ],
+  "teams": [
+    {
+      "name": "Alžírsko",
+      "code": "ALG",
+      "flag": "/flags/ALG.png"
+    },
+    {
+      "name": "Anglie",
+      "code": "ENG",
+      "flag": "/flags/ENG.png"
+    },
+    {
+      "name": "Argentina",
+      "code": "ARG",
+      "flag": "/flags/ARG.png"
+    },
+    {
+      "name": "Austrálie",
+      "code": "AUS",
+      "flag": "/flags/AUS.png"
+    },
+    {
+      "name": "Belgie",
+      "code": "BEL",
+      "flag": "/flags/BEL.png"
+    },
+    {
+      "name": "Bosna a Hercegovina",
+      "code": "BIH",
+      "flag": "/flags/BIH.png"
+    },
+    {
+      "name": "Brazílie",
+      "code": "BRA",
+      "flag": "/flags/BRA.png"
+    },
+    {
+      "name": "Chorvatsko",
+      "code": "CRO",
+      "flag": "/flags/CRO.png"
+    },
+    {
+      "name": "DR Kongo",
+      "code": "COD",
+      "flag": "/flags/COD.png"
+    },
+    {
+      "name": "Egypt",
+      "code": "EGY",
+      "flag": "/flags/EGY.png"
+    },
+    {
+      "name": "Ekvádor",
+      "code": "ECU",
+      "flag": "/flags/ECU.png"
+    },
+    {
+      "name": "Francie",
+      "code": "FRA",
+      "flag": "/flags/FRA.png"
+    },
+    {
+      "name": "Ghana",
+      "code": "GHA",
+      "flag": "/flags/GHA.png"
+    },
+    {
+      "name": "Japonsko",
+      "code": "JPN",
+      "flag": "/flags/JPN.png"
+    },
+    {
+      "name": "Jižní Afrika",
+      "code": "RSA",
+      "flag": "/flags/RSA.png"
+    },
+    {
+      "name": "Kanada",
+      "code": "CAN",
+      "flag": "/flags/CAN.png"
+    },
+    {
+      "name": "Kapverdy",
+      "code": "CPV",
+      "flag": "/flags/CPV.png"
+    },
+    {
+      "name": "Kolumbie",
+      "code": "COL",
+      "flag": "/flags/COL.png"
+    },
+    {
+      "name": "Maroko",
+      "code": "MAR",
+      "flag": "/flags/MAR.png"
+    },
+    {
+      "name": "Mexiko",
+      "code": "MEX",
+      "flag": "/flags/MEX.png"
+    },
+    {
+      "name": "Nizozemsko",
+      "code": "NED",
+      "flag": "/flags/NED.png"
+    },
+    {
+      "name": "Norsko",
+      "code": "NOR",
+      "flag": "/flags/NOR.png"
+    },
+    {
+      "name": "Německo",
+      "code": "GER",
+      "flag": "/flags/GER.png"
+    },
+    {
+      "name": "Paraguay",
+      "code": "PAR",
+      "flag": "/flags/PAR.png"
+    },
+    {
+      "name": "Pobřeží slonoviny",
+      "code": "CIV",
+      "flag": "/flags/CIV.png"
+    },
+    {
+      "name": "Portugalsko",
+      "code": "POR",
+      "flag": "/flags/POR.png"
+    },
+    {
+      "name": "Rakousko",
+      "code": "AUT",
+      "flag": "/flags/AUT.png"
+    },
+    {
+      "name": "Senegal",
+      "code": "SEN",
+      "flag": "/flags/SEN.png"
+    },
+    {
+      "name": "Spojené státy",
+      "code": "USA",
+      "flag": "/flags/USA.png"
+    },
+    {
+      "name": "Španělsko",
+      "code": "ESP",
+      "flag": "/flags/ESP.png"
+    },
+    {
+      "name": "Švédsko",
+      "code": "SWE",
+      "flag": "/flags/SWE.png"
+    },
+    {
+      "name": "Švýcarsko",
+      "code": "SUI",
+      "flag": "/flags/SUI.png"
+    }
+  ],
+  "rules": [
+    "Pravidla:",
+    "Každý může tipovat pouze jednou.",
+    "Registrační poplatek činí 50,- NEBO 100,- NEBO 200,- KČ - VIZ DÁLE!!!",
+    "Rozdělení peněz:",
+    "40% 1. místo",
+    "25% 2. místo",
+    "15% 3. místo",
+    "10% honorář pro správce TS za dlouhé hodiny nad monitorem",
+    "10% charita - Je dobrým zvykem ve světě hazardu dávat část výtěžku na dobrou věc. ",
+    "Určení charity(žebráků) vybírá bramborový medailista a ten, kdo je poslední se stará o doručení.",
+    "Tipuje se přesný výsledek základní hrací doby stejně jako počet vstřelených gólů v základní hrací době.",
+    "Body se udělují dle následujícího klíče:",
+    "Uhodnutí vítěze 1 bod",
+    "Uhodnutí remízi 3 body",
+    "Uhodnutí rozdílu skóre 3 body",
+    "Uhodnutí přesného výsledku 5 bodů",
+    "Body z \"týmu duchů\" 1/2 bodové hodnoty (za výsledek, v němž nefigurují oba dva týmy, které byly na danou pozici tipovány)",
+    "Uhodnutí postupujícího do osmifinále 1 bod / čtvrtfinále 2 body / semifinále 3 body / finále 4 body",
+    "Uhodnutí bronzového medailisty 5 bodů",
+    "Uhodnutí vítěze turnaje 6 bodů",
+    "Počet prodloužení 2 body",
+    "Počet penaltových rozstřelů 2 body",
+    "Uhodnutí celkového počtu vstřelených branek - 8 bodů **",
+    "* Součet všech nastřílených branek v základních hracích dobách.",
+    "* Toto číslo se tipuje nezávisle na celkovém součtu natipovaných výsledků.",
+    "** Pokud nikdo neuhodne přesný počet branek, získají 4 body ti, co budou svým tipem nejblíže.",
+    "REGISTRAČNÍ POPLATKY - SKUPINY SÁZEJÍCÍCH",
+    "Pokud si chceš jen užít srandu a trochu si zpříjemnit MS ve fotbale nebo pokud nerad/a hazerduješ dál nečti",
+    "V opačném případě máme novinku právě pro Tebe:",
+    "Můžeš si vybrat jestli vsadíš jako normální hráč - 50,-, stříbrný hráč - 100,- nebo zlatý hráč - 200,-",
+    "Pokud vsadíš 50,- jako normální hráč, platí pro tebe stejná pravidla jako pro všechny ostatní, tedy normální výhry viz výše.",
+    "Pokud ale vsadíš 100,-, resp. 200,- staneš se členem STŘÍBRNÉ, resp. ZLATÉ LIGY!",
+    "Každý z členů STŘÍBRNÉ / ZLATÉ LIGY vlastně hraje další tipovací soutěž s příslošníky dané ligy.",
+    "Pro vyplácení platí stejná pravidla, ale vyplácí se a hodnotí se pouze mezi příslušníky jednotlivé ligy.",
+    "Příklad:",
+    "Cigi, Emilka, Fakýr, Markéta a Pája vsadí 50,- ",
+    "Olhot, Duškovi, Miky a Dan vsadí 100,- ",
+    "Ciproch, Holub, Jiří a Libor vsadí 200,-",
+    "V banku TS je 12*50,- = 600,- a o ten hrají všichni.",
+    "V banku STŘÍBRNÉ LIGY TS je 8*50,- (od Olhota, Dušků, Mikyho, Dana, Ciprocha, Holuba, Jiřího a Libora) = 400,- a o ten hraje jen osm jmenovaných",
+    "V banku ZLATÉ LIGY TS je 4*100,- (od Ciprocha, Holuba, Jiřího a Libora) = 400,- a o ten hrajou jen čtyři jmenovaní"
+  ],
+  "bonusFields": [
+    {
+      "id": "extraTimes",
+      "label": "Celkový počet prodloužení",
+      "min": 0,
+      "max": 999
+    },
+    {
+      "id": "penaltyShootouts",
+      "label": "Celkový počet penaltových rozstřelů",
+      "min": 0,
+      "max": 999
+    },
+    {
+      "id": "totalGoals",
+      "label": "Celkový počet vstřelených branek",
+      "min": 0,
+      "max": 999
+    }
+  ]
+}

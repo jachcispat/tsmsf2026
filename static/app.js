@@ -394,7 +394,13 @@ function setupUi() {
   $$('.tab').forEach(button => button.addEventListener('click', () => {
     $$('.tab').forEach(b => b.classList.toggle('is-active', b === button));
     $$('.panel').forEach(p => p.classList.toggle('is-active', p.id === `panel-${button.dataset.panel}`));
+    if (button.dataset.panel) history.replaceState(null, '', `#${button.dataset.panel}`);
   }));
+  const initialPanel = (location.hash || '').replace('#', '');
+  if (initialPanel) {
+    const initialTab = $(`.tab[data-panel="${CSS.escape(initialPanel)}"]`);
+    if (initialTab) initialTab.click();
+  }
   $('#refresh-button').addEventListener('click', () => loadScores(true));
   $('#match-search').addEventListener('input', event => { state.search = event.target.value; applyMatchFilter(); });
   $('#league-filter').addEventListener('click', event => {

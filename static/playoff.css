@@ -1,0 +1,57 @@
+.playoff-card { overflow: visible; }
+.playoff-header { align-items: center; }
+.playoff-actions { display: flex; align-items: center; gap: 10px; }
+.export-link { display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: #111827; color: #fff; padding: 10px 14px; text-decoration: none; font-weight: 800; white-space: nowrap; }
+.playoff-form { padding: 20px; }
+.playoff-personal { display: grid; grid-template-columns: minmax(200px, 1fr) minmax(240px, 1fr) minmax(280px, 1.3fr); gap: 14px; align-items: end; margin-bottom: 16px; }
+.playoff-personal label, .playoff-bonuses label { display: flex; flex-direction: column; gap: 5px; font-size: .88rem; font-weight: 700; color: #334155; }
+.playoff-personal input, .playoff-bonuses input, .playoff-match select { border: 1px solid #cbd5e1; border-radius: 9px; padding: 9px 10px; background: #fff; color: #111827; font: inherit; }
+.bet-fieldset { border: 0; padding: 0; margin: 0; }
+.bet-fieldset legend { font-size: .88rem; font-weight: 800; color: #334155; margin-bottom: 6px; }
+.bet-types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.bet-pill { display: flex; flex-direction: column; gap: 2px; border: 2px solid transparent; border-radius: 12px; padding: 9px 10px; cursor: pointer; box-shadow: 0 1px 3px rgba(15,23,42,.10); }
+.bet-pill input { position: absolute; opacity: 0; pointer-events: none; }
+.bet-pill span { font-weight: 900; font-size: .78rem; }
+.bet-pill small { color: #334155; font-weight: 800; }
+.bet-pill.normal { background: #dcfce7; border-color: #86efac; }
+.bet-pill.silver { background: linear-gradient(135deg, #f8fafc, #cbd5e1); border-color: #94a3b8; }
+.bet-pill.gold { background: linear-gradient(135deg, #fef08a, #facc15); border-color: #ca8a04; }
+.bet-pill:has(input:checked) { outline: 3px solid rgba(17,24,39,.35); }
+.playoff-note { background: #f8fafc; border: 1px solid #dbe3f0; border-radius: 12px; padding: 12px 14px; color: #334155; margin-bottom: 18px; }
+.playoff-round-title { margin: 26px 0 10px; padding: 10px 14px; border-radius: 12px; background: #e0f2fe; border: 1px solid #bae6fd; font-size: 1.05rem; }
+.playoff-round-title.round-final { background: #fef3c7; border-color: #fbbf24; }
+.playoff-round-title.round-bronze { background: #ffedd5; border-color: #fdba74; }
+.playoff-round-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 14px; }
+.playoff-match { background: #fff; border: 1px solid #dbe3f0; border-radius: 14px; box-shadow: 0 4px 14px rgba(15,23,42,.06); padding: 14px; }
+.playoff-match-top { display: flex; justify-content: space-between; gap: 10px; color: #64748b; font-size: .82rem; margin-bottom: 10px; }
+.playoff-match-top strong { color: #111827; font-size: .95rem; }
+.playoff-teams { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; }
+.playoff-teams .team { min-height: 30px; }
+.playoff-teams .team.away { justify-content: flex-end; }
+.score-inputs { display: inline-grid; grid-template-columns: 56px 12px 56px; gap: 4px; align-items: center; font-weight: 900; }
+.score-inputs select { width: 56px; text-align: center; font-weight: 800; }
+.winner-label { display: flex; flex-direction: column; gap: 5px; margin-top: 12px; font-weight: 800; color: #334155; font-size: .88rem; }
+.winner-select { width: 100%; }
+.playoff-bonuses { margin-top: 28px; padding-top: 16px; border-top: 1px solid #e5eaf2; }
+.playoff-bonuses h3 { margin: 0 0 12px; }
+.bonus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.playoff-consent { display: flex; align-items: flex-start; gap: 9px; margin: 18px 0; color: #334155; font-weight: 700; }
+.playoff-consent input { margin-top: 3px; }
+.playoff-submit-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.playoff-submit-row button { border: 0; border-radius: 11px; background: #16a34a; color: white; padding: 12px 18px; font-weight: 900; font-size: 1rem; cursor: pointer; }
+.playoff-submit-row button:disabled { opacity: .65; cursor: wait; }
+.playoff-message { font-weight: 800; }
+.playoff-message.success { color: #15803d; }
+.playoff-message.error { color: #b91c1c; }
+.playoff-message ul { margin: 0; padding-left: 18px; }
+@media (max-width: 900px) {
+  .playoff-personal { grid-template-columns: 1fr; }
+  .bet-types { grid-template-columns: 1fr; }
+  .playoff-header { align-items: flex-start; }
+}
+@media (max-width: 520px) {
+  .playoff-form { padding: 14px; }
+  .playoff-round-grid { grid-template-columns: 1fr; }
+  .playoff-teams { grid-template-columns: 1fr; }
+  .score-inputs { justify-self: center; }
+}

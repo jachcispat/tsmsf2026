@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111827">
   <title>TSMSF 2026 - výsledky</title>
-  <link rel="stylesheet" href="styles.css?v=20260614-live1">
+  <link rel="stylesheet" href="styles.css?v=20260628-playoff1">
+  <link rel="stylesheet" href="playoff.css?v=20260628-playoff1">
 </head>
 <body>
   <header class="site-header">
@@ -29,6 +30,7 @@
     <button class="tab is-active" data-panel="overview">Přehled</button>
     <button class="tab" data-panel="matches">Zápasy a tipy</button>
     <button class="tab" data-panel="groups">Skupiny</button>
+    <button class="tab" data-panel="playoff">🏆 Pavouk (Play-off)</button>
     <button class="tab" data-panel="rules">Pravidla</button>
   </nav>
 
@@ -74,6 +76,56 @@
       <div class="groups-grid" id="groups-grid"></div>
     </section>
 
+
+    <section id="panel-playoff" class="panel">
+      <article class="card full-width playoff-card">
+        <div class="card-header playoff-header">
+          <div>
+            <h2>Pavouk / Play-off – tipovací formulář</h2>
+            <p>Vyplň jméno, e-mail, typ hráče a postupující. Další kola se doplňují automaticky podle tvých tipů.</p>
+          </div>
+          <div class="playoff-actions">
+            <a class="export-link" id="playoff-export-link" href="/api/playoff-export" target="_blank" rel="noopener">Export XLSX</a>
+          </div>
+        </div>
+        <form id="playoff-form" class="playoff-form">
+          <section class="playoff-personal">
+            <label>Jméno
+              <input id="playoff-name" name="name" type="text" autocomplete="name" required placeholder="Jméno soutěžícího">
+            </label>
+            <label>E-mail
+              <input id="playoff-email" name="email" type="email" autocomplete="email" required placeholder="jmeno@example.com">
+            </label>
+            <fieldset class="bet-fieldset">
+              <legend>Typ hráče / sázka</legend>
+              <div id="playoff-bet-types" class="bet-types"></div>
+            </fieldset>
+          </section>
+
+          <div class="playoff-note">
+            <strong>Automatika pavouka:</strong> vítěz každého zápasu se okamžitě propíše do dalšího kola. U zápasu o 3. místo se doplňují poražení semifinalisté.
+          </div>
+
+          <section id="playoff-matches" class="playoff-matches" aria-live="polite"></section>
+
+          <section class="playoff-bonuses">
+            <h3>Bonusové otázky</h3>
+            <div id="playoff-bonus-fields" class="bonus-grid"></div>
+          </section>
+
+          <label class="playoff-consent">
+            <input id="playoff-consent" type="checkbox" required>
+            Souhlasím s uložením jména, e-mailu a tipů pro účely tipovací soutěže TSMSF 2026.
+          </label>
+
+          <div class="playoff-submit-row">
+            <button id="playoff-submit" type="submit">Odeslat play-off tip</button>
+            <span id="playoff-message" class="playoff-message" role="status"></span>
+          </div>
+        </form>
+      </article>
+    </section>
+
     <section id="panel-rules" class="panel">
       <div class="rules-layout">
         <article class="card rules-card">
@@ -99,6 +151,7 @@
     <span id="footer-source">Zdroj výsledků se načítá…</span>
   </footer>
 
-  <script src="app.js?v=20260614-live1" defer></script>
+  <script src="app.js?v=20260628-playoff1" defer></script>
+  <script src="playoff.js?v=20260628-playoff1" defer></script>
 </body>
 </html>
