@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111827">
   <title>TSMSF 2026 - výsledky</title>
-  <link rel="stylesheet" href="styles.css?v=20260628-playoff8">
-  <link rel="stylesheet" href="playoff.css?v=20260628-playoff8">
-  <link rel="stylesheet" href="playoff-table.css?v=20260628-playoff8">
+  <link rel="stylesheet" href="styles.css?v=20260628-playoff9">
+  <link rel="stylesheet" href="playoff.css?v=20260628-playoff9">
+  <link rel="stylesheet" href="playoff-table.css?v=20260628-playoff9">
 </head>
 <body>
   <header class="site-header">
@@ -134,7 +134,7 @@
         <div class="card-header playoff-results-header">
           <div>
             <h2>Play-off – odeslané tipy a průběžná tabulka</h2>
-            <p>Tabulka se tvoří z posledních odeslaných formulářů. Body za postupující se dopočítají podle skutečných výsledků play-off.</p>
+            <p>Tabulka se tvoří z posledních odeslaných formulářů. Body za každý zápas jsou součet bodů za uhodnutého postupujícího a bodů za výsledek základní hrací doby.</p>
           </div>
           <div class="playoff-results-actions">
             <button id="playoff-results-refresh" type="button">Obnovit tabulku</button>
@@ -177,6 +177,19 @@
           <div id="rules-list"></div>
         </article>
         <article class="card rules-card">
+          <h2>Pravidla play-off bodování</h2>
+          <p><strong>Body za jeden play-off zápas = body za uhodnutého postupujícího + body za výsledek v základní hrací době.</strong></p>
+          <ul>
+            <li>Tipuje se přesný výsledek základní hrací doby. U remízy se navíc vybírá postupující.</li>
+            <li>Výsledek: uhodnutí vítěze v základní době = 1 bod, uhodnutí remízy = 3 body, uhodnutí rozdílu skóre = 3 body, přesný výsledek = 5 bodů.</li>
+            <li>Pokud ve skutečném zápase nejsou oba týmy, které měl hráč podle svého pavouka na dané pozici, body za výsledek se krátí na polovinu jako „tým duchů“.</li>
+            <li>Postupující: postup do osmifinále = 1 bod, do čtvrtfinále = 2 body, do semifinále = 3 body, do finále = 4 body.</li>
+            <li>Bronzový medailista = 5 bodů, vítěz turnaje = 6 bodů.</li>
+            <li>Bonusy: počet prodloužení = 2 body, počet penaltových rozstřelů = 2 body, celkový počet vstřelených branek = 8 bodů.</li>
+            <li>Pokud nikdo neuhodne přesný počet branek, nejbližší tip nebo tipy získají 4 body.</li>
+          </ul>
+        </article>
+        <article class="card rules-card">
           <h2>Jak funguje automatická aktualizace</h2>
           <ol>
             <li>Při načtení stránky server stáhne aktuální zápasy MS 2026.</li>
@@ -195,8 +208,8 @@
     <span id="footer-source">Zdroj výsledků se načítá…</span>
   </footer>
 
-  <script src="app.js?v=20260628-playoff8" defer></script>
-  <script src="playoff.js?v=20260628-playoff8" defer></script>
-  <script src="playoff-table.js?v=20260628-playoff8" defer></script>
+  <script src="app.js?v=20260628-playoff9" defer></script>
+  <script src="playoff.js?v=20260628-playoff9" defer></script>
+  <script src="playoff-table.js?v=20260628-playoff9" defer></script>
 </body>
 </html>

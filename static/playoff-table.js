@@ -85,7 +85,7 @@
 
   function formatMatchPoints(points, hasActual) {
     if (!hasActual) return 'čeká';
-    return `${number(points)} b`;
+    return `${formatPointNumber(points)} b`;
   }
 
   function sourceLabel(source, fallback) {
@@ -200,6 +200,114 @@
     return `${pred.homeGoals}:${pred.awayGoals}`;
   }
 
+  function sameTeam(a, b) {
+    return normalizeName(a) === normalizeName(b);
+  }
+
+  function parseGoal(value) {
+    if (value === '' || value == null) return null;
+    const numeric = Number(value);
+    return Number.isInteger(numeric) && numeric >= 0 ? numeric : null;
+  }
+
+  function formatPointNumber(value) {
+    const numeric = number(value);
+    return Number.isInteger(numeric) ? String(numeric) : numeric.toLocaleString('cs-CZ', { maximumFractionDigits: 1 });
+  }
+
+  function actualScoreForMatch(actual) {
+    const result = actual?.result;
+    if (!result || !Number.isInteger(result.homeScore) || !Number.isInteger(result.awayScore)) return null;
+    const teams = actual.teams || [];
+    const first = teams[0];
+    const second = teams[1];
+    if (first && second) {
+      if (sameTeam(result.home, first) && sameTeam(result.away, second)) {
+        return { homeScore: result.homeScore, awayScore: result.awayScore };
+      }
+      if (sameTeam(result.home, second) && sameTeam(result.away, first)) {
+        return { homeScore: result.awayScore, awayScore: result.homeScore };
+      }
+    }
+    return { homeScore: result.homeScore, awayScore: result.awayScore };
+  }
+
+  function resultBasePoints(pred, actual) {
+    if (!actual?.result?.completed) return { points: 0, label: 'čeká' };
+    const score = actualScoreForMatch(actual);
+    if (!score) return { points: 0, label: 'čeká' };
+    const tipHome = parseGoal(pred.homeGoals);
+    const tipAway = parseGoal(pred.awayGoals);
+    if (tipHome == null || tipAway == null) return { points: 0, label: 'bez tipu' };
+
+    const actualDiff = score.homeScore - score.awayScore;
+    const tipDiff = tipHome - tipAway;
+
+    if (tipHome === score.homeScore && tipAway === score.awayScore) return { points: 5, label: 'přesně' };
+    if (actualDiff === 0 && tipDiff === 0) return { points: 3, label: 'remíza' };
+    if (actualDiff !== 0 && tipDiff === actualDiff) return { points: 3, label: 'rozdíl' };
+    if ((actualDiff > 0 && tipDiff > 0) || (actualDiff < 0 && tipDiff < 0)) return { points: 1, label: 'vítěz' };
+    return { points: 0, label: 'netrefeno' };
+  }
+
+  function predictedSourceEntrant(source, fallback, submission, stack) {
+    const fallbackText = clean(fallback);
+    if (!source || !source.matchId) return fallbackText || '';
+    const sourceMatch = matchById(source.matchId);
+    if (!sourceMatch || stack.has(source.matchId)) return sourceLabel(source, fallback);
+    const sourcePred = predictionOf(submission, source.matchId);
+    const predictedWinner = clean(sourcePred.winner);
+    if (source.type === 'winner') return predictedWinner || sourceLabel(source, fallback);
+    if (source.type === 'loser') {
+      const teams = predictedEntrants(sourceMatch, submission, new Set(stack));
+      if (predictedWinner && teams.length >= 2) {
+        const loser = teams.find(team => !sameTeam(team, predictedWinner));
+        if (loser) return loser;
+      }
+      return sourceLabel(source, fallback);
+    }
+    return fallbackText || '';
+  }
+
+  function predictedEntrants(match, submission, stack = new Set()) {
+    if (!match) return [];
+    if (stack.has(match.id)) return concreteOptions(match);
+    stack.add(match.id);
+    const teams = [
+      predictedSourceEntrant(match.homeSource, match.home, submission, stack),
+      predictedSourceEntrant(match.awaySource, match.away, submission, stack),
+    ].filter(Boolean);
+    stack.delete(match.id);
+    return teams.length ? teams : concreteOptions(match);
+  }
+
+  function hasBothActualTeams(match, submission, actual) {
+    const actualTeams = actual?.teams || [];
+    if (actualTeams.length !== 2) return true;
+    const predictedTeams = predictedEntrants(match, submission).filter(team => !/^(vítěz|poražený) utkání/i.test(clean(team)));
+    if (predictedTeams.length !== 2) return true;
+    return actualTeams.every(actualTeam => predictedTeams.some(predictedTeam => sameTeam(actualTeam, predictedTeam)));
+  }
+
+  function scoreMatch(match, submission) {
+    const actual = actualForMatch(match);
+    const pred = predictionOf(submission, match.id);
+    const advancement = actual.winner && sameTeam(pred.winner, actual.winner) ? roundPoints(match.round) : 0;
+    const base = resultBasePoints(pred, actual);
+    const ghost = base.points > 0 && !hasBothActualTeams(match, submission, actual);
+    const resultPoints = ghost ? base.points / 2 : base.points;
+    const total = advancement + resultPoints;
+    return {
+      advancement,
+      resultPoints,
+      resultBasePoints: base.points,
+      resultLabel: base.label,
+      ghost,
+      total,
+      hasActual: Boolean(actual?.result?.completed && actualScoreForMatch(actual)),
+    };
+  }
+
   function playoffActuals() {
     return model.config.matches.map(match => ({ match, actual: actualForMatch(match) }));
   }
@@ -220,41 +328,59 @@
     };
   }
 
-  function calculateBonusPoints(submission) {
+  function calculateBonusPointsForRows(rows) {
     const actual = bonusActualValues();
-    const points = {};
-    for (const bonus of BONUS_ROWS) {
-      const tip = Number(submission.bonuses?.[bonus.id]);
-      points[bonus.id] = actual.final && Number.isFinite(tip) && tip === actual.values[bonus.id] ? bonus.points : 0;
+    rows.forEach(row => { row.bonusPoints = { totalGoals: 0, penaltyShootouts: 0, extraTimes: 0 }; });
+    if (!actual.final) return;
+
+    rows.forEach(row => {
+      for (const bonus of BONUS_ROWS.filter(item => item.id !== 'totalGoals')) {
+        const tip = Number(row.bonuses?.[bonus.id]);
+        row.bonusPoints[bonus.id] = Number.isFinite(tip) && tip === actual.values[bonus.id] ? bonus.points : 0;
+      }
+    });
+
+    const totalGoalsBonus = BONUS_ROWS.find(item => item.id === 'totalGoals');
+    const goalTips = rows
+      .map(row => ({ row, tip: Number(row.bonuses?.totalGoals) }))
+      .filter(item => Number.isFinite(item.tip));
+    const exactExists = goalTips.some(item => item.tip === actual.values.totalGoals);
+    if (exactExists) {
+      goalTips.forEach(item => { item.row.bonusPoints.totalGoals = item.tip === actual.values.totalGoals ? totalGoalsBonus.points : 0; });
+    } else if (goalTips.length) {
+      const bestDiff = Math.min(...goalTips.map(item => Math.abs(item.tip - actual.values.totalGoals)));
+      goalTips.forEach(item => { item.row.bonusPoints.totalGoals = Math.abs(item.tip - actual.values.totalGoals) === bestDiff ? 4 : 0; });
     }
-    return points;
   }
 
-  function calculateSubmission(submission) {
+  function calculateSubmissionBase(submission) {
     const matchPoints = {};
     let matchTotal = 0;
     for (const match of model.config.matches) {
-      const actual = actualForMatch(match);
-      const pred = predictionOf(submission, match.id);
-      const points = actual.winner && clean(pred.winner) === actual.winner ? roundPoints(match.round) : 0;
+      const points = scoreMatch(match, submission);
       matchPoints[match.id] = points;
-      matchTotal += points;
+      matchTotal += points.total;
     }
-    const bonusPoints = calculateBonusPoints(submission);
-    const bonusTotal = Object.values(bonusPoints).reduce((sum, value) => sum + number(value), 0);
-    return { ...submission, matchPoints, bonusPoints, matchTotal, bonusTotal, total: matchTotal + bonusTotal };
+    return { ...submission, matchPoints, bonusPoints: {}, matchTotal, bonusTotal: 0, total: matchTotal };
   }
 
   function calculatedSubmissions() {
-    return (model.tableData?.submissions || []).map(calculateSubmission).sort((a, b) => b.total - a.total || clean(rowName(a)).localeCompare(clean(rowName(b)), 'cs'));
+    const rows = (model.tableData?.submissions || []).map(calculateSubmissionBase);
+    calculateBonusPointsForRows(rows);
+    rows.forEach(row => {
+      row.bonusTotal = Object.values(row.bonusPoints).reduce((sum, value) => sum + number(value), 0);
+      row.total = row.matchTotal + row.bonusTotal;
+    });
+    return rows.sort((a, b) => b.total - a.total || clean(rowName(a)).localeCompare(clean(rowName(b)), 'cs'));
   }
 
   function formatScoreResult(actual) {
     const result = actual.result;
-    if (!result || !Number.isInteger(result.homeScore) || !Number.isInteger(result.awayScore)) return ' : ';
+    const score = actualScoreForMatch(actual);
+    if (!result || !score) return ' : ';
     const cls = result.live ? 'result-live' : result.completed ? 'result-final' : '';
     const status = result.live ? `<span class="match-status">ŽIVĚ${result.status ? ` · ${html(result.status)}` : ''}</span>` : '';
-    return `<span class="${cls}">${result.homeScore}:${result.awayScore}${status}</span>`;
+    return `<span class="${cls}">${score.homeScore}:${score.awayScore}${status}</span>`;
   }
 
   function renderKpis(rows) {
@@ -281,7 +407,7 @@
         <td class="rank">${index + 1}</td>
         <td><strong>${html(rowName(row))}</strong></td>
         <td><span class="badge ${html(betClass(row.betType))}">${html(betLabel(row.betType))}</span></td>
-        <td class="num"><strong>${row.total}</strong></td>
+        <td class="num"><strong>${formatPointNumber(row.total)}</strong></td>
         <td>${row.submittedAt ? new Date(row.submittedAt).toLocaleString('cs-CZ', { timeZone: 'Europe/Prague' }) : '—'}</td>
       </tr>
     `).join('')}</tbody>`;
@@ -314,7 +440,7 @@
         return `<td class="prediction bonus-prediction ${html(betClass(row.betType))} ${cellClass}" data-player="${html(clean(rowName(row)).toLowerCase())}">
           <span class="playoff-tip-score">${html(tip ?? '—')}</span><br>
           <span class="playoff-tip-winner">tip</span><br>
-          <span class="points-cell">${actual.final ? `${pts} b` : 'čeká'}</span>
+          <span class="points-cell">${actual.final ? `${formatPointNumber(pts)} b` : 'čeká'}</span>
         </td>`;
       }).join('');
       const search = `bonus ${bonus.label} ${actualText}`.toLowerCase();
@@ -351,13 +477,17 @@
       const search = `${match.round} ${home} ${away} ${actual.winner}`.toLowerCase();
       const participantCells = rows.map(row => {
         const pred = predictionOf(row, match.id);
-        const pts = row.matchPoints[match.id] || 0;
-        const hasActual = Boolean(actual.winner);
-        const cellClass = pts ? 'hit' : hasActual ? 'miss' : '';
+        const pts = row.matchPoints[match.id] || { total: 0, advancement: 0, resultPoints: 0, hasActual: false };
+        const hasActual = pts.hasActual;
+        const cellClass = pts.total ? 'hit' : hasActual ? 'miss' : '';
+        const detail = hasActual
+          ? `postup ${formatPointNumber(pts.advancement)} + výsledek ${formatPointNumber(pts.resultPoints)}${pts.ghost ? ' (½ tým duchů)' : ''}`
+          : 'čeká na výsledek';
         return `<td class="prediction ${html(betClass(row.betType))} ${cellClass}" data-player="${html(clean(rowName(row)).toLowerCase())}">
           <span class="playoff-tip-score">${html(scoreText(pred))}</span><br>
           <span class="playoff-tip-winner">${html(pred.winner || '—')}</span><br>
-          <span class="points-cell">${html(formatMatchPoints(pts, hasActual))}</span>
+          <span class="points-cell">${html(formatMatchPoints(pts.total, hasActual))}</span><br>
+          <span class="points-detail">${html(detail)}</span>
         </td>`;
       }).join('');
       return `<tr data-search="${html(search)}">
@@ -373,7 +503,7 @@
     }).join('');
 
     const body = matchRows + renderBonusRows(rows);
-    const totals = rows.map(row => `<td><strong>${row.total}</strong></td>`).join('');
+    const totals = rows.map(row => `<td><strong>${formatPointNumber(row.total)}</strong></td>`).join('');
     table.innerHTML = `<thead><tr>
       <th class="sticky pr-col-round corner">Kolo</th>
       <th class="sticky pr-col-date corner">Datum / čas</th>

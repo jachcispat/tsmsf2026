@@ -41,3 +41,14 @@
 .playoff-results-sheet .bonus-row td { background: #fff7ed; }
 .playoff-results-sheet .bonus-row .sticky { background: #ffedd5 !important; font-weight: 800; }
 .playoff-results-sheet .bonus-prediction .playoff-tip-winner { color: #64748b; font-size: .78rem; }
+.playoff-results-sheet .points-detail {
+  display: inline-block;
+  max-width: 118px;
+  margin-top: 2px;
+  color: #64748b;
+  font-size: .72rem;
+  line-height: 1.15;
+}
+.playoff-results-sheet .prediction.hit .points-detail { color: #14532d; }
+.playoff-results-sheet .prediction.miss .points-detail { color: #64748b; }
+.playoff-results-sheet .pr-col-points { min-width: 70px; }
