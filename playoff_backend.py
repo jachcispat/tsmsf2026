@@ -6,6 +6,9 @@ import smtplib
 import time
 import zipfile
 import threading
+import urllib.error
+import urllib.parse
+import urllib.request
 from datetime import datetime, timezone
 from email.message import EmailMessage
 from pathlib import Path
@@ -76,7 +79,16 @@ DEFAULT_SMTP_SECURE = "true"
 
 OWNER_EMAIL = os.environ.get("OWNER_EMAIL", DEFAULT_OWNER_EMAIL).strip() or DEFAULT_OWNER_EMAIL
 ADMIN_TOKEN = os.environ.get("ADMIN_TOKEN", "")
+GOOGLE_SHEETS_WEBAPP_URL = os.environ.get("GOOGLE_SHEETS_WEBAPP_URL", "").strip()
+GOOGLE_SHEETS_SECRET = os.environ.get("GOOGLE_SHEETS_SECRET", "").strip()
+try:
+    GOOGLE_SHEETS_TIMEOUT = int(os.environ.get("GOOGLE_SHEETS_TIMEOUT", "12"))
+except (TypeError, ValueError):
+    GOOGLE_SHEETS_TIMEOUT = 12
 _STORAGE_LOCK = threading.Lock()
+_SHEETS_CACHE_LOCK = threading.Lock()
+_SHEETS_CACHE: dict[str, Any] = {"expires": 0.0, "items": [], "error": ""}
+SHEETS_CACHE_TTL_SECONDS = 20
 
 with PLAYOFF_DATA_PATH.open("r", encoding="utf-8") as fh:
     PLAYOFF_DATA = json.load(fh)
@@ -236,8 +248,83 @@ def read_initial_submissions() -> list[dict[str, Any]]:
     return normalize_seed_items(EMBEDDED_INITIAL_SUBMISSIONS)
 
 
+def sheets_config() -> dict[str, Any]:
+    return {
+        "enabled": bool(GOOGLE_SHEETS_WEBAPP_URL and GOOGLE_SHEETS_SECRET),
+        "urlSet": bool(GOOGLE_SHEETS_WEBAPP_URL),
+        "secretSet": bool(GOOGLE_SHEETS_SECRET),
+        "timeout": GOOGLE_SHEETS_TIMEOUT,
+    }
+
+
+def _sheets_request(payload: dict[str, Any] | None = None) -> dict[str, Any]:
+    if not GOOGLE_SHEETS_WEBAPP_URL or not GOOGLE_SHEETS_SECRET:
+        raise RuntimeError("Google Sheets není nakonfigurovaný: chybí GOOGLE_SHEETS_WEBAPP_URL nebo GOOGLE_SHEETS_SECRET.")
+
+    if payload is None:
+        url = GOOGLE_SHEETS_WEBAPP_URL
+        separator = "&" if "?" in url else "?"
+        url = f"{url}{separator}{urllib.parse.urlencode({'secret': GOOGLE_SHEETS_SECRET})}"
+        req = urllib.request.Request(url, headers={"Accept": "application/json"}, method="GET")
+    else:
+        body = json.dumps({"secret": GOOGLE_SHEETS_SECRET, **payload}, ensure_ascii=False).encode("utf-8")
+        req = urllib.request.Request(
+            GOOGLE_SHEETS_WEBAPP_URL,
+            data=body,
+            headers={"Content-Type": "application/json; charset=utf-8", "Accept": "application/json"},
+            method="POST",
+        )
+
+    try:
+        with urllib.request.urlopen(req, timeout=GOOGLE_SHEETS_TIMEOUT) as response:
+            raw = response.read().decode("utf-8")
+            return json.loads(raw or "{}")
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")[:500]
+        raise RuntimeError(f"Google Sheets HTTP {exc.code}: {detail}") from exc
+
+
+def append_submission_to_google_sheets(payload: dict[str, Any]) -> dict[str, Any]:
+    if not GOOGLE_SHEETS_WEBAPP_URL or not GOOGLE_SHEETS_SECRET:
+        return {"enabled": False, "saved": False, "reason": "GOOGLE_SHEETS_WEBAPP_URL nebo GOOGLE_SHEETS_SECRET není nastavený."}
+    result = _sheets_request({"action": "append", "submission": payload})
+    if not result.get("ok"):
+        raise RuntimeError(str(result.get("error") or result))
+    with _SHEETS_CACHE_LOCK:
+        _SHEETS_CACHE["expires"] = 0.0
+    return {"enabled": True, "saved": True, "id": result.get("id"), "rows": result.get("rows")}
+
+
+def read_google_sheets_submissions(force: bool = False) -> list[dict[str, Any]]:
+    if not GOOGLE_SHEETS_WEBAPP_URL or not GOOGLE_SHEETS_SECRET:
+        return []
+    now = time.time()
+    with _SHEETS_CACHE_LOCK:
+        if not force and now < float(_SHEETS_CACHE.get("expires") or 0):
+            return list(_SHEETS_CACHE.get("items") or [])
+    try:
+        result = _sheets_request(None)
+        if not result.get("ok"):
+            raise RuntimeError(str(result.get("error") or result))
+        items = result.get("submissions") if isinstance(result.get("submissions"), list) else []
+        normalized = [item for item in items if isinstance(item, dict)]
+        with _SHEETS_CACHE_LOCK:
+            _SHEETS_CACHE.update({"expires": now + SHEETS_CACHE_TTL_SECONDS, "items": normalized, "error": ""})
+        return normalized
+    except Exception as exc:
+        with _SHEETS_CACHE_LOCK:
+            _SHEETS_CACHE.update({"expires": now + SHEETS_CACHE_TTL_SECONDS, "error": str(exc)})
+        return []
+
+
+def google_sheets_status() -> dict[str, Any]:
+    cfg = sheets_config()
+    with _SHEETS_CACHE_LOCK:
+        return {**cfg, "lastError": str(_SHEETS_CACHE.get("error") or ""), "cachedCount": len(_SHEETS_CACHE.get("items") or [])}
+
+
 def all_submissions() -> list[dict[str, Any]]:
-    """Bundled XLS import + stored live form submissions.
+    """Bundled XLS import + Google Sheets + stored live form submissions.
 
     Dedupe only by identical id. Imported XLS rows are intentionally kept
     separate from later live submissions even if they use the same e-mail,
@@ -245,7 +332,7 @@ def all_submissions() -> list[dict[str, Any]]:
     """
     merged: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for item in [*read_initial_submissions(), *read_submissions()]:
+    for item in [*read_initial_submissions(), *read_google_sheets_submissions(), *read_submissions()]:
         if not isinstance(item, dict):
             continue
         key = clean(item.get("id")) or f"row-{len(merged)}"
@@ -266,18 +353,38 @@ def write_submissions(items: list[dict[str, Any]]) -> None:
 def append_submission(payload: dict[str, Any]) -> dict[str, Any]:
     """Persist a submitted tip before any best-effort side effects such as e-mail.
 
-    E-mail delivery must never decide whether the player appears in the public
-    table. This function is locked and atomic enough for the small Render app.
+    Google Sheets is used as the durable storage when configured. Local JSON is
+    kept as a fast fallback/cache for free Render deployments, where disk is
+    temporary and may disappear after restart or redeploy.
     """
-    with _STORAGE_LOCK:
-        submissions = read_submissions()
-        submissions.append(payload)
-        write_submissions(submissions)
-        return {
-            "saved": True,
-            "storedSubmissions": len(submissions),
-            "storagePath": str(SUBMISSIONS_PATH),
-        }
+    sheets: dict[str, Any]
+    try:
+        sheets = append_submission_to_google_sheets(payload)
+    except Exception as exc:
+        sheets = {"enabled": bool(GOOGLE_SHEETS_WEBAPP_URL and GOOGLE_SHEETS_SECRET), "saved": False, "reason": str(exc)}
+
+    local: dict[str, Any]
+    try:
+        with _STORAGE_LOCK:
+            submissions = read_submissions()
+            submissions.append(payload)
+            write_submissions(submissions)
+            local = {
+                "saved": True,
+                "storedSubmissions": len(submissions),
+                "storagePath": str(SUBMISSIONS_PATH),
+            }
+    except Exception as exc:
+        local = {"saved": False, "reason": str(exc), "storagePath": str(SUBMISSIONS_PATH)}
+
+    if not sheets.get("saved") and not local.get("saved"):
+        raise RuntimeError(f"Google Sheets: {sheets.get('reason')}; lokální JSON: {local.get('reason')}")
+
+    return {
+        "saved": bool(sheets.get("saved") or local.get("saved")),
+        "googleSheets": sheets,
+        "local": local,
+    }
 
 
 def validate_submission(body: dict[str, Any]) -> tuple[dict[str, Any], list[str]]:

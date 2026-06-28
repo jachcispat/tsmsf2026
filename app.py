@@ -24,7 +24,7 @@ DATA_PATH = STATIC_DIR / "data.json"
 PORT = int(os.environ.get("PORT", "8000"))
 CACHE_TTL_SECONDS = int(os.environ.get("SCORES_CACHE_SECONDS", "60"))
 LIVE_CACHE_TTL_SECONDS = int(os.environ.get("LIVE_SCORES_CACHE_SECONDS", "15"))
-PLAYOFF_PATCH_VERSION = "playoff-submit-v4-data-dir-fallback"
+PLAYOFF_PATCH_VERSION = "playoff-submit-v5-google-sheets"
 
 with DATA_PATH.open("r", encoding="utf-8") as fh:
     SITE_DATA = json.load(fh)
@@ -365,11 +365,14 @@ class Handler(BaseHTTPRequestHandler):
         if parsed.path == "/api/playoff-submissions-count":
             items = playoff_backend.all_submissions()
             stored = playoff_backend.read_submissions()
+            sheets = playoff_backend.read_google_sheets_submissions(force=True)
             seeded = playoff_backend.read_initial_submissions()
             self.send_json({
                 "ok": True,
                 "count": len(items),
                 "storedCount": len(stored),
+                "googleSheetsCount": len(sheets),
+                "googleSheets": playoff_backend.google_sheets_status(),
                 "seedCount": len(seeded),
                 "seedNames": [item.get("name") for item in seeded],
                 "storagePath": str(playoff_backend.SUBMISSIONS_PATH),
@@ -382,6 +385,7 @@ class Handler(BaseHTTPRequestHandler):
             cfg = playoff_backend.smtp_config()
             seeded = playoff_backend.read_initial_submissions()
             stored = playoff_backend.read_submissions()
+            sheets = playoff_backend.read_google_sheets_submissions(force=True)
             public_error = ""
             try:
                 public_count = len(playoff_backend.public_table_payload().get("submissions", []))
@@ -400,6 +404,8 @@ class Handler(BaseHTTPRequestHandler):
                 "seedCount": len(seeded),
                 "seedNames": [item.get("name") for item in seeded],
                 "storedCount": len(stored),
+                "googleSheetsCount": len(sheets),
+                "googleSheets": playoff_backend.google_sheets_status(),
                 "publicCount": public_count,
                 "publicError": public_error,
                 "mail": {"owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "portRaw": cfg.get("portRaw", str(cfg["port"])), "portWarning": cfg.get("portWarning", ""), "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]},
@@ -419,6 +425,7 @@ class Handler(BaseHTTPRequestHandler):
                 "requestedDataDir": playoff_backend.REQUESTED_DATA_DIR,
                 "dataDirWarning": playoff_backend.DATA_DIR_WARNING,
                 "submissionsPath": str(playoff_backend.SUBMISSIONS_PATH),
+                "googleSheets": playoff_backend.google_sheets_status(),
             })
             return
 
