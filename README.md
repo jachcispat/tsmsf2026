@@ -1,8 +1,8 @@
-# TSMSF 2026 - automatické výsledky
+# TSMSF 2026 - automatické výsledky + Pavouk / Play-off
 
-Webová verze tabulky `TSMSF_2026_DEN2_BODY_bile_jednotne_formatovani.xlsx`.
+Webová verze soutěže TSMSF 2026. Původní část zobrazuje výsledky základních skupin a průběžné pořadí. Nově je přidaná záložka **Pavouk (Play-off)** s formulářem pro vyplnění tipů.
 
-## Spuštění
+## Spuštění lokálně
 
 Stačí Python 3.10+; nejsou potřeba žádné externí balíčky.
 
@@ -10,36 +10,68 @@ Stačí Python 3.10+; nejsou potřeba žádné externí balíčky.
 python app.py
 ```
 
-Potom otevřete `http://localhost:8000`.
+Potom otevři:
 
-Port lze změnit proměnnou prostředí:
-
-```bash
-PORT=8080 python app.py
+```text
+http://localhost:8000
 ```
 
-## Automatická aktualizace
+Play-off formulář otevřeš přímo přes:
 
-- Při každém načtení stránky zavolá frontend `/api/scores`.
-- Server stáhne zápasy z veřejného JSON rozhraní, které používá výsledková stránka ESPN pro soutěž `fifa.world`.
-- Při živém zápasu se data na serveru obnovují nejvýše po 15 sekundách a prohlížeč je kontroluje každých 30 sekund. Mimo živé zápasy se stránka kontroluje každé dvě minuty.
-- Pokud zdroj není dostupný, použijí se dokončené výsledky uložené ve výchozím XLSX; stránka na to uživatele upozorní.
-
-## Co se počítá
-
-- průběžné živé skóre, stav/minutu zápasu a dočasný přepočet bodů,
-- body za přesný výsledek / rozdíl / správného vítěze,
-- koeficient odvážnosti podle pravidel v tabulce,
-- průběžné pořadí všech hráčů,
-- samostatná stříbrná a zlatá liga,
-- celkový počet branek a závěrečný bonus,
-- pořadí ve všech 12 skupinách.
-
-## Nasazení
-
-Projekt lze spustit na libovolném VPS. Obsahuje také `Dockerfile`.
-
-```bash
-docker build -t tsmsf2026 .
-docker run --rm -p 8000:8000 tsmsf2026
+```text
+http://localhost:8000/#playoff
 ```
+
+## Co umí play-off formulář
+
+- jméno + e-mail soutěžícího,
+- typ hráče: normální / stříbrný / zlatý,
+- 32 zápasů play-off,
+- automatické doplňování týmů do dalších kol podle tipů,
+- výběr vítěze pouze z možných týmů pro daný zápas,
+- bonusové otázky,
+- ukládání odeslaných tipů do JSON,
+- export všech tipů do XLSX,
+- automatické odeslání XLSX exportu na e-mail správce při správném SMTP nastavení.
+
+## Export XLSX
+
+```text
+/api/playoff-export
+```
+
+Při nastaveném `ADMIN_TOKEN`:
+
+```text
+/api/playoff-export?token=TVUJ_TOKEN
+```
+
+## Environment variables
+
+Viz `.env.example`.
+
+Nejdůležitější proměnné:
+
+```text
+DATA_DIR=/var/data
+OWNER_EMAIL=libormm@seznam.cz
+SMTP_HOST=...
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=...
+SMTP_PASS=...
+MAIL_FROM=...
+ADMIN_TOKEN=...
+```
+
+## Render
+
+Pro ostrý provoz doporučuji v Renderu přidat persistent disk a nastavit:
+
+```text
+DATA_DIR=/var/data
+```
+
+Jinak se data mohou při redeployi ztratit.
+
+Podrobný postup je v `PLAYOFF_DEPLOYMENT.md`.

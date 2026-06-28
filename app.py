@@ -16,6 +16,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+import playoff_backend
+
 BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
 DATA_PATH = STATIC_DIR / "data.json"
@@ -230,11 +232,65 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def send_file_response(self, path: Path, content_type: str, download_name: str | None = None) -> None:
+        content = path.read_bytes()
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(content)))
+        self.send_header("Cache-Control", "no-store")
+        if download_name:
+            self.send_header("Content-Disposition", f'attachment; filename="{download_name}"')
+        self.end_headers()
+        self.wfile.write(content)
+
+    def do_OPTIONS(self) -> None:
+        self.send_response(HTTPStatus.NO_CONTENT)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
+
+    def do_POST(self) -> None:
+        parsed = urllib.parse.urlparse(self.path)
+        if parsed.path != "/api/playoff-submit":
+            self.send_error(HTTPStatus.NOT_FOUND)
+            return
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            body = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
+        except Exception:
+            self.send_json({"ok": False, "errors": ["Neplatný JSON požadavek."]}, status=400)
+            return
+        payload, errors = playoff_backend.validate_submission(body if isinstance(body, dict) else {})
+        if errors:
+            self.send_json({"ok": False, "errors": errors}, status=400)
+            return
+        submissions = playoff_backend.read_submissions()
+        submissions.append(payload)
+        playoff_backend.write_submissions(submissions)
+        xlsx_path = playoff_backend.export_submissions()
+        try:
+            mail = playoff_backend.send_export_mail(xlsx_path, payload)
+        except Exception as exc:
+            mail = {"sent": False, "reason": str(exc)}
+        self.send_json({"ok": True, "id": payload["id"], "mail": mail})
+
     def do_GET(self) -> None:
         parsed = urllib.parse.urlparse(self.path)
         if parsed.path == "/api/scores":
             force = urllib.parse.parse_qs(parsed.query).get("force") == ["1"]
             self.send_json(get_scores_payload(force=force))
+            return
+        if parsed.path == "/api/playoff-export":
+            query = urllib.parse.parse_qs(parsed.query)
+            if playoff_backend.ADMIN_TOKEN and query.get("token", [""])[0] != playoff_backend.ADMIN_TOKEN:
+                self.send_json({"ok": False, "error": "Neplatný nebo chybějící ADMIN_TOKEN."}, status=403)
+                return
+            xlsx_path = playoff_backend.export_submissions()
+            self.send_file_response(xlsx_path, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "tipy-playoff-ms-2026.xlsx")
+            return
+        if parsed.path == "/api/playoff-submissions-count":
+            self.send_json({"ok": True, "count": len(playoff_backend.read_submissions())})
             return
         if parsed.path == "/api/health":
             self.send_json({"ok": True, "service": "tsmsf2026", "time": datetime.now(timezone.utc).isoformat()})
@@ -258,7 +314,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-Type", (content_type or "application/octet-stream") + ("; charset=utf-8" if content_type and content_type.startswith("text/") else ""))
         self.send_header("Content-Length", str(len(content)))
-        self.send_header("Cache-Control", "no-cache" if file_path.name in {"index.html", "app.js", "data.json"} else "public, max-age=86400")
+        self.send_header("Cache-Control", "no-cache" if file_path.name in {"index.html", "app.js", "data.json", "playoff.js", "playoff.css", "playoff-data.json"} else "public, max-age=86400")
         self.end_headers()
         self.wfile.write(content)
 
