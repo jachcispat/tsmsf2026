@@ -285,7 +285,8 @@
     const status = byId('playoff-results-status');
     if (status) {
       const updated = model.tableData?.generatedAt ? new Date(model.tableData.generatedAt).toLocaleString('cs-CZ', { timeZone: 'Europe/Prague' }) : '—';
-      status.textContent = `Aktualizováno ${updated}. E-maily se na veřejné stránce nezobrazují, jsou pouze v XLSX exportu.`;
+      const fallbackNote = model.tableData?.warning ? ` ${model.tableData.warning}` : '';
+      status.textContent = `Aktualizováno ${updated}. E-maily se na veřejné stránce nezobrazují, jsou pouze v XLSX exportu.${fallbackNote}`;
     }
   }
 
@@ -293,6 +294,28 @@
     const response = await fetch(url, { cache: 'no-store' });
     if (!response.ok) throw new Error(`${label}: HTTP ${response.status}`);
     return response.json();
+  }
+
+  async function loadTableData() {
+    try {
+      return await loadJson('/api/playoff-table', '/api/playoff-table');
+    } catch (apiError) {
+      const seeded = await loadJson('playoff-initial-submissions.json', 'playoff-initial-submissions.json');
+      if (!Array.isArray(seeded) || !seeded.length) throw apiError;
+      const submissions = seeded
+        .filter(item => item && typeof item === 'object')
+        .map(item => ({ ...item, source: item.source || 'xls-import', isSeed: true }));
+      return {
+        ok: true,
+        generatedAt: new Date().toISOString(),
+        totalSubmissions: submissions.length,
+        activeSubmissions: submissions.length,
+        seedSubmissions: submissions.length,
+        storedSubmissions: 0,
+        warning: `Backend API je teď nedostupné (${apiError.message}); zobrazuji alespoň tipy importované z XLSX.`,
+        submissions,
+      };
+    }
   }
 
   async function loadScoresBestEffort() {
@@ -313,7 +336,7 @@
     const [config, siteData, tableData] = await Promise.all([
       loadJson('playoff-data.json', 'playoff-data.json'),
       loadJson('data.json', 'data.json'),
-      loadJson('/api/playoff-table', '/api/playoff-table'),
+      loadTableData(),
     ]);
     if (!tableData.ok) throw new Error(tableData.error || 'Backend vrátil neplatnou play-off tabulku.');
     model.config = config;
