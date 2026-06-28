@@ -262,10 +262,13 @@
           setMessage(`<ul>${errors}</ul>`, 'error');
           return;
         }
+        const savedInfo = result.storage && result.storage.saved
+          ? 'Tip je uložený a propíše se do záložky Play-off tabulka.'
+          : 'Server odpověděl OK, ale potvrzení uložení nebylo vráceno.';
         const mailInfo = result.mail && result.mail.sent
           ? 'XLSX export byl poslán e-mailem správci.'
-          : `Tip je uložený. E-mail se neodeslal${result.mail && result.mail.reason ? `: ${html(result.mail.reason)}` : ' – doplň SMTP v nastavení Renderu'}.`;
-        setMessage(`Děkuji, tip byl uložen. ${mailInfo}`, 'success');
+          : `E-mail se neodeslal${result.mail && result.mail.reason ? `: ${html(result.mail.reason)}` : ' – doplň SMTP_PASS v nastavení Renderu'}.`;
+        setMessage(`Děkuji. ${savedInfo} ${mailInfo} <a href="#playoff-results">Otevřít play-off tabulku</a>.`, 'success');
         window.dispatchEvent(new CustomEvent('playoff-submitted'));
       } catch (error) {
         setMessage(`Odeslání se nepodařilo: ${html(error.message)}`, 'error');
