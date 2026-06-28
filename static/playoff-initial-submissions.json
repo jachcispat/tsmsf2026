@@ -173,6 +173,7 @@
       "penaltyShootouts": 5,
       "totalGoals": 90
     },
-    "source": "tipy-playoff-ms-2026.xlsx"
+    "source": "tipy-playoff-ms-2026.xlsx",
+    "isSeed": true
   }
 ]
