@@ -266,6 +266,7 @@
           ? 'XLSX export byl poslán e-mailem správci.'
           : `Tip je uložený. E-mail se neodeslal${result.mail && result.mail.reason ? `: ${html(result.mail.reason)}` : ' – doplň SMTP v nastavení Renderu'}.`;
         setMessage(`Děkuji, tip byl uložen. ${mailInfo}`, 'success');
+        window.dispatchEvent(new CustomEvent('playoff-submitted'));
       } catch (error) {
         setMessage(`Odeslání se nepodařilo: ${html(error.message)}`, 'error');
       } finally {

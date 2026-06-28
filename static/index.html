@@ -7,6 +7,7 @@
   <title>TSMSF 2026 - výsledky</title>
   <link rel="stylesheet" href="styles.css?v=20260628-playoff1">
   <link rel="stylesheet" href="playoff.css?v=20260628-playoff1">
+  <link rel="stylesheet" href="playoff-table.css?v=20260628-playoff2">
 </head>
 <body>
   <header class="site-header">
@@ -31,6 +32,7 @@
     <button class="tab" data-panel="matches">Zápasy a tipy</button>
     <button class="tab" data-panel="groups">Skupiny</button>
     <button class="tab" data-panel="playoff">🏆 Pavouk (Play-off)</button>
+    <button class="tab" data-panel="playoff-results">📊 Play-off tabulka</button>
     <button class="tab" data-panel="rules">Pravidla</button>
   </nav>
 
@@ -126,6 +128,48 @@
       </article>
     </section>
 
+
+    <section id="panel-playoff-results" class="panel">
+      <article class="card full-width playoff-results-card">
+        <div class="card-header playoff-results-header">
+          <div>
+            <h2>Play-off – odeslané tipy a průběžná tabulka</h2>
+            <p>Tabulka se tvoří z posledních odeslaných formulářů. Body za postupující se dopočítají podle skutečných výsledků play-off.</p>
+          </div>
+          <div class="playoff-results-actions">
+            <button id="playoff-results-refresh" type="button">Obnovit tabulku</button>
+            <a class="export-link" href="/api/playoff-export" target="_blank" rel="noopener">Export XLSX</a>
+          </div>
+        </div>
+
+        <div class="playoff-results-body">
+          <div class="playoff-results-kpis" id="playoff-results-kpis"></div>
+
+          <div class="playoff-results-grid">
+            <section class="playoff-results-leaderboard-wrap">
+              <h3>Pořadí podle play-off tipů</h3>
+              <div class="table-wrap compact"><table class="leaderboard" id="playoff-results-leaderboard"></table></div>
+            </section>
+            <section class="playoff-results-bonus-wrap">
+              <h3>Bonusové tipy</h3>
+              <div class="table-wrap compact"><table class="playoff-bonus-table" id="playoff-results-bonuses"></table></div>
+            </section>
+          </div>
+
+          <div class="playoff-results-toolbar">
+            <label class="search-label">Filtrovat tým nebo hráče
+              <input id="playoff-results-search" type="search" placeholder="např. Brazílie nebo Libor">
+            </label>
+            <p id="playoff-results-status" class="muted">Načítám play-off tabulku…</p>
+          </div>
+
+          <div class="sheet-wrap playoff-results-sheet-wrap">
+            <table class="sheet playoff-results-sheet" id="playoff-results-table"></table>
+          </div>
+        </div>
+      </article>
+    </section>
+
     <section id="panel-rules" class="panel">
       <div class="rules-layout">
         <article class="card rules-card">
@@ -153,5 +197,6 @@
 
   <script src="app.js?v=20260628-playoff1" defer></script>
   <script src="playoff.js?v=20260628-playoff1" defer></script>
+  <script src="playoff-table.js?v=20260628-playoff2" defer></script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+.playoff-results-body { padding: 18px 20px 22px; }
+.playoff-results-header { align-items: center; }
+.playoff-results-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.playoff-results-actions button { border: 0; border-radius: 10px; background: #111827; color: #fff; padding: 10px 14px; font-weight: 800; }
+.playoff-results-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 18px; }
+.playoff-results-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr); gap: 18px; margin-bottom: 18px; }
+.playoff-results-grid h3 { margin: 0 0 10px; }
+.playoff-results-leaderboard-wrap,
+.playoff-results-bonus-wrap { border: 1px solid #dbe3f0; border-radius: 12px; padding: 14px; background: #fff; }
+.playoff-bonus-table { width: 100%; font-size: .9rem; }
+.playoff-bonus-table th,
+.playoff-bonus-table td { padding: 8px 10px; border-bottom: 1px solid #e5eaf2; text-align: left; }
+.playoff-results-toolbar { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 10px; flex-wrap: wrap; }
+.playoff-results-sheet-wrap { max-height: calc(100vh - 240px); border: 1px solid #dbe3f0; border-radius: 12px; background: #fff; }
+.playoff-results-sheet .pr-col-round { left: 0; min-width: 105px; }
+.playoff-results-sheet .pr-col-date { left: 105px; min-width: 145px; }
+.playoff-results-sheet .pr-col-home { left: 250px; min-width: 180px; text-align: right; }
+.playoff-results-sheet .pr-col-result { left: 430px; min-width: 72px; background: var(--sheet-result); }
+.playoff-results-sheet .pr-col-away { left: 502px; min-width: 180px; text-align: left; }
+.playoff-results-sheet .pr-col-winner { left: 682px; min-width: 155px; background: #f8fafc; }
+.playoff-results-sheet .pr-col-points { left: 837px; min-width: 46px; background: #e5e7eb; }
+.playoff-results-sheet .sticky { position: sticky; background: #fff; z-index: 8; }
+.playoff-results-sheet thead .sticky { z-index: 31; }
+.playoff-results-sheet .corner { z-index: 32; }
+.playoff-results-sheet tbody tr:nth-child(even) .sticky:not(.pr-col-result):not(.pr-col-points):not(.pr-col-winner) { background: #f8fafc; }
+.playoff-tip-score { font-weight: 900; }
+.playoff-tip-winner { display: inline-block; max-width: 96px; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom; }
+.playoff-results-sheet .prediction.hit .points-cell { display: inline-block; min-width: 24px; border-radius: 4px; background: #16a34a; color: #fff; }
+.playoff-results-sheet .prediction.miss .points-cell { color: #64748b; }
+.playoff-results-sheet tfoot td { position: sticky; bottom: 0; background: #d9d9d9; font-weight: 900; z-index: 18; }
+.playoff-results-sheet tfoot .sticky { z-index: 25; background: #d9d9d9; }
+@media (max-width: 1000px) {
+  .playoff-results-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .playoff-results-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .playoff-results-body { padding: 14px; }
+  .playoff-results-kpis { grid-template-columns: 1fr 1fr; }
+}
