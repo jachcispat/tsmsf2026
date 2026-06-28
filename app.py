@@ -330,6 +330,12 @@ class Handler(BaseHTTPRequestHandler):
             cfg = playoff_backend.smtp_config()
             seeded = playoff_backend.read_initial_submissions()
             stored = playoff_backend.read_submissions()
+            public_error = ""
+            try:
+                public_count = len(playoff_backend.public_table_payload().get("submissions", []))
+            except Exception as exc:
+                public_count = 0
+                public_error = str(exc)
             self.send_json({
                 "ok": True,
                 "staticDir": str(STATIC_DIR),
@@ -339,13 +345,14 @@ class Handler(BaseHTTPRequestHandler):
                 "seedCount": len(seeded),
                 "seedNames": [item.get("name") for item in seeded],
                 "storedCount": len(stored),
-                "publicCount": len(playoff_backend.public_table_payload().get("submissions", [])),
-                "mail": {"owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]},
+                "publicCount": public_count,
+                "publicError": public_error,
+                "mail": {"owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "portRaw": cfg.get("portRaw", str(cfg["port"])), "portWarning": cfg.get("portWarning", ""), "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]},
             })
             return
         if parsed.path == "/api/playoff-mail-config":
             cfg = playoff_backend.smtp_config()
-            self.send_json({"ok": True, "owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]})
+            self.send_json({"ok": True, "owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "portRaw": cfg.get("portRaw", str(cfg["port"])), "portWarning": cfg.get("portWarning", ""), "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]})
             return
         if parsed.path == "/api/health":
             self.send_json({"ok": True, "service": "tsmsf2026", "time": datetime.now(timezone.utc).isoformat()})

@@ -447,7 +447,13 @@ def export_submissions() -> Path:
 
 def smtp_config() -> dict[str, Any]:
     host = (os.environ.get("SMTP_HOST") or DEFAULT_SMTP_HOST).strip()
-    port = int(os.environ.get("SMTP_PORT") or DEFAULT_SMTP_PORT)
+    port_raw = (os.environ.get("SMTP_PORT") or DEFAULT_SMTP_PORT).strip()
+    try:
+        port = int(port_raw)
+        port_warning = ""
+    except (TypeError, ValueError):
+        port = int(DEFAULT_SMTP_PORT)
+        port_warning = f"Neplatný SMTP_PORT={port_raw!r}; používám výchozí {DEFAULT_SMTP_PORT}."
     user = (os.environ.get("SMTP_USER") or OWNER_EMAIL).strip()
     password = os.environ.get("SMTP_PASS", "")
     secure_raw = (os.environ.get("SMTP_SECURE") or DEFAULT_SMTP_SECURE).strip().lower()
@@ -456,6 +462,8 @@ def smtp_config() -> dict[str, Any]:
     return {
         "host": host,
         "port": port,
+        "portRaw": port_raw,
+        "portWarning": port_warning,
         "user": user,
         "password": password,
         "secure": secure,
