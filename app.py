@@ -24,7 +24,7 @@ DATA_PATH = STATIC_DIR / "data.json"
 PORT = int(os.environ.get("PORT", "8000"))
 CACHE_TTL_SECONDS = int(os.environ.get("SCORES_CACHE_SECONDS", "60"))
 LIVE_CACHE_TTL_SECONDS = int(os.environ.get("LIVE_SCORES_CACHE_SECONDS", "15"))
-PLAYOFF_PATCH_VERSION = "playoff-submit-v3-safe"
+PLAYOFF_PATCH_VERSION = "playoff-submit-v4-data-dir-fallback"
 
 with DATA_PATH.open("r", encoding="utf-8") as fh:
     SITE_DATA = json.load(fh)
@@ -373,6 +373,8 @@ class Handler(BaseHTTPRequestHandler):
                 "seedCount": len(seeded),
                 "seedNames": [item.get("name") for item in seeded],
                 "storagePath": str(playoff_backend.SUBMISSIONS_PATH),
+                "requestedDataDir": playoff_backend.REQUESTED_DATA_DIR,
+                "dataDirWarning": playoff_backend.DATA_DIR_WARNING,
                 "initialSubmissionsPath": str(playoff_backend.INITIAL_SUBMISSIONS_PATH),
             })
             return
@@ -391,6 +393,8 @@ class Handler(BaseHTTPRequestHandler):
                 "version": PLAYOFF_PATCH_VERSION,
                 "staticDir": str(STATIC_DIR),
                 "dataDir": str(playoff_backend.DATA_DIR),
+                "requestedDataDir": playoff_backend.REQUESTED_DATA_DIR,
+                "dataDirWarning": playoff_backend.DATA_DIR_WARNING,
                 "initialSubmissionsPath": str(playoff_backend.INITIAL_SUBMISSIONS_PATH),
                 "initialSubmissionsFileExists": playoff_backend.INITIAL_SUBMISSIONS_PATH.exists(),
                 "seedCount": len(seeded),
@@ -412,6 +416,8 @@ class Handler(BaseHTTPRequestHandler):
                 "version": PLAYOFF_PATCH_VERSION,
                 "time": datetime.now(timezone.utc).isoformat(),
                 "dataDir": str(playoff_backend.DATA_DIR),
+                "requestedDataDir": playoff_backend.REQUESTED_DATA_DIR,
+                "dataDirWarning": playoff_backend.DATA_DIR_WARNING,
                 "submissionsPath": str(playoff_backend.SUBMISSIONS_PATH),
             })
             return

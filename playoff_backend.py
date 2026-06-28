@@ -15,7 +15,58 @@ BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
 PLAYOFF_DATA_PATH = STATIC_DIR / "playoff-data.json"
 INITIAL_SUBMISSIONS_PATH = STATIC_DIR / "playoff-initial-submissions.json"
-DATA_DIR = Path(os.environ.get("DATA_DIR", BASE_DIR / "data"))
+REQUESTED_DATA_DIR = os.environ.get("DATA_DIR", "").strip()
+DATA_DIR_WARNING = ""
+
+
+def _data_dir_candidates() -> list[Path]:
+    candidates: list[Path] = []
+    if REQUESTED_DATA_DIR:
+        candidates.append(Path(REQUESTED_DATA_DIR))
+    candidates.extend([
+        BASE_DIR / "data",
+        Path("/tmp") / "tsmsf2026-data",
+    ])
+
+    unique: list[Path] = []
+    seen: set[str] = set()
+    for candidate in candidates:
+        key = str(candidate.expanduser())
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(candidate)
+    return unique
+
+
+def _is_writable_dir(path: Path) -> tuple[bool, str]:
+    try:
+        path.mkdir(parents=True, exist_ok=True)
+        probe = path / f".write-test-{os.getpid()}-{time.time_ns()}"
+        probe.write_text("ok", encoding="utf-8")
+        probe.unlink(missing_ok=True)
+        return True, ""
+    except Exception as exc:
+        return False, str(exc)
+
+
+def _resolve_data_dir() -> tuple[Path, str]:
+    failures: list[str] = []
+    for candidate in _data_dir_candidates():
+        ok, reason = _is_writable_dir(candidate)
+        if ok:
+            if failures:
+                return candidate, "DATA_DIR fallback aktivní: " + " | ".join(failures)
+            return candidate, ""
+        failures.append(f"{candidate}: {reason}")
+
+    # Last-resort relative directory. If this also fails, the original exception
+    # will be visible from ensure_storage/write_submissions.
+    fallback = BASE_DIR / "data"
+    return fallback, "DATA_DIR není zapisovatelný: " + " | ".join(failures)
+
+
+DATA_DIR, DATA_DIR_WARNING = _resolve_data_dir()
 SUBMISSIONS_PATH = DATA_DIR / "playoff_submissions.json"
 EXPORT_PATH = DATA_DIR / "tipy-playoff-ms-2026.xlsx"
 DEFAULT_OWNER_EMAIL = "libormm@seznam.cz"
