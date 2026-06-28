@@ -5,6 +5,7 @@ import os
 import smtplib
 import time
 import zipfile
+import threading
 from datetime import datetime, timezone
 from email.message import EmailMessage
 from pathlib import Path
@@ -16,8 +17,14 @@ PLAYOFF_DATA_PATH = STATIC_DIR / "playoff-data.json"
 DATA_DIR = Path(os.environ.get("DATA_DIR", BASE_DIR / "data"))
 SUBMISSIONS_PATH = DATA_DIR / "playoff_submissions.json"
 EXPORT_PATH = DATA_DIR / "tipy-playoff-ms-2026.xlsx"
-OWNER_EMAIL = os.environ.get("OWNER_EMAIL", "libormm@seznam.cz")
+DEFAULT_OWNER_EMAIL = "libormm@seznam.cz"
+DEFAULT_SMTP_HOST = "smtp.seznam.cz"
+DEFAULT_SMTP_PORT = "465"
+DEFAULT_SMTP_SECURE = "true"
+
+OWNER_EMAIL = os.environ.get("OWNER_EMAIL", DEFAULT_OWNER_EMAIL).strip() or DEFAULT_OWNER_EMAIL
 ADMIN_TOKEN = os.environ.get("ADMIN_TOKEN", "")
+_STORAGE_LOCK = threading.Lock()
 
 with PLAYOFF_DATA_PATH.open("r", encoding="utf-8") as fh:
     PLAYOFF_DATA = json.load(fh)
@@ -98,7 +105,26 @@ def read_submissions() -> list[dict[str, Any]]:
 
 def write_submissions(items: list[dict[str, Any]]) -> None:
     ensure_storage()
-    SUBMISSIONS_PATH.write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp_path = SUBMISSIONS_PATH.with_suffix(".json.tmp")
+    tmp_path.write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp_path.replace(SUBMISSIONS_PATH)
+
+
+def append_submission(payload: dict[str, Any]) -> dict[str, Any]:
+    """Persist a submitted tip before any best-effort side effects such as e-mail.
+
+    E-mail delivery must never decide whether the player appears in the public
+    table. This function is locked and atomic enough for the small Render app.
+    """
+    with _STORAGE_LOCK:
+        submissions = read_submissions()
+        submissions.append(payload)
+        write_submissions(submissions)
+        return {
+            "saved": True,
+            "storedSubmissions": len(submissions),
+            "storagePath": str(SUBMISSIONS_PATH),
+        }
 
 
 def validate_submission(body: dict[str, Any]) -> tuple[dict[str, Any], list[str]]:
@@ -307,19 +333,50 @@ def export_submissions() -> Path:
     return EXPORT_PATH
 
 
+def smtp_config() -> dict[str, Any]:
+    host = (os.environ.get("SMTP_HOST") or DEFAULT_SMTP_HOST).strip()
+    port = int(os.environ.get("SMTP_PORT") or DEFAULT_SMTP_PORT)
+    user = (os.environ.get("SMTP_USER") or OWNER_EMAIL).strip()
+    password = os.environ.get("SMTP_PASS", "")
+    secure_raw = (os.environ.get("SMTP_SECURE") or DEFAULT_SMTP_SECURE).strip().lower()
+    secure = secure_raw in {"1", "true", "yes", "ssl", "tls"} or port == 465
+    sender = (os.environ.get("MAIL_FROM") or user or OWNER_EMAIL).strip()
+    return {
+        "host": host,
+        "port": port,
+        "user": user,
+        "password": password,
+        "secure": secure,
+        "sender": sender,
+        "owner": OWNER_EMAIL,
+    }
+
+
 def send_export_mail(xlsx_path: Path, latest_submission: dict[str, Any]) -> dict[str, Any]:
-    host = os.environ.get("SMTP_HOST")
-    port = int(os.environ.get("SMTP_PORT", "587"))
-    user = os.environ.get("SMTP_USER")
-    password = os.environ.get("SMTP_PASS")
-    secure = os.environ.get("SMTP_SECURE", "").lower() == "true" or port == 465
-    sender = os.environ.get("MAIL_FROM") or user
-    if not host or not user or not password or not sender or not OWNER_EMAIL:
-        return {"sent": False, "reason": "SMTP_HOST, SMTP_USER, SMTP_PASS, MAIL_FROM nebo OWNER_EMAIL není nastavený."}
+    cfg = smtp_config()
+    host = cfg["host"]
+    port = cfg["port"]
+    user = cfg["user"]
+    password = cfg["password"]
+    secure = cfg["secure"]
+    sender = cfg["sender"]
+    owner = cfg["owner"]
+    if not host or not user or not password or not sender or not owner:
+        missing = [name for name, value in [
+            ("SMTP_HOST", host),
+            ("SMTP_USER", user),
+            ("SMTP_PASS", password),
+            ("MAIL_FROM", sender),
+            ("OWNER_EMAIL", owner),
+        ] if not value]
+        return {
+            "sent": False,
+            "reason": "Tip je uložený a je v tabulce, ale e-mail se neodeslal. Chybí: " + ", ".join(missing),
+        }
 
     msg = EmailMessage()
     msg["From"] = sender
-    msg["To"] = OWNER_EMAIL
+    msg["To"] = owner
     msg["Subject"] = f"Nový play-off tip MS 2026: {latest_submission.get('name', '')}"
     msg.set_content(
         "Byl odeslán nový play-off tip do soutěže TSMSF 2026.\n\n"

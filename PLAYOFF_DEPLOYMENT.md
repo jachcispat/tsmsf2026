@@ -73,15 +73,15 @@ V Render dashboardu otevři službu webu a nastav Environment Variables:
 
 ```text
 OWNER_EMAIL=libormm@seznam.cz
-SMTP_HOST=...
-SMTP_PORT=587
-SMTP_SECURE=false
-SMTP_USER=...
-SMTP_PASS=...
-MAIL_FROM=...
+SMTP_HOST=smtp.seznam.cz
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=libormm@seznam.cz
+SMTP_PASS=heslo-nastavit-pouze-v-renderu
+MAIL_FROM=libormm@seznam.cz
 ```
 
-Pro Seznam obvykle použij SMTP server a heslo/aplikační heslo podle nastavení účtu. Pokud SMTP nenastavíš, formulář bude tipy ukládat a export XLSX půjde stáhnout ručně, ale e-mail se neodešle.
+Pro Seznam obvykle použij SMTP server a heslo/aplikační heslo podle nastavení účtu. Pokud SMTP_PASS nenastavíš, formulář bude tipy ukládat, play-off tabulka se aktualizuje a export XLSX půjde stáhnout ručně, ale e-mail se neodešle.
 
 ## Důležité pro ukládání dat na Renderu
 
@@ -129,3 +129,8 @@ Po nasazení zkontroluj:
 7. e-mail odejde pouze tehdy, když jsou správně nastavené SMTP proměnné,
 8. záložka `Play-off tabulka` zobrazuje poslední odeslaný formulář každého hráče,
 9. export XLSX stále obsahuje e-maily, veřejná tabulka je nezobrazuje.
+
+
+## E-mail přes Seznam.cz
+
+Podrobný postup je v `RENDER_EMAIL_SEZNAM.md`. Heslo nikdy nedávej do GitHubu, nastav ho jen na Renderu jako `SMTP_PASS`.

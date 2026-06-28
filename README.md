@@ -76,12 +76,12 @@ Nejdůležitější proměnné:
 ```text
 DATA_DIR=/var/data
 OWNER_EMAIL=libormm@seznam.cz
-SMTP_HOST=...
-SMTP_PORT=587
-SMTP_SECURE=false
-SMTP_USER=...
-SMTP_PASS=...
-MAIL_FROM=...
+SMTP_HOST=smtp.seznam.cz
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=libormm@seznam.cz
+SMTP_PASS=heslo-nastavit-pouze-v-renderu
+MAIL_FROM=libormm@seznam.cz
 ADMIN_TOKEN=...
 ```
 
@@ -96,3 +96,8 @@ DATA_DIR=/var/data
 Jinak se data mohou při redeployi ztratit.
 
 Podrobný postup je v `PLAYOFF_DEPLOYMENT.md`.
+
+
+## E-mail přes Seznam.cz
+
+Podrobný postup je v `RENDER_EMAIL_SEZNAM.md`. Heslo nikdy nedávej do GitHubu, nastav ho jen na Renderu jako `SMTP_PASS`.

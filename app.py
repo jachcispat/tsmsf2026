@@ -284,15 +284,13 @@ class Handler(BaseHTTPRequestHandler):
         if errors:
             self.send_json({"ok": False, "errors": errors}, status=400)
             return
-        submissions = playoff_backend.read_submissions()
-        submissions.append(payload)
-        playoff_backend.write_submissions(submissions)
+        storage = playoff_backend.append_submission(payload)
         xlsx_path = playoff_backend.export_submissions()
         try:
             mail = playoff_backend.send_export_mail(xlsx_path, payload)
         except Exception as exc:
             mail = {"sent": False, "reason": str(exc)}
-        self.send_json({"ok": True, "id": payload["id"], "mail": mail})
+        self.send_json({"ok": True, "id": payload["id"], "storage": storage, "mail": mail})
 
     def do_GET(self) -> None:
         parsed = urllib.parse.urlparse(self.path)
@@ -312,7 +310,12 @@ class Handler(BaseHTTPRequestHandler):
             self.send_file_response(xlsx_path, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "tipy-playoff-ms-2026.xlsx")
             return
         if parsed.path == "/api/playoff-submissions-count":
-            self.send_json({"ok": True, "count": len(playoff_backend.read_submissions())})
+            items = playoff_backend.read_submissions()
+            self.send_json({"ok": True, "count": len(items), "storagePath": str(playoff_backend.SUBMISSIONS_PATH)})
+            return
+        if parsed.path == "/api/playoff-mail-config":
+            cfg = playoff_backend.smtp_config()
+            self.send_json({"ok": True, "owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]})
             return
         if parsed.path == "/api/health":
             self.send_json({"ok": True, "service": "tsmsf2026", "time": datetime.now(timezone.utc).isoformat()})
