@@ -617,7 +617,15 @@ def smtp_config() -> dict[str, Any]:
     secure_raw = (os.environ.get("SMTP_SECURE") or DEFAULT_SMTP_SECURE).strip().lower()
     secure = secure_raw in {"1", "true", "yes", "ssl", "tls"} or port == 465
     sender = (os.environ.get("MAIL_FROM") or user or OWNER_EMAIL).strip()
+    # Na Render Free bývá SMTP často nedostupné nebo blokované. Proto je
+    # automatický e-mail defaultně vypnutý; tipy se ukládají do JSON/Google Sheets
+    # a XLSX jde stáhnout ručně přes export endpoint. Pro zapnutí nastav
+    # PLAYOFF_EMAIL_ENABLED=true v Environment Variables.
+    enabled_raw = (os.environ.get("PLAYOFF_EMAIL_ENABLED") or "false").strip().lower()
+    enabled = enabled_raw in {"1", "true", "yes", "on"}
     return {
+        "enabled": enabled,
+        "enabledRaw": enabled_raw,
         "host": host,
         "port": port,
         "portRaw": port_raw,
@@ -632,6 +640,12 @@ def smtp_config() -> dict[str, Any]:
 
 def send_export_mail(xlsx_path: Path, latest_submission: dict[str, Any]) -> dict[str, Any]:
     cfg = smtp_config()
+    if not cfg.get("enabled"):
+        return {
+            "sent": False,
+            "skipped": True,
+            "reason": "Automatický e-mail je vypnutý. Tip je uložený; XLSX export lze stáhnout ručně.",
+        }
     host = cfg["host"]
     port = cfg["port"]
     user = cfg["user"]
@@ -664,13 +678,22 @@ def send_export_mail(xlsx_path: Path, latest_submission: dict[str, Any]) -> dict
         "V příloze je aktuální XLSX export všech odeslaných play-off tipů."
     )
     msg.add_attachment(xlsx_path.read_bytes(), maintype="application", subtype="vnd.openxmlformats-officedocument.spreadsheetml.sheet", filename="tipy-playoff-ms-2026.xlsx")
-    if secure:
-        with smtplib.SMTP_SSL(host, port, timeout=20) as smtp:
-            smtp.login(user, password)
-            smtp.send_message(msg)
-    else:
-        with smtplib.SMTP(host, port, timeout=20) as smtp:
-            smtp.starttls()
-            smtp.login(user, password)
-            smtp.send_message(msg)
+    try:
+        if secure:
+            with smtplib.SMTP_SSL(host, port, timeout=20) as smtp:
+                smtp.login(user, password)
+                smtp.send_message(msg)
+        else:
+            with smtplib.SMTP(host, port, timeout=20) as smtp:
+                smtp.starttls()
+                smtp.login(user, password)
+                smtp.send_message(msg)
+    except OSError as exc:
+        if getattr(exc, "errno", None) == 101:
+            return {
+                "sent": False,
+                "skipped": True,
+                "reason": "SMTP síť není na hostingu dostupná. Tip je uložený; XLSX export lze stáhnout ručně.",
+            }
+        raise
     return {"sent": True}

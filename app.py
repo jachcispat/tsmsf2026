@@ -24,7 +24,7 @@ DATA_PATH = STATIC_DIR / "data.json"
 PORT = int(os.environ.get("PORT", "8000"))
 CACHE_TTL_SECONDS = int(os.environ.get("SCORES_CACHE_SECONDS", "60"))
 LIVE_CACHE_TTL_SECONDS = int(os.environ.get("LIVE_SCORES_CACHE_SECONDS", "15"))
-PLAYOFF_PATCH_VERSION = "playoff-submit-v5-google-sheets"
+PLAYOFF_PATCH_VERSION = "playoff-results-v6-bonus-email-silent"
 
 with DATA_PATH.open("r", encoding="utf-8") as fh:
     SITE_DATA = json.load(fh)
@@ -408,12 +408,12 @@ class Handler(BaseHTTPRequestHandler):
                 "googleSheets": playoff_backend.google_sheets_status(),
                 "publicCount": public_count,
                 "publicError": public_error,
-                "mail": {"owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "portRaw": cfg.get("portRaw", str(cfg["port"])), "portWarning": cfg.get("portWarning", ""), "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]},
+                "mail": {"enabled": bool(cfg.get("enabled")), "owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "portRaw": cfg.get("portRaw", str(cfg["port"])), "portWarning": cfg.get("portWarning", ""), "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]},
             })
             return
         if parsed.path == "/api/playoff-mail-config":
             cfg = playoff_backend.smtp_config()
-            self.send_json({"ok": True, "owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "portRaw": cfg.get("portRaw", str(cfg["port"])), "portWarning": cfg.get("portWarning", ""), "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]})
+            self.send_json({"ok": True, "enabled": bool(cfg.get("enabled")), "owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "portRaw": cfg.get("portRaw", str(cfg["port"])), "portWarning": cfg.get("portWarning", ""), "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]})
             return
         if parsed.path == "/api/health":
             self.send_json({
@@ -426,6 +426,7 @@ class Handler(BaseHTTPRequestHandler):
                 "dataDirWarning": playoff_backend.DATA_DIR_WARNING,
                 "submissionsPath": str(playoff_backend.SUBMISSIONS_PATH),
                 "googleSheets": playoff_backend.google_sheets_status(),
+                "mail": {"enabled": bool(playoff_backend.smtp_config().get("enabled"))},
             })
             return
 
