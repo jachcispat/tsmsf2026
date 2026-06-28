@@ -276,9 +276,9 @@
           ? 'Tip je uložený a propíše se do záložky Play-off tabulka.'
           : 'Server odpověděl OK, ale potvrzení uložení nebylo vráceno.';
         const mailInfo = result.mail && result.mail.sent
-          ? 'XLSX export byl poslán e-mailem správci.'
-          : `E-mail se neodeslal${result.mail && result.mail.reason ? `: ${html(result.mail.reason)}` : ' – doplň SMTP_PASS v nastavení Renderu'}.`;
-        setMessage(`Děkuji. ${savedInfo} ${mailInfo} <a href="/playoff-results">Otevřít play-off tabulku</a>.`, 'success');
+          ? ' XLSX export byl poslán e-mailem správci.'
+          : '';
+        setMessage(`Děkuji. ${savedInfo}${mailInfo} <a href="/playoff-results">Otevřít play-off tabulku</a>.`, 'success');
         window.dispatchEvent(new CustomEvent('playoff-submitted'));
       } catch (error) {
         setMessage(`Odeslání se nepodařilo: ${html(error.message)}`, 'error');

@@ -33,7 +33,9 @@
 
   function renderTeam(teamName, className = '') {
     const name = clean(teamName);
-    return `<div class="team ${html(className)}">${flagImg(name)}<span>${html(name || 'bude doplněno')}</span></div>`;
+    const isPlaceholder = /^(vítěz|poražený) utkání/i.test(name);
+    const classes = [className, isPlaceholder ? 'placeholder-team' : ''].filter(Boolean).join(' ');
+    return `<div class="team ${html(classes)}">${isPlaceholder ? '' : flagImg(name)}<span>${html(name || 'bude doplněno')}</span></div>`;
   }
 
   function matchById(id) {
@@ -75,6 +77,45 @@
     return 0;
   }
 
+  const BONUS_ROWS = [
+    { id: 'totalGoals', label: 'Počet gólů', points: 8 },
+    { id: 'penaltyShootouts', label: 'Počet penaltových rozstřelů', points: 2 },
+    { id: 'extraTimes', label: 'Počet prodloužení', points: 2 },
+  ];
+
+  function formatMatchPoints(points, hasActual) {
+    if (!hasActual) return 'čeká';
+    return `${number(points)} b`;
+  }
+
+  function sourceLabel(source, fallback) {
+    const fallbackText = clean(fallback);
+    if (!source || !source.matchId) return fallbackText || 'bude doplněno';
+    const type = source.type === 'loser' ? 'Poražený' : 'Vítěz';
+    return `${type} utkání ${source.matchId}`;
+  }
+
+  function textLooksLikePenalty(text) {
+    return /penalt|penalty|pen\.?|pens|pk/i.test(clean(text));
+  }
+
+  function textLooksLikeExtraTime(text) {
+    return /prodlou|extra time|after extra|\bet\b|aet/i.test(clean(text));
+  }
+
+  function eventHasPenaltyShootout(event) {
+    if (!event) return false;
+    if (event.penaltyShootout || event.shootout || event.decidedByPenalties) return true;
+    if (Number.isFinite(Number(event.homePenaltyScore)) || Number.isFinite(Number(event.awayPenaltyScore))) return true;
+    return textLooksLikePenalty(`${event.status || ''} ${event.displayClock || ''} ${event.state || ''}`);
+  }
+
+  function eventHasExtraTime(event) {
+    if (!event) return false;
+    if (event.extraTime || event.afterExtraTime || event.decidedAfterExtraTime) return true;
+    return textLooksLikeExtraTime(`${event.status || ''} ${event.displayClock || ''} ${event.state || ''}`);
+  }
+
   function sourceEntrants(source, fallback, stack) {
     const fallbackText = clean(fallback);
     if (!source) return fallbackText ? [fallbackText] : [];
@@ -102,6 +143,27 @@
     ].filter(Boolean);
     stack.delete(match.id);
     return [...new Set(teams.length ? teams : concreteOptions(match))];
+  }
+
+  function displayEntrant(source, fallback, stack = new Set()) {
+    if (!source || !source.matchId) return clean(fallback) || 'bude doplněno';
+    const sourceMatch = matchById(source.matchId);
+    if (!sourceMatch || stack.has(source.matchId)) return sourceLabel(source, fallback);
+    const sourceActual = actualForMatch(sourceMatch, new Set(stack));
+    const sourceTeams = sourceActual.teams.length ? sourceActual.teams : concreteOptions(sourceMatch);
+    if (source.type === 'winner' && sourceActual.winner) return sourceActual.winner;
+    if (source.type === 'loser' && sourceActual.winner) {
+      const loser = sourceTeams.find(team => team !== sourceActual.winner);
+      if (loser) return loser;
+    }
+    return sourceLabel(source, fallback);
+  }
+
+  function displayTeamsForMatch(match) {
+    return [
+      displayEntrant(match.homeSource, match.home),
+      displayEntrant(match.awaySource, match.away),
+    ];
   }
 
   function actualForMatch(match, stack = new Set()) {
@@ -138,17 +200,49 @@
     return `${pred.homeGoals}:${pred.awayGoals}`;
   }
 
+  function playoffActuals() {
+    return model.config.matches.map(match => ({ match, actual: actualForMatch(match) }));
+  }
+
+  function bonusActualValues() {
+    const actuals = playoffActuals();
+    const completed = actuals.filter(item => item.actual.result?.completed && Number.isInteger(item.actual.result.homeScore) && Number.isInteger(item.actual.result.awayScore));
+    const values = {
+      totalGoals: completed.reduce((sum, item) => sum + item.actual.result.homeScore + item.actual.result.awayScore, 0),
+      penaltyShootouts: completed.filter(item => eventHasPenaltyShootout(item.actual.result)).length,
+      extraTimes: completed.filter(item => eventHasExtraTime(item.actual.result)).length,
+    };
+    return {
+      values,
+      completed: completed.length,
+      totalMatches: actuals.length,
+      final: completed.length === actuals.length && actuals.length > 0,
+    };
+  }
+
+  function calculateBonusPoints(submission) {
+    const actual = bonusActualValues();
+    const points = {};
+    for (const bonus of BONUS_ROWS) {
+      const tip = Number(submission.bonuses?.[bonus.id]);
+      points[bonus.id] = actual.final && Number.isFinite(tip) && tip === actual.values[bonus.id] ? bonus.points : 0;
+    }
+    return points;
+  }
+
   function calculateSubmission(submission) {
     const matchPoints = {};
-    let total = 0;
+    let matchTotal = 0;
     for (const match of model.config.matches) {
       const actual = actualForMatch(match);
       const pred = predictionOf(submission, match.id);
       const points = actual.winner && clean(pred.winner) === actual.winner ? roundPoints(match.round) : 0;
       matchPoints[match.id] = points;
-      total += points;
+      matchTotal += points;
     }
-    return { ...submission, matchPoints, total };
+    const bonusPoints = calculateBonusPoints(submission);
+    const bonusTotal = Object.values(bonusPoints).reduce((sum, value) => sum + number(value), 0);
+    return { ...submission, matchPoints, bonusPoints, matchTotal, bonusTotal, total: matchTotal + bonusTotal };
   }
 
   function calculatedSubmissions() {
@@ -208,6 +302,35 @@
     `).join('')}</tbody>`;
   }
 
+  function renderBonusRows(rows) {
+    const actual = bonusActualValues();
+    return BONUS_ROWS.map(bonus => {
+      const value = actual.values[bonus.id];
+      const actualText = actual.final ? String(value) : `${value} / zatím ${actual.completed}/${actual.totalMatches} zápasů`;
+      const participantCells = rows.map(row => {
+        const tip = row.bonuses?.[bonus.id];
+        const pts = row.bonusPoints?.[bonus.id] || 0;
+        const cellClass = actual.final ? (pts ? 'hit' : 'miss') : '';
+        return `<td class="prediction bonus-prediction ${html(betClass(row.betType))} ${cellClass}" data-player="${html(clean(rowName(row)).toLowerCase())}">
+          <span class="playoff-tip-score">${html(tip ?? '—')}</span><br>
+          <span class="playoff-tip-winner">tip</span><br>
+          <span class="points-cell">${actual.final ? `${pts} b` : 'čeká'}</span>
+        </td>`;
+      }).join('');
+      const search = `bonus ${bonus.label} ${actualText}`.toLowerCase();
+      return `<tr class="bonus-row" data-search="${html(search)}">
+        <td class="sticky pr-col-round">Bonus</td>
+        <td class="sticky pr-col-date"></td>
+        <td class="sticky pr-col-home">${html(bonus.label)}</td>
+        <td class="sticky pr-col-result">${html(actualText)}</td>
+        <td class="sticky pr-col-away"></td>
+        <td class="sticky pr-col-winner">${actual.final ? 'vyhodnoceno' : 'čeká na konec'}</td>
+        <td class="sticky pr-col-points">${bonus.points}</td>
+        ${participantCells}
+      </tr>`;
+    }).join('');
+  }
+
   function renderTable(rows) {
     const table = byId('playoff-results-table');
     if (!rows.length) {
@@ -219,11 +342,11 @@
       <div class="participant-meta"><span class="badge ${html(betClass(row.betType))}">${html(betLabel(row.betType)).replace(' HRÁČ', '')}</span></div>
     </th>`).join('');
 
-    const body = model.config.matches.map(match => {
+    const matchRows = model.config.matches.map(match => {
       const actual = actualForMatch(match);
-      const teams = actual.teams;
-      const home = teams[0] || match.home;
-      const away = teams[1] || match.away;
+      const displayTeams = displayTeamsForMatch(match);
+      const home = displayTeams[0];
+      const away = displayTeams[1];
       const points = roundPoints(match.round);
       const search = `${match.round} ${home} ${away} ${actual.winner}`.toLowerCase();
       const participantCells = rows.map(row => {
@@ -234,7 +357,7 @@
         return `<td class="prediction ${html(betClass(row.betType))} ${cellClass}" data-player="${html(clean(rowName(row)).toLowerCase())}">
           <span class="playoff-tip-score">${html(scoreText(pred))}</span><br>
           <span class="playoff-tip-winner">${html(pred.winner || '—')}</span><br>
-          <span class="points-cell">${hasActual ? pts : ''}</span>
+          <span class="points-cell">${html(formatMatchPoints(pts, hasActual))}</span>
         </td>`;
       }).join('');
       return `<tr data-search="${html(search)}">
@@ -249,6 +372,7 @@
       </tr>`;
     }).join('');
 
+    const body = matchRows + renderBonusRows(rows);
     const totals = rows.map(row => `<td><strong>${row.total}</strong></td>`).join('');
     table.innerHTML = `<thead><tr>
       <th class="sticky pr-col-round corner">Kolo</th>
@@ -260,7 +384,7 @@
       <th class="sticky pr-col-points corner">B</th>
       ${participantHead}
     </tr></thead><tbody>${body}</tbody><tfoot><tr>
-      <td class="sticky pr-col-round" colspan="6">CELKEM ZA PLAY-OFF</td><td class="sticky pr-col-points"></td>${totals}
+      <td class="sticky pr-col-round" colspan="6">CELKEM ZA PLAY-OFF + BONUSY</td><td class="sticky pr-col-points"></td>${totals}
     </tr></tfoot>`;
     applySearch();
   }

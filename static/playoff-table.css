@@ -37,3 +37,7 @@
   .playoff-results-body { padding: 14px; }
   .playoff-results-kpis { grid-template-columns: 1fr 1fr; }
 }
+.playoff-results-sheet .placeholder-team span { font-style: italic; color: #475569; font-weight: 800; }
+.playoff-results-sheet .bonus-row td { background: #fff7ed; }
+.playoff-results-sheet .bonus-row .sticky { background: #ffedd5 !important; font-weight: 800; }
+.playoff-results-sheet .bonus-prediction .playoff-tip-winner { color: #64748b; font-size: .78rem; }
