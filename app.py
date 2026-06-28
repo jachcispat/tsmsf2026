@@ -24,6 +24,7 @@ DATA_PATH = STATIC_DIR / "data.json"
 PORT = int(os.environ.get("PORT", "8000"))
 CACHE_TTL_SECONDS = int(os.environ.get("SCORES_CACHE_SECONDS", "60"))
 LIVE_CACHE_TTL_SECONDS = int(os.environ.get("LIVE_SCORES_CACHE_SECONDS", "15"))
+PLAYOFF_PATCH_VERSION = "playoff-submit-v3-safe"
 
 with DATA_PATH.open("r", encoding="utf-8") as fh:
     SITE_DATA = json.load(fh)
@@ -274,26 +275,75 @@ class Handler(BaseHTTPRequestHandler):
         if parsed.path != "/api/playoff-submit":
             self.send_error(HTTPStatus.NOT_FOUND)
             return
+
         try:
             length = int(self.headers.get("Content-Length", "0"))
             body = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
         except Exception:
             self.send_json({"ok": False, "errors": ["Neplatný JSON požadavek."]}, status=400)
             return
-        payload, errors = playoff_backend.validate_submission(body if isinstance(body, dict) else {})
-        if errors:
-            self.send_json({"ok": False, "errors": errors}, status=400)
-            return
-        storage = playoff_backend.append_submission(payload)
-        xlsx_path = playoff_backend.export_submissions()
+
         try:
-            mail = playoff_backend.send_export_mail(xlsx_path, payload)
+            payload, errors = playoff_backend.validate_submission(body if isinstance(body, dict) else {})
         except Exception as exc:
-            mail = {"sent": False, "reason": str(exc)}
-        self.send_json({"ok": True, "id": payload["id"], "storage": storage, "mail": mail})
+            self.send_json({
+                "ok": False,
+                "errors": [f"Backend spadl při validaci play-off tipu: {exc}"],
+                "version": PLAYOFF_PATCH_VERSION,
+            }, status=500)
+            return
+
+        if errors:
+            self.send_json({"ok": False, "errors": errors, "version": PLAYOFF_PATCH_VERSION}, status=400)
+            return
+
+        try:
+            storage = playoff_backend.append_submission(payload)
+        except Exception as exc:
+            self.send_json({
+                "ok": False,
+                "errors": [f"Validace proběhla, ale tip se nepodařilo uložit na serveru: {exc}"],
+                "version": PLAYOFF_PATCH_VERSION,
+            }, status=500)
+            return
+
+        export_info: dict[str, Any] = {"created": False}
+        xlsx_path = None
+        try:
+            xlsx_path = playoff_backend.export_submissions()
+            export_info = {"created": True, "path": str(xlsx_path)}
+        except Exception as exc:
+            # Export nesmí zrušit už uložený tip. Hráč se má zobrazit v tabulce i bez e-mailu/XLSX.
+            export_info = {"created": False, "reason": str(exc)}
+
+        if xlsx_path is not None:
+            try:
+                mail = playoff_backend.send_export_mail(xlsx_path, payload)
+            except Exception as exc:
+                mail = {"sent": False, "reason": str(exc)}
+        else:
+            mail = {"sent": False, "reason": "XLSX export se nepodařilo vytvořit; tip je ale uložený."}
+
+        self.send_json({
+            "ok": True,
+            "id": payload["id"],
+            "storage": storage,
+            "export": export_info,
+            "mail": mail,
+            "version": PLAYOFF_PATCH_VERSION,
+        })
 
     def do_GET(self) -> None:
         parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == "/api/playoff-submit":
+            self.send_json({
+                "ok": True,
+                "endpoint": "/api/playoff-submit",
+                "method": "POST",
+                "message": "Endpoint existuje. Formulář sem musí posílat POST s JSON payloadem.",
+                "version": PLAYOFF_PATCH_VERSION,
+            })
+            return
         if parsed.path == "/api/scores":
             force = urllib.parse.parse_qs(parsed.query).get("force") == ["1"]
             self.send_json(get_scores_payload(force=force))
@@ -338,6 +388,7 @@ class Handler(BaseHTTPRequestHandler):
                 public_error = str(exc)
             self.send_json({
                 "ok": True,
+                "version": PLAYOFF_PATCH_VERSION,
                 "staticDir": str(STATIC_DIR),
                 "dataDir": str(playoff_backend.DATA_DIR),
                 "initialSubmissionsPath": str(playoff_backend.INITIAL_SUBMISSIONS_PATH),
@@ -355,7 +406,14 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json({"ok": True, "owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "portRaw": cfg.get("portRaw", str(cfg["port"])), "portWarning": cfg.get("portWarning", ""), "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]})
             return
         if parsed.path == "/api/health":
-            self.send_json({"ok": True, "service": "tsmsf2026", "time": datetime.now(timezone.utc).isoformat()})
+            self.send_json({
+                "ok": True,
+                "service": "tsmsf2026",
+                "version": PLAYOFF_PATCH_VERSION,
+                "time": datetime.now(timezone.utc).isoformat(),
+                "dataDir": str(playoff_backend.DATA_DIR),
+                "submissionsPath": str(playoff_backend.SUBMISSIONS_PATH),
+            })
             return
 
         # Clean SPA-like routes such as /playoff and /playoff-results should
