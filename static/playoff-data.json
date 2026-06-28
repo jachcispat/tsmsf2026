@@ -4,19 +4,19 @@
     {
       "id": "normal",
       "label": "NORMÁLNÍ HRÁČ",
-      "fee": 50,
+      "fee": 100,
       "className": "normal"
     },
     {
       "id": "silver",
       "label": "STŘÍBRNÝ HRÁČ",
-      "fee": 100,
+      "fee": 200,
       "className": "silver"
     },
     {
       "id": "gold",
       "label": "ZLATÝ HRÁČ",
-      "fee": 200,
+      "fee": 500,
       "className": "gold"
     }
   ],
@@ -1126,7 +1126,7 @@
   "rules": [
     "Pravidla:",
     "Každý může tipovat pouze jednou.",
-    "Registrační poplatek činí 50,- NEBO 100,- NEBO 200,- KČ - VIZ DÁLE!!!",
+    "Registrační poplatek činí 100,- NEBO 200,- NEBO 500,- KČ - VIZ DÁLE!!!",
     "Rozdělení peněz:",
     "40% 1. místo",
     "25% 2. místo",
@@ -1153,18 +1153,18 @@
     "REGISTRAČNÍ POPLATKY - SKUPINY SÁZEJÍCÍCH",
     "Pokud si chceš jen užít srandu a trochu si zpříjemnit MS ve fotbale nebo pokud nerad/a hazerduješ dál nečti",
     "V opačném případě máme novinku právě pro Tebe:",
-    "Můžeš si vybrat jestli vsadíš jako normální hráč - 50,-, stříbrný hráč - 100,- nebo zlatý hráč - 200,-",
+    "Můžeš si vybrat jestli vsadíš jako normální hráč - 100,-, stříbrný hráč - 200,- nebo zlatý hráč - 500,-",
     "Pokud vsadíš 50,- jako normální hráč, platí pro tebe stejná pravidla jako pro všechny ostatní, tedy normální výhry viz výše.",
-    "Pokud ale vsadíš 100,-, resp. 200,- staneš se členem STŘÍBRNÉ, resp. ZLATÉ LIGY!",
+    "Pokud ale vsadíš 200,-, resp. 500,- staneš se členem STŘÍBRNÉ, resp. ZLATÉ LIGY!",
     "Každý z členů STŘÍBRNÉ / ZLATÉ LIGY vlastně hraje další tipovací soutěž s příslošníky dané ligy.",
     "Pro vyplácení platí stejná pravidla, ale vyplácí se a hodnotí se pouze mezi příslušníky jednotlivé ligy.",
     "Příklad:",
     "Cigi, Emilka, Fakýr, Markéta a Pája vsadí 50,- ",
-    "Olhot, Duškovi, Miky a Dan vsadí 100,- ",
-    "Ciproch, Holub, Jiří a Libor vsadí 200,-",
-    "V banku TS je 12*50,- = 600,- a o ten hrají všichni.",
-    "V banku STŘÍBRNÉ LIGY TS je 8*50,- (od Olhota, Dušků, Mikyho, Dana, Ciprocha, Holuba, Jiřího a Libora) = 400,- a o ten hraje jen osm jmenovaných",
-    "V banku ZLATÉ LIGY TS je 4*100,- (od Ciprocha, Holuba, Jiřího a Libora) = 400,- a o ten hrajou jen čtyři jmenovaní"
+    "Olhot, Duškovi, Miky a Dan vsadí 500,- ",
+    "Ciproch, Holub, Jiří a Libor vsadí 500,-",
+    "V banku TS je 12*50,-  a o ten hrají všichni.",
+    "V banku STŘÍBRNÉ LIGY TS je 8*100,- (od Olhota, Dušků, Mikyho, Dana, Ciprocha, Holuba, Jiřího a Libora)  a o ten hraje jen osm jmenovaných",
+    "V banku ZLATÉ LIGY TS je 4*300,- (od Ciprocha, Holuba, Jiřího a Libora)  a o ten hrajou jen čtyři jmenovaní"
   ],
   "bonusFields": [
     {

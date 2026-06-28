@@ -394,9 +394,13 @@ function setupUi() {
   $$('.tab').forEach(button => button.addEventListener('click', () => {
     $$('.tab').forEach(b => b.classList.toggle('is-active', b === button));
     $$('.panel').forEach(p => p.classList.toggle('is-active', p.id === `panel-${button.dataset.panel}`));
-    if (button.dataset.panel) history.replaceState(null, '', `#${button.dataset.panel}`);
+    if (button.dataset.panel) {
+      const targetPath = button.dataset.panel === 'overview' ? '/' : `/${button.dataset.panel}`;
+      history.replaceState(null, '', targetPath);
+    }
   }));
-  const initialPanel = (location.hash || '').replace('#', '');
+  const pathPanel = (location.pathname || '').replace(/^\//, '').replace(/\/$/, '');
+  const initialPanel = (location.hash || '').replace('#', '') || pathPanel;
   if (initialPanel) {
     const initialTab = $(`.tab[data-panel="${CSS.escape(initialPanel)}"]`);
     if (initialTab) initialTab.click();

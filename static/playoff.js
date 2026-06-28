@@ -256,7 +256,12 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(collectPayload()),
         });
-        const result = await response.json();
+        let result = {};
+        try {
+          result = await response.json();
+        } catch (_) {
+          result = { ok: false, errors: [`Server vrátil HTTP ${response.status}. Pravděpodobně není nahraný nový app.py nebo endpoint /api/playoff-submit.`] };
+        }
         if (!response.ok || !result.ok) {
           const errors = (result.errors || ['Odeslání se nepodařilo.']).map(err => `<li>${html(err)}</li>`).join('');
           setMessage(`<ul>${errors}</ul>`, 'error');
@@ -268,7 +273,7 @@
         const mailInfo = result.mail && result.mail.sent
           ? 'XLSX export byl poslán e-mailem správci.'
           : `E-mail se neodeslal${result.mail && result.mail.reason ? `: ${html(result.mail.reason)}` : ' – doplň SMTP_PASS v nastavení Renderu'}.`;
-        setMessage(`Děkuji. ${savedInfo} ${mailInfo} <a href="#playoff-results">Otevřít play-off tabulku</a>.`, 'success');
+        setMessage(`Děkuji. ${savedInfo} ${mailInfo} <a href="/playoff-results">Otevřít play-off tabulku</a>.`, 'success');
         window.dispatchEvent(new CustomEvent('playoff-submitted'));
       } catch (error) {
         setMessage(`Odeslání se nepodařilo: ${html(error.message)}`, 'error');

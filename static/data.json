@@ -5626,7 +5626,7 @@
   "rules": [
     "Pravidla:",
     "Každý může tipovat pouze jednou.",
-    "Registrační poplatek činí 50,- NEBO 100,- NEBO 200,- KČ -  VIZ DÁLE!!!",
+    "Registrační poplatek činí 100,- NEBO 200,- NEBO 500,- KČ -  VIZ DÁLE!!!",
     "Rozdělení peněz:",
     "25% 2. místo",
     "15% 3. místo",
@@ -5645,8 +5645,8 @@
     "* Součet všech nastřílených branek v základních hracích dobách.",
     "** Pokud nikdo neuhodne přesný počet branek, získají 1/6 PRŮMĚRU NA HRÁČE ZÍSKANÝCH bodů ti, co budou svým tipem nejblíže.",
     "V opačném případě máme novinku právě pro Tebe:",
-    "Můžeš si vybrat jestli vsadíš jako normální hráč - 50,-, stříbrný hráč - 100,- nebo zlatý hráč - 200,-",
-    "Pokud ale vsadíš 100,-, resp. 200,- staneš se členem STŘÍBRNÉ, resp. ZLATÉ LIGY!",
+    "Můžeš si vybrat jestli vsadíš jako normální hráč - 100,-, stříbrný hráč - 200,- nebo zlatý hráč - 500,-",
+    "Pokud ale vsadíš 200,-, resp. 500,- staneš se členem STŘÍBRNÉ, resp. ZLATÉ LIGY!",
     "Každý z členů STŘÍBRNÉ / ZLATÉ LIGY vlastně hraje další tipovací soutěž s příslošníky dané ligy."
   ],
   "scoring": {

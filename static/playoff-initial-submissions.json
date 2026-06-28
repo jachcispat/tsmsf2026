@@ -1,0 +1,178 @@
+[
+  {
+    "id": "seed-xlsx-libormm-seznam-cz-20260628165138",
+    "submittedAt": "2026-06-28T16:51:38.255Z",
+    "name": "Libor",
+    "email": "libormm@seznam.cz",
+    "betType": "gold",
+    "consent": true,
+    "predictions": {
+      "A": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Kanada"
+      },
+      "B": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Německo"
+      },
+      "C": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Maroko"
+      },
+      "D": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Japonsko"
+      },
+      "E": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Francie"
+      },
+      "F": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Norsko"
+      },
+      "G": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Mexiko"
+      },
+      "H": {
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "winner": "Anglie"
+      },
+      "I": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Spojené státy"
+      },
+      "J": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Senegal"
+      },
+      "K": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Chorvatsko"
+      },
+      "L": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Španělsko"
+      },
+      "M": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Švýcarsko"
+      },
+      "N": {
+        "homeGoals": 3,
+        "awayGoals": 0,
+        "winner": "Argentina"
+      },
+      "O": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Ghana"
+      },
+      "P": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Egypt"
+      },
+      "Q": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Francie"
+      },
+      "R": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Maroko"
+      },
+      "S": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Japonsko"
+      },
+      "T": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Mexiko"
+      },
+      "U": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Španělsko"
+      },
+      "V": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Spojené státy"
+      },
+      "W": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Argentina"
+      },
+      "X": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Ghana"
+      },
+      "Y": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Francie"
+      },
+      "Z": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Spojené státy"
+      },
+      "AA": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Mexiko"
+      },
+      "AB": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Argentina"
+      },
+      "AC": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Francie"
+      },
+      "AD": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Mexiko"
+      },
+      "BR": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Spojené státy"
+      },
+      "FIN": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Mexiko"
+      }
+    },
+    "bonuses": {
+      "extraTimes": 9,
+      "penaltyShootouts": 5,
+      "totalGoals": 90
+    },
+    "source": "tipy-playoff-ms-2026.xlsx"
+  }
+]
