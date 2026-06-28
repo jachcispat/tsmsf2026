@@ -101,3 +101,18 @@ Podrobný postup je v `PLAYOFF_DEPLOYMENT.md`.
 ## E-mail přes Seznam.cz
 
 Podrobný postup je v `RENDER_EMAIL_SEZNAM.md`. Heslo nikdy nedávej do GitHubu, nastav ho jen na Renderu jako `SMTP_PASS`.
+
+
+## Oprava 502 / kontrola importu XLS
+
+Po nahrání na Render zkontroluj tyto adresy:
+
+```text
+/api/health
+/api/playoff-debug
+/api/playoff-submissions-count
+/api/playoff-table
+```
+
+`/api/playoff-debug` musí ukázat `seedCount: 1` a `seedNames: ["Libor"]`.
+Import z XLS je kromě souboru `static/playoff-initial-submissions.json` také vestavěný v backendu, takže se zobrazí i po neúplném uploadu.

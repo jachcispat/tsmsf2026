@@ -299,7 +299,10 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(get_scores_payload(force=force))
             return
         if parsed.path == "/api/playoff-table":
-            self.send_json(playoff_backend.public_table_payload())
+            try:
+                self.send_json(playoff_backend.public_table_payload())
+            except Exception as exc:
+                self.send_json({"ok": False, "error": f"Play-off tabulku se nepodařilo sestavit: {exc}"}, status=500)
             return
         if parsed.path == "/api/playoff-export":
             query = urllib.parse.parse_qs(parsed.query)
@@ -313,7 +316,32 @@ class Handler(BaseHTTPRequestHandler):
             items = playoff_backend.all_submissions()
             stored = playoff_backend.read_submissions()
             seeded = playoff_backend.read_initial_submissions()
-            self.send_json({"ok": True, "count": len(items), "storedCount": len(stored), "seedCount": len(seeded), "storagePath": str(playoff_backend.SUBMISSIONS_PATH)})
+            self.send_json({
+                "ok": True,
+                "count": len(items),
+                "storedCount": len(stored),
+                "seedCount": len(seeded),
+                "seedNames": [item.get("name") for item in seeded],
+                "storagePath": str(playoff_backend.SUBMISSIONS_PATH),
+                "initialSubmissionsPath": str(playoff_backend.INITIAL_SUBMISSIONS_PATH),
+            })
+            return
+        if parsed.path == "/api/playoff-debug":
+            cfg = playoff_backend.smtp_config()
+            seeded = playoff_backend.read_initial_submissions()
+            stored = playoff_backend.read_submissions()
+            self.send_json({
+                "ok": True,
+                "staticDir": str(STATIC_DIR),
+                "dataDir": str(playoff_backend.DATA_DIR),
+                "initialSubmissionsPath": str(playoff_backend.INITIAL_SUBMISSIONS_PATH),
+                "initialSubmissionsFileExists": playoff_backend.INITIAL_SUBMISSIONS_PATH.exists(),
+                "seedCount": len(seeded),
+                "seedNames": [item.get("name") for item in seeded],
+                "storedCount": len(stored),
+                "publicCount": len(playoff_backend.public_table_payload().get("submissions", [])),
+                "mail": {"owner": cfg["owner"], "host": cfg["host"], "port": cfg["port"], "secure": cfg["secure"], "userSet": bool(cfg["user"]), "passwordSet": bool(cfg["password"]), "sender": cfg["sender"]},
+            })
             return
         if parsed.path == "/api/playoff-mail-config":
             cfg = playoff_backend.smtp_config()
@@ -327,7 +355,7 @@ class Handler(BaseHTTPRequestHandler):
         # serve index.html. Without this, direct opening those URLs returns 404
         # even though the client-side tab exists.
         clean_routes = {"overview", "matches", "groups", "rules", "playoff", "playoff-results"}
-        requested = parsed.path.lstrip("/") or "index.html"
+        requested = parsed.path.strip("/") or "index.html"
         if requested in clean_routes:
             requested = "index.html"
         safe = Path(requested)

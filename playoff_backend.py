@@ -31,6 +31,59 @@ with PLAYOFF_DATA_PATH.open("r", encoding="utf-8") as fh:
     PLAYOFF_DATA = json.load(fh)
 
 
+# Vestavěná záloha importu z přiloženého XLSX. Díky tomu se záznam z XLS
+# zobrazí i tehdy, když se na GitHub omylem nenahraje soubor
+# static/playoff-initial-submissions.json nebo když existuje prázdný persistentní
+# disk na Renderu. Hesla ani citlivé údaje zde nejsou.
+EMBEDDED_INITIAL_SUBMISSIONS: list[dict[str, Any]] = [
+  {
+    "id": "seed-xlsx-libormm-seznam-cz-20260628165138",
+    "source": "tipy-playoff-ms-2026.xlsx",
+    "isSeed": True,
+    "submittedAt": "2026-06-28T16:51:38.255Z",
+    "name": "Libor",
+    "email": "libormm@seznam.cz",
+    "betType": "gold",
+    "consent": True,
+    "predictions": {
+      "A": {"homeGoals": 1, "awayGoals": 1, "winner": "Kanada"},
+      "B": {"homeGoals": 2, "awayGoals": 1, "winner": "Německo"},
+      "C": {"homeGoals": 1, "awayGoals": 1, "winner": "Maroko"},
+      "D": {"homeGoals": 1, "awayGoals": 1, "winner": "Japonsko"},
+      "E": {"homeGoals": 2, "awayGoals": 1, "winner": "Francie"},
+      "F": {"homeGoals": 1, "awayGoals": 2, "winner": "Norsko"},
+      "G": {"homeGoals": 2, "awayGoals": 1, "winner": "Mexiko"},
+      "H": {"homeGoals": 2, "awayGoals": 0, "winner": "Anglie"},
+      "I": {"homeGoals": 2, "awayGoals": 1, "winner": "Spojené státy"},
+      "J": {"homeGoals": 1, "awayGoals": 1, "winner": "Senegal"},
+      "K": {"homeGoals": 1, "awayGoals": 1, "winner": "Chorvatsko"},
+      "L": {"homeGoals": 2, "awayGoals": 1, "winner": "Španělsko"},
+      "M": {"homeGoals": 2, "awayGoals": 1, "winner": "Švýcarsko"},
+      "N": {"homeGoals": 3, "awayGoals": 0, "winner": "Argentina"},
+      "O": {"homeGoals": 1, "awayGoals": 1, "winner": "Ghana"},
+      "P": {"homeGoals": 1, "awayGoals": 2, "winner": "Egypt"},
+      "Q": {"homeGoals": 1, "awayGoals": 2, "winner": "Francie"},
+      "R": {"homeGoals": 1, "awayGoals": 1, "winner": "Maroko"},
+      "S": {"homeGoals": 1, "awayGoals": 1, "winner": "Japonsko"},
+      "T": {"homeGoals": 2, "awayGoals": 1, "winner": "Mexiko"},
+      "U": {"homeGoals": 1, "awayGoals": 2, "winner": "Španělsko"},
+      "V": {"homeGoals": 2, "awayGoals": 1, "winner": "Spojené státy"},
+      "W": {"homeGoals": 2, "awayGoals": 1, "winner": "Argentina"},
+      "X": {"homeGoals": 1, "awayGoals": 1, "winner": "Ghana"},
+      "Y": {"homeGoals": 2, "awayGoals": 1, "winner": "Francie"},
+      "Z": {"homeGoals": 1, "awayGoals": 1, "winner": "Spojené státy"},
+      "AA": {"homeGoals": 1, "awayGoals": 2, "winner": "Mexiko"},
+      "AB": {"homeGoals": 2, "awayGoals": 1, "winner": "Argentina"},
+      "AC": {"homeGoals": 1, "awayGoals": 1, "winner": "Francie"},
+      "AD": {"homeGoals": 1, "awayGoals": 1, "winner": "Mexiko"},
+      "BR": {"homeGoals": 2, "awayGoals": 1, "winner": "Spojené státy"},
+      "FIN": {"homeGoals": 1, "awayGoals": 2, "winner": "Mexiko"}
+    },
+    "bonuses": {"extraTimes": 9, "penaltyShootouts": 5, "totalGoals": 90}
+  }
+]
+
+
 def match_by_id(match_id: str) -> dict[str, Any] | None:
     return next((match for match in PLAYOFF_DATA["matches"] if match.get("id") == match_id), None)
 
@@ -104,18 +157,52 @@ def read_submissions() -> list[dict[str, Any]]:
         return []
 
 
+def normalize_seed_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    normalized: list[dict[str, Any]] = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        copied = dict(item)
+        copied.setdefault("source", "xls-import")
+        copied.setdefault("isSeed", True)
+        normalized.append(copied)
+    return normalized
+
+
 def read_initial_submissions() -> list[dict[str, Any]]:
-    """Read bundled seed submissions imported from the provided XLSX."""
+    """Read bundled seed submissions imported from the provided XLSX.
+
+    If the JSON file is missing, fall back to EMBEDDED_INITIAL_SUBMISSIONS, so
+    the final play-off table is not empty after a partial GitHub upload.
+    """
     try:
-        data = json.loads(INITIAL_SUBMISSIONS_PATH.read_text(encoding="utf-8"))
-        return data if isinstance(data, list) else []
+        if INITIAL_SUBMISSIONS_PATH.exists():
+            data = json.loads(INITIAL_SUBMISSIONS_PATH.read_text(encoding="utf-8"))
+            if isinstance(data, list) and data:
+                return normalize_seed_items(data)
     except Exception:
-        return []
+        pass
+    return normalize_seed_items(EMBEDDED_INITIAL_SUBMISSIONS)
 
 
 def all_submissions() -> list[dict[str, Any]]:
-    """Bundled seed submissions + stored live form submissions."""
-    return [*read_initial_submissions(), *read_submissions()]
+    """Bundled XLS import + stored live form submissions.
+
+    Dedupe only by identical id. Imported XLS rows are intentionally kept
+    separate from later live submissions even if they use the same e-mail,
+    because the user asked to prefill the final table from the XLS file.
+    """
+    merged: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for item in [*read_initial_submissions(), *read_submissions()]:
+        if not isinstance(item, dict):
+            continue
+        key = clean(item.get("id")) or f"row-{len(merged)}"
+        if key in seen:
+            continue
+        seen.add(key)
+        merged.append(item)
+    return merged
 
 
 def write_submissions(items: list[dict[str, Any]]) -> None:
@@ -204,19 +291,25 @@ def validate_submission(body: dict[str, Any]) -> tuple[dict[str, Any], list[str]
 
 
 def latest_submissions_by_email(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Return only the latest submission per e-mail address for public tables.
+    """Return rows for public tables.
 
-    Export keeps all submitted rows, but the visible competition table should not
-    double-count repeated corrections from the same participant.
+    Live form submissions are collapsed to the latest row per e-mail. Imported
+    XLS rows are always shown as their own rows, otherwise the prefilled XLS
+    table can disappear after a test submission from the same address.
     """
     latest: dict[str, dict[str, Any]] = {}
+    seeded_rows: list[dict[str, Any]] = []
     for item in items:
+        if item.get("source") == "xls-import" or item.get("isSeed") is True:
+            seeded_rows.append(item)
+            continue
         email = clean(item.get("email")).lower()
         key = email or clean(item.get("id"))
         previous = latest.get(key)
         if not previous or clean(item.get("submittedAt")) >= clean(previous.get("submittedAt")):
             latest[key] = item
-    return sorted(latest.values(), key=lambda x: (clean(x.get("name")).lower(), clean(x.get("submittedAt"))))
+    rows = [*seeded_rows, *latest.values()]
+    return sorted(rows, key=lambda x: (clean(x.get("name")).lower(), clean(x.get("submittedAt"))))
 
 
 def public_submission(item: dict[str, Any]) -> dict[str, Any]:
@@ -230,6 +323,8 @@ def public_submission(item: dict[str, Any]) -> dict[str, Any]:
         "submittedAt": clean(item.get("submittedAt")),
         "name": clean(item.get("name")),
         "betType": clean(item.get("betType")),
+        "source": clean(item.get("source")),
+        "isSeed": bool(item.get("isSeed")),
         "predictions": item.get("predictions") if isinstance(item.get("predictions"), dict) else {},
         "bonuses": item.get("bonuses") if isinstance(item.get("bonuses"), dict) else {},
     }
@@ -243,6 +338,8 @@ def public_table_payload() -> dict[str, Any]:
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "totalSubmissions": len(submissions),
         "activeSubmissions": len(latest),
+        "seedSubmissions": len(read_initial_submissions()),
+        "storedSubmissions": len(read_submissions()),
         "submissions": [public_submission(item) for item in latest],
     }
 

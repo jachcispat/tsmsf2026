@@ -142,3 +142,18 @@ V této verzi server vrací `index.html` i pro přímé adresy `/playoff` a `/pl
 Když se při otevření `/api/playoff-table` nebo `/api/playoff-submit` objeví 404, znamená to téměř vždy, že na GitHubu/Renderu stále běží starý `app.py`.
 
 Soubor `static/playoff-initial-submissions.json` obsahuje předvyplněný tip importovaný z dodaného XLSX. Veřejná záložka „Play-off tabulka” ho načte i před prvním odeslaným formulářem.
+
+
+## Oprava 502 / kontrola importu XLS
+
+Po nahrání na Render zkontroluj tyto adresy:
+
+```text
+/api/health
+/api/playoff-debug
+/api/playoff-submissions-count
+/api/playoff-table
+```
+
+`/api/playoff-debug` musí ukázat `seedCount: 1` a `seedNames: ["Libor"]`.
+Import z XLS je kromě souboru `static/playoff-initial-submissions.json` také vestavěný v backendu, takže se zobrazí i po neúplném uploadu.
