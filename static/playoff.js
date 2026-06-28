@@ -260,7 +260,12 @@
         try {
           result = await response.json();
         } catch (_) {
-          result = { ok: false, errors: [`Server vrátil HTTP ${response.status}. Pravděpodobně není nahraný nový app.py nebo endpoint /api/playoff-submit.`] };
+          result = {
+            ok: false,
+            errors: [
+              `Server vrátil HTTP ${response.status}. Backend nevrátil JSON – zkontroluj na Renderu poslední deploy a otevři /api/health, /api/playoff-submit a /api/playoff-debug.`
+            ]
+          };
         }
         if (!response.ok || !result.ok) {
           const errors = (result.errors || ['Odeslání se nepodařilo.']).map(err => `<li>${html(err)}</li>`).join('');
