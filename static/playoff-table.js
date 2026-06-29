@@ -9,6 +9,9 @@
     teamFlags: new Map(),
     resultsByPair: new Map(),
     actualCache: new Map(),
+    adminData: null,
+    currentRows: [],
+    selectedPlayerId: '',
     search: '',
   };
 
@@ -67,6 +70,25 @@
     const name = displayPlayerName(row);
     if (normalizeName(name) === 'libor') return name;
     return row.isSeed || row.source === 'xls-import' ? `${name} · XLS` : name;
+  }
+
+  function playerId(row) {
+    return clean(row?.id) || normalizeName(rowName(row));
+  }
+
+  function pointsCellClass(pts, hasActual) {
+    if (!hasActual) return 'pending';
+    const total = number(pts?.total);
+    const resultPoints = number(pts?.resultPoints);
+    const advancement = number(pts?.advancement);
+    if (total <= 0) return 'miss';
+    if (resultPoints >= 5 && advancement > 0) return 'hit-full';
+    return 'hit-partial';
+  }
+
+  function bonusCellClass(points, final) {
+    if (!final) return 'pending';
+    return number(points) > 0 ? 'hit-bonus' : 'miss';
   }
 
   function concreteOptions(match) {
@@ -466,14 +488,78 @@
       return;
     }
     table.innerHTML = `<thead><tr><th>#</th><th>Hráč</th><th>Typ</th><th>Body</th><th>Odesláno</th></tr></thead><tbody>${rows.map((row, index) => `
-      <tr>
+      <tr class="leaderboard-row" data-player-id="${html(playerId(row))}">
         <td class="rank">${index + 1}</td>
-        <td><strong>${html(rowName(row))}</strong></td>
+        <td><button type="button" class="player-detail-button" data-player-id="${html(playerId(row))}"><strong>${html(rowName(row))}</strong></button></td>
         <td><span class="badge ${html(betClass(row.betType))}">${html(betLabel(row.betType))}</span></td>
         <td class="num"><strong>${formatPointNumber(row.total)}</strong></td>
         <td>${row.submittedAt ? new Date(row.submittedAt).toLocaleString('cs-CZ', { timeZone: 'Europe/Prague' }) : '—'}</td>
       </tr>
     `).join('')}</tbody>`;
+  }
+
+  function renderAdminSummary() {
+    const target = byId('playoff-admin-summary');
+    if (!target) return;
+    const data = model.adminData;
+    if (!data?.ok) {
+      target.innerHTML = '<p class="muted">Admin souhrn zatím není dostupný.</p>';
+      return;
+    }
+    const c = data.counts || {};
+    const dup = data.duplicates || {};
+    const gs = data.googleSheets || {};
+    const storage = data.storage || {};
+    const dupList = (dup.groups || []).length
+      ? `<ul>${dup.groups.map(group => `<li>${html(group.label)} · ${html((group.names || []).join(', ') || 'bez jména')} · ${group.count}× · zdroje: ${html((group.sources || []).join(', '))}</li>`).join('')}</ul>`
+      : '<span class="ok-pill">žádné viditelné duplicity</span>';
+    target.innerHTML = `
+      <div class="admin-card"><strong>${html(c.publicRows ?? '—')}</strong><span>řádků ve veřejné tabulce</span></div>
+      <div class="admin-card"><strong>${html(c.totalRaw ?? '—')}</strong><span>raw záznamů před deduplikací</span></div>
+      <div class="admin-card"><strong>${html(c.googleSheets ?? '—')}</strong><span>Google Sheets</span></div>
+      <div class="admin-card"><strong>${html(c.seed ?? '—')}</strong><span>XLS/seed fallback</span></div>
+      <div class="admin-card wide"><strong>Priority zdrojů</strong><span>${html((data.sourcePriority || []).join(' → '))}</span></div>
+      <div class="admin-card wide"><strong>Google Sheets</strong><span>${gs.enabled ? 'zapnuto' : 'vypnuto'} · lastError: ${html(gs.lastError || 'bez chyby')}</span></div>
+      <div class="admin-card wide"><strong>Duplicity</strong><span>skryté řádky: ${html(dup.hiddenRows ?? 0)}</span>${dupList}</div>
+      <div class="admin-card wide"><strong>Ukládání</strong><span>${html(storage.dataDir || '')}${storage.dataDirWarning ? ` · ${html(storage.dataDirWarning)}` : ''}</span></div>
+    `;
+  }
+
+  function renderPlayerDetail(row) {
+    const target = byId('playoff-player-detail');
+    if (!target) return;
+    if (!row) {
+      target.hidden = true;
+      target.innerHTML = '';
+      return;
+    }
+    const completedMatches = model.config.matches.filter(match => row.matchPoints?.[match.id]?.hasActual);
+    const hits = completedMatches.filter(match => number(row.matchPoints?.[match.id]?.total) > 0).length;
+    const best = completedMatches
+      .map(match => ({ match, pts: row.matchPoints?.[match.id] || {} }))
+      .sort((a, b) => number(b.pts.total) - number(a.pts.total))[0];
+    const matchRows = model.config.matches.map(match => {
+      const pred = predictionOf(row, match.id);
+      const pts = row.matchPoints?.[match.id] || {};
+      return `<tr><td>${html(match.id)}</td><td>${html(match.round)}</td><td>${html(scoreText(pred))}</td><td>${html(pred.winner || '—')}</td><td>${html(pts.hasActual ? formatPointNumber(pts.total) : 'čeká')}</td><td>${html(pts.hasActual ? `P:${formatPointNumber(pts.advancement)} V:${formatPointNumber(pts.resultPoints)}` : '')}</td></tr>`;
+    }).join('');
+    target.hidden = false;
+    target.innerHTML = `
+      <div class="player-detail-header">
+        <div>
+          <h3>Detail hráče: ${html(rowName(row))}</h3>
+          <p>${html(betLabel(row.betType))} · celkem <strong>${formatPointNumber(row.total)} b</strong> · zápasy ${formatPointNumber(row.matchTotal)} b · bonusy ${formatPointNumber(row.bonusTotal)} b</p>
+        </div>
+        <button type="button" class="player-detail-close" aria-label="Zavřít detail">×</button>
+      </div>
+      <div class="player-detail-stats">
+        <div><strong>${hits}/${completedMatches.length}</strong><span>bodovaných dokončených zápasů</span></div>
+        <div><strong>${best ? html(best.match.id) : '—'}</strong><span>nejlepší zápas (${best ? formatPointNumber(best.pts.total) : 0} b)</span></div>
+        <div><strong>${formatPointNumber(row.bonusTotal)}</strong><span>bonusové body</span></div>
+      </div>
+      <div class="table-wrap compact player-detail-table-wrap"><table class="player-detail-table"><thead><tr><th>Zápas</th><th>Kolo</th><th>Tip</th><th>Postupující</th><th>Body</th><th>Rozpad</th></tr></thead><tbody>${matchRows}</tbody></table></div>
+    `;
+    target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   function renderBonuses(rows) {
@@ -499,7 +585,7 @@
       const participantCells = rows.map(row => {
         const tip = row.bonuses?.[bonus.id];
         const pts = row.bonusPoints?.[bonus.id] || 0;
-        const cellClass = actual.final ? (pts ? 'hit' : 'miss') : '';
+        const cellClass = bonusCellClass(pts, actual.final);
         return `<td class="prediction bonus-prediction ${html(betClass(row.betType))} ${cellClass}" data-player="${html(clean(rowName(row)).toLowerCase())}">
           <span class="playoff-tip-score">${html(tip ?? '—')}</span><br>
           <span class="playoff-tip-winner">tip</span><br>
@@ -526,8 +612,8 @@
       table.innerHTML = '<tbody><tr><td class="empty-state">Zatím není co zobrazit. Po odeslání formulářů se zde objeví play-off tabulka.</td></tr></tbody>';
       return;
     }
-    const participantHead = rows.map(row => `<th class="participant-head" data-player="${html(clean(rowName(row)).toLowerCase())}">
-      <div class="vertical-name">${html(rowName(row))}</div>
+    const participantHead = rows.map(row => `<th class="participant-head" data-player="${html(clean(rowName(row)).toLowerCase())}" data-player-id="${html(playerId(row))}">
+      <button type="button" class="vertical-name player-detail-button" data-player-id="${html(playerId(row))}">${html(rowName(row))}</button>
       <div class="participant-meta"><span class="badge ${html(betClass(row.betType))}">${html(betLabel(row.betType)).replace(' HRÁČ', '')}</span></div>
     </th>`).join('');
 
@@ -542,7 +628,7 @@
         const pred = predictionOf(row, match.id);
         const pts = row.matchPoints[match.id] || { total: 0, advancement: 0, resultPoints: 0, hasActual: false };
         const hasActual = pts.hasActual;
-        const cellClass = pts.total ? 'hit' : hasActual ? 'miss' : '';
+        const cellClass = pointsCellClass(pts, hasActual);
         const detail = hasActual
           ? `postup ${formatPointNumber(pts.advancement)} + výsledek ${formatPointNumber(pts.resultPoints)}${pts.ghost ? ' (½ tým duchů)' : ''}`
           : 'čeká na výsledek';
@@ -595,10 +681,15 @@
   function renderAll() {
     buildResultMap();
     const rows = calculatedSubmissions();
+    model.currentRows = rows;
     renderKpis(rows);
+    renderAdminSummary();
     renderLeaderboard(rows);
     renderBonuses(rows);
     renderTable(rows);
+    if (model.selectedPlayerId) {
+      renderPlayerDetail(rows.find(row => playerId(row) === model.selectedPlayerId));
+    }
     const status = byId('playoff-results-status');
     if (status) {
       const updated = model.tableData?.generatedAt ? new Date(model.tableData.generatedAt).toLocaleString('cs-CZ', { timeZone: 'Europe/Prague' }) : '—';
@@ -635,6 +726,14 @@
     }
   }
 
+  async function loadAdminSummary() {
+    try {
+      return await loadJson('/api/playoff-admin-summary', '/api/playoff-admin-summary');
+    } catch (error) {
+      return { ok: false, error: error.message };
+    }
+  }
+
   async function loadScoresBestEffort() {
     try {
       const controller = new AbortController();
@@ -650,15 +749,17 @@
   async function loadTable() {
     const status = byId('playoff-results-status');
     if (status) status.textContent = 'Načítám play-off tabulku…';
-    const [config, siteData, tableData] = await Promise.all([
+    const [config, siteData, tableData, adminData] = await Promise.all([
       loadJson('playoff-data.json', 'playoff-data.json'),
       loadJson('data.json', 'data.json'),
       loadTableData(),
+      loadAdminSummary(),
     ]);
     if (!tableData.ok) throw new Error(tableData.error || 'Backend vrátil neplatnou play-off tabulku.');
     model.config = config;
     model.siteData = siteData;
     model.tableData = tableData;
+    model.adminData = adminData;
     model.scoreData = await loadScoresBestEffort();
     model.teamFlags = new Map((model.siteData.teams || []).map(team => [team.name, team.flag]));
     renderAll();
@@ -669,6 +770,17 @@
     if (refresh) refresh.addEventListener('click', () => loadTable().catch(showError));
     const search = byId('playoff-results-search');
     if (search) search.addEventListener('input', event => { model.search = event.target.value; applySearch(); });
+    document.addEventListener('click', event => {
+      const detailButton = event.target.closest('.player-detail-button');
+      if (detailButton) {
+        model.selectedPlayerId = detailButton.dataset.playerId || '';
+        renderPlayerDetail(model.currentRows.find(row => playerId(row) === model.selectedPlayerId));
+      }
+      if (event.target.closest('.player-detail-close')) {
+        model.selectedPlayerId = '';
+        renderPlayerDetail(null);
+      }
+    });
     window.addEventListener('playoff-submitted', () => loadTable().catch(showError));
   }
 

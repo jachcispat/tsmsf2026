@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111827">
   <title>TSMSF 2026 - výsledky</title>
-  <link rel="stylesheet" href="styles.css?v=20260629-playoff10">
-  <link rel="stylesheet" href="playoff.css?v=20260629-playoff10">
-  <link rel="stylesheet" href="playoff-table.css?v=20260629-playoff10">
+  <link rel="stylesheet" href="styles.css?v=20260629-playoff11">
+  <link rel="stylesheet" href="playoff.css?v=20260629-playoff11">
+  <link rel="stylesheet" href="playoff-table.css?v=20260629-playoff11">
 </head>
 <body>
   <header class="site-header">
@@ -145,6 +145,13 @@
         <div class="playoff-results-body">
           <div class="playoff-results-kpis" id="playoff-results-kpis"></div>
 
+          <details class="playoff-admin-summary">
+            <summary>Správa tabulky: zdroje dat, duplicity a stav ukládání</summary>
+            <div id="playoff-admin-summary" class="admin-summary-grid">Načítám administrátorský souhrn…</div>
+          </details>
+
+          <section id="playoff-player-detail" class="player-detail-card" hidden></section>
+
           <div class="playoff-results-grid">
             <section class="playoff-results-leaderboard-wrap">
               <h3>Pořadí podle play-off tipů</h3>
@@ -179,16 +186,33 @@
         <article class="card rules-card">
           <h2>Pravidla play-off bodování</h2>
           <p><strong>Body za jeden play-off zápas = body za uhodnutého postupujícího + body za výsledek v základní hrací době.</strong></p>
+          <div class="rules-scoring-table-wrap">
+            <table class="rules-scoring-table">
+              <thead><tr><th>Situace</th><th>Body</th><th>Poznámka</th></tr></thead>
+              <tbody>
+                <tr><td>Uhodnutý postupující z 1/16 finále</td><td>1</td><td>Postup do osmifinále.</td></tr>
+                <tr><td>Uhodnutý postupující z osmifinále</td><td>2</td><td>Postup do čtvrtfinále.</td></tr>
+                <tr><td>Uhodnutý postupující ze čtvrtfinále</td><td>3</td><td>Postup do semifinále.</td></tr>
+                <tr><td>Uhodnutý finalista</td><td>4</td><td>Postup ze semifinále do finále.</td></tr>
+                <tr><td>Bronzový medailista</td><td>5</td><td>Vítěz zápasu o 3. místo.</td></tr>
+                <tr><td>Vítěz turnaje</td><td>6</td><td>Vítěz finále.</td></tr>
+                <tr><td>Uhodnutý vítěz v základní době</td><td>1</td><td>Počítá se jen výsledek po 90 minutách.</td></tr>
+                <tr><td>Uhodnutá remíza v základní době</td><td>3</td><td>U remízy se navíc vybírá postupující.</td></tr>
+                <tr><td>Uhodnutý rozdíl skóre</td><td>3</td><td>Např. skutečnost 3:1 a tip 2:0.</td></tr>
+                <tr><td>Přesný výsledek</td><td>5</td><td>Např. skutečnost 2:1 a tip 2:1.</td></tr>
+                <tr><td>Tým duchů</td><td>½ bodů za výsledek</td><td>Když hráčův pavouk v daném zápase obsahuje jiné týmy než skutečný zápas.</td></tr>
+                <tr><td>Přesný počet prodloužení</td><td>2</td><td>Bonus po skončení celého play-off.</td></tr>
+                <tr><td>Přesný počet penaltových rozstřelů</td><td>2</td><td>Bonus po skončení celého play-off.</td></tr>
+                <tr><td>Přesný počet gólů</td><td>8</td><td>Počítají se jen góly ze základní hrací doby.</td></tr>
+                <tr><td>Nejbližší počet gólů</td><td>4</td><td>Jen pokud nikdo netrefí přesný počet.</td></tr>
+              </tbody>
+            </table>
+          </div>
           <ul>
             <li>Tipuje se přesný výsledek základní hrací doby. U remízy se navíc vybírá postupující.</li>
             <li>Výsledek po prodloužení nebo po penaltách se v tabulce ukáže jen informativně v závorce, například <strong>1:1 (2:1 pp)</strong> nebo <strong>1:1 (4:3 pen.)</strong>. Do bodování výsledku se tato závorka nepočítá.</li>
-            <li>Výsledek: uhodnutí vítěze v základní době = 1 bod, uhodnutí remízy = 3 body, uhodnutí rozdílu skóre = 3 body, přesný výsledek = 5 bodů.</li>
-            <li>Pokud ve skutečném zápase nejsou oba týmy, které měl hráč podle svého pavouka na dané pozici, body za výsledek se krátí na polovinu jako „tým duchů“.</li>
-            <li>Postupující: postup do osmifinále = 1 bod, do čtvrtfinále = 2 body, do semifinále = 3 body, do finále = 4 body.</li>
-            <li>Bronzový medailista = 5 bodů, vítěz turnaje = 6 bodů.</li>
-            <li>Bonusy: počet prodloužení = 2 body, počet penaltových rozstřelů = 2 body, celkový počet vstřelených branek = 8 bodů.</li>
             <li>Bonus za celkový počet gólů se počítá také jen ze základní hrací doby všech play-off zápasů; góly v prodloužení ani penalty se do něj nepřičítají.</li>
-            <li>Pokud nikdo neuhodne přesný počet branek, nejbližší tip nebo tipy získají 4 body.</li>
+            <li>Veřejná tabulka skrývá technické zdroje dat. Pokud existuje starý XLS/seed tip a novější odeslaný formulář pro stejného hráče, zobrazí se jen formulářový tip.</li>
           </ul>
         </article>
         <article class="card rules-card">
@@ -210,8 +234,8 @@
     <span id="footer-source">Zdroj výsledků se načítá…</span>
   </footer>
 
-  <script src="app.js?v=20260629-playoff10" defer></script>
-  <script src="playoff.js?v=20260629-playoff10" defer></script>
-  <script src="playoff-table.js?v=20260629-playoff10" defer></script>
+  <script src="app.js?v=20260629-playoff11" defer></script>
+  <script src="playoff.js?v=20260629-playoff11" defer></script>
+  <script src="playoff-table.js?v=20260629-playoff11" defer></script>
 </body>
 </html>
