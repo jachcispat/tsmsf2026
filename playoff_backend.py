@@ -6,6 +6,7 @@ import smtplib
 import time
 import zipfile
 import threading
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -455,25 +456,71 @@ def validate_submission(body: dict[str, Any]) -> tuple[dict[str, Any], list[str]
 
 
 
+def normalize_person_key(value: Any) -> str:
+    """Stable comparison key for player names in public-table deduplication."""
+    text = unicodedata.normalize("NFKD", clean(value))
+    text = text.encode("ascii", "ignore").decode("ascii").lower()
+    return "".join(ch for ch in text if ch.isalnum())
+
+
+def submission_identity_keys(item: dict[str, Any]) -> set[str]:
+    """Return all keys that can identify the same human submission.
+
+    This intentionally includes both email and displayed name, so old XLS seed
+    rows such as ChatGPT can be hidden when the live Google Sheets row is shown
+    as Dan Mališ.
+    """
+    keys: set[str] = set()
+    email = clean(item.get("email")).lower()
+    if email:
+        keys.add(f"email:{email}")
+    for name in (item.get("name"), display_name(item.get("name"))):
+        name_key = normalize_person_key(name)
+        if name_key:
+            keys.add(f"name:{name_key}")
+    return keys
+
+
+def submission_primary_key(item: dict[str, Any]) -> str:
+    email = clean(item.get("email")).lower()
+    if email:
+        return f"email:{email}"
+    name_key = normalize_person_key(display_name(item.get("name")))
+    if name_key:
+        return f"name:{name_key}"
+    return f"id:{clean(item.get('id'))}"
+
+
 def latest_submissions_by_email(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Return rows for public tables.
 
-    Live form submissions are collapsed to the latest row per e-mail. Imported
-    XLS rows are always shown as their own rows, otherwise the prefilled XLS
-    table can disappear after a test submission from the same address.
+    Live form/Google Sheets submissions are collapsed to the latest row per
+    e-mail/name. XLS seed rows are kept only when no live row for the same
+    player exists, so the table does not show duplicate rows like
+    "Michal_Konvalinka · XLS" next to Michal's real saved tip.
     """
-    latest: dict[str, dict[str, Any]] = {}
-    seeded_rows: list[dict[str, Any]] = []
+    latest_live: dict[str, dict[str, Any]] = {}
+    latest_seed: dict[str, dict[str, Any]] = {}
+
     for item in items:
-        if item.get("source") == "xls-import" or item.get("isSeed") is True:
-            seeded_rows.append(item)
+        if not isinstance(item, dict):
             continue
-        email = clean(item.get("email")).lower()
-        key = email or clean(item.get("id"))
-        previous = latest.get(key)
+        key = submission_primary_key(item)
+        bucket = latest_seed if (item.get("source") == "xls-import" or item.get("isSeed") is True) else latest_live
+        previous = bucket.get(key)
         if not previous or clean(item.get("submittedAt")) >= clean(previous.get("submittedAt")):
-            latest[key] = item
-    rows = [*seeded_rows, *latest.values()]
+            bucket[key] = item
+
+    live_identity_keys: set[str] = set()
+    for item in latest_live.values():
+        live_identity_keys.update(submission_identity_keys(item))
+
+    seed_rows = [
+        item
+        for item in latest_seed.values()
+        if not (submission_identity_keys(item) & live_identity_keys)
+    ]
+    rows = [*seed_rows, *latest_live.values()]
     return sorted(rows, key=lambda x: (display_name(x.get("name")).lower(), clean(x.get("submittedAt"))))
 
 

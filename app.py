@@ -24,7 +24,7 @@ DATA_PATH = STATIC_DIR / "data.json"
 PORT = int(os.environ.get("PORT", "8000"))
 CACHE_TTL_SECONDS = int(os.environ.get("SCORES_CACHE_SECONDS", "60"))
 LIVE_CACHE_TTL_SECONDS = int(os.environ.get("LIVE_SCORES_CACHE_SECONDS", "15"))
-PLAYOFF_PATCH_VERSION = "playoff-results-v9-regulation-score-display-names"
+PLAYOFF_PATCH_VERSION = "playoff-results-v10-hide-seed-duplicates"
 
 with DATA_PATH.open("r", encoding="utf-8") as fh:
     SITE_DATA = json.load(fh)
