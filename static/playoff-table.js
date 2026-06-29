@@ -57,8 +57,16 @@
     return `${item.label || betType || '—'}${fee}`;
   }
 
+  function displayPlayerName(row) {
+    const name = clean(row?.name);
+    if (normalizeName(name) === 'chatgpt') return 'Dan Mališ';
+    return name;
+  }
+
   function rowName(row) {
-    return row.isSeed || row.source === 'xls-import' ? `${row.name} · XLS` : row.name;
+    const name = displayPlayerName(row);
+    if (normalizeName(name) === 'libor') return name;
+    return row.isSeed || row.source === 'xls-import' ? `${name} · XLS` : name;
   }
 
   function concreteOptions(match) {
@@ -173,8 +181,12 @@
     let result = null;
     if (teams.length === 2) result = model.resultsByPair.get(pairKey(teams[0], teams[1])) || null;
     let winner = clean(result?.winner);
-    if (!winner && result?.completed && Number.isInteger(result.homeScore) && Number.isInteger(result.awayScore) && result.homeScore !== result.awayScore) {
-      winner = result.homeScore > result.awayScore ? result.home : result.away;
+    if (!winner && result?.completed) {
+      const finalHome = pickScore(result, ['finalHomeScore', 'homeFinalScore', 'homeScore']);
+      const finalAway = pickScore(result, ['finalAwayScore', 'awayFinalScore', 'awayScore']);
+      if (finalHome != null && finalAway != null && finalHome !== finalAway) {
+        winner = finalHome > finalAway ? result.home : result.away;
+      }
     }
     const payload = { teams, result, winner };
     model.actualCache.set(match.id, payload);
@@ -215,21 +227,59 @@
     return Number.isInteger(numeric) ? String(numeric) : numeric.toLocaleString('cs-CZ', { maximumFractionDigits: 1 });
   }
 
-  function actualScoreForMatch(actual) {
+  function scoreNumber(value) {
+    const numeric = Number(value);
+    return Number.isInteger(numeric) ? numeric : null;
+  }
+
+  function pickScore(result, keys) {
+    for (const key of keys) {
+      const value = scoreNumber(result?.[key]);
+      if (value != null) return value;
+    }
+    return null;
+  }
+
+  function orientScore(actual, homeValue, awayValue) {
+    if (homeValue == null || awayValue == null) return null;
     const result = actual?.result;
-    if (!result || !Number.isInteger(result.homeScore) || !Number.isInteger(result.awayScore)) return null;
-    const teams = actual.teams || [];
+    const teams = actual?.teams || [];
     const first = teams[0];
     const second = teams[1];
-    if (first && second) {
+    if (result && first && second) {
       if (sameTeam(result.home, first) && sameTeam(result.away, second)) {
-        return { homeScore: result.homeScore, awayScore: result.awayScore };
+        return { homeScore: homeValue, awayScore: awayValue };
       }
       if (sameTeam(result.home, second) && sameTeam(result.away, first)) {
-        return { homeScore: result.awayScore, awayScore: result.homeScore };
+        return { homeScore: awayValue, awayScore: homeValue };
       }
     }
-    return { homeScore: result.homeScore, awayScore: result.awayScore };
+    return { homeScore: homeValue, awayScore: awayValue };
+  }
+
+  function actualScoreForMatch(actual) {
+    const result = actual?.result;
+    if (!result) return null;
+    // Základní hrací doba je hlavní skóre pro bodování i bonus celkových gólů.
+    const homeValue = pickScore(result, ['regulationHomeScore', 'homeRegulationScore', 'homeScore']);
+    const awayValue = pickScore(result, ['regulationAwayScore', 'awayRegulationScore', 'awayScore']);
+    return orientScore(actual, homeValue, awayValue);
+  }
+
+  function finalScoreForMatch(actual) {
+    const result = actual?.result;
+    if (!result) return null;
+    const homeValue = pickScore(result, ['finalHomeScore', 'homeFinalScore', 'homeScore']);
+    const awayValue = pickScore(result, ['finalAwayScore', 'awayFinalScore', 'awayScore']);
+    return orientScore(actual, homeValue, awayValue);
+  }
+
+  function penaltyScoreForMatch(actual) {
+    const result = actual?.result;
+    if (!result) return null;
+    const homeValue = pickScore(result, ['homePenaltyScore', 'penaltyHomeScore', 'homeShootoutScore']);
+    const awayValue = pickScore(result, ['awayPenaltyScore', 'penaltyAwayScore', 'awayShootoutScore']);
+    return orientScore(actual, homeValue, awayValue);
   }
 
   function resultBasePoints(pred, actual) {
@@ -314,9 +364,12 @@
 
   function bonusActualValues() {
     const actuals = playoffActuals();
-    const completed = actuals.filter(item => item.actual.result?.completed && Number.isInteger(item.actual.result.homeScore) && Number.isInteger(item.actual.result.awayScore));
+    const completed = actuals
+      .map(item => ({ ...item, score: actualScoreForMatch(item.actual) }))
+      .filter(item => item.actual.result?.completed && item.score);
     const values = {
-      totalGoals: completed.reduce((sum, item) => sum + item.actual.result.homeScore + item.actual.result.awayScore, 0),
+      // Bonus celkových gólů se počítá jen ze základní hrací doby.
+      totalGoals: completed.reduce((sum, item) => sum + item.score.homeScore + item.score.awayScore, 0),
       penaltyShootouts: completed.filter(item => eventHasPenaltyShootout(item.actual.result)).length,
       extraTimes: completed.filter(item => eventHasExtraTime(item.actual.result)).length,
     };
@@ -379,8 +432,18 @@
     const score = actualScoreForMatch(actual);
     if (!result || !score) return ' : ';
     const cls = result.live ? 'result-live' : result.completed ? 'result-final' : '';
+    const finalScore = finalScoreForMatch(actual);
+    const penaltyScore = penaltyScoreForMatch(actual);
+    const suffixes = [];
+    if (finalScore && (finalScore.homeScore !== score.homeScore || finalScore.awayScore !== score.awayScore)) {
+      suffixes.push(`${finalScore.homeScore}:${finalScore.awayScore} pp`);
+    }
+    if (penaltyScore) {
+      suffixes.push(`${penaltyScore.homeScore}:${penaltyScore.awayScore} pen.`);
+    }
+    const afterText = suffixes.length ? ` <span class="after-regular-time">(${html(suffixes.join(', '))})</span>` : '';
     const status = result.live ? `<span class="match-status">ŽIVĚ${result.status ? ` · ${html(result.status)}` : ''}</span>` : '';
-    return `<span class="${cls}">${score.homeScore}:${score.awayScore}${status}</span>`;
+    return `<span class="${cls}">${score.homeScore}:${score.awayScore}${afterText}${status}</span>`;
   }
 
   function renderKpis(rows) {
@@ -392,7 +455,7 @@
       <div class="kpi"><strong>${activeSubmissions}</strong><span>hráčů v tabulce</span></div>
       <div class="kpi"><strong>${totalSubmissions}</strong><span>celkem odeslaných formulářů</span></div>
       <div class="kpi"><strong>${completed}/32</strong><span>zápasů s výsledkem</span></div>
-      <div class="kpi"><strong>${leader ? html(leader.name) : '—'}</strong><span>aktuální lídr play-off</span></div>
+      <div class="kpi"><strong>${leader ? html(rowName(leader)) : '—'}</strong><span>aktuální lídr play-off</span></div>
     `;
   }
 

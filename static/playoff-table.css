@@ -15,10 +15,10 @@
 .playoff-results-sheet .pr-col-round { left: 0; min-width: 105px; }
 .playoff-results-sheet .pr-col-date { left: 105px; min-width: 145px; }
 .playoff-results-sheet .pr-col-home { left: 250px; min-width: 180px; text-align: right; }
-.playoff-results-sheet .pr-col-result { left: 430px; min-width: 72px; background: var(--sheet-result); }
-.playoff-results-sheet .pr-col-away { left: 502px; min-width: 180px; text-align: left; }
-.playoff-results-sheet .pr-col-winner { left: 682px; min-width: 155px; background: #f8fafc; }
-.playoff-results-sheet .pr-col-points { left: 837px; min-width: 46px; background: #e5e7eb; }
+.playoff-results-sheet .pr-col-result { left: 430px; min-width: 120px; background: var(--sheet-result); }
+.playoff-results-sheet .pr-col-away { left: 550px; min-width: 180px; text-align: left; }
+.playoff-results-sheet .pr-col-winner { left: 730px; min-width: 155px; background: #f8fafc; }
+.playoff-results-sheet .pr-col-points { left: 885px; min-width: 46px; background: #e5e7eb; }
 .playoff-results-sheet .sticky { position: sticky; background: #fff; z-index: 8; }
 .playoff-results-sheet thead .sticky { z-index: 31; }
 .playoff-results-sheet .corner { z-index: 32; }
@@ -52,3 +52,10 @@
 .playoff-results-sheet .prediction.hit .points-detail { color: #14532d; }
 .playoff-results-sheet .prediction.miss .points-detail { color: #64748b; }
 .playoff-results-sheet .pr-col-points { min-width: 70px; }
+
+.playoff-results-sheet .after-regular-time {
+  display: block;
+  color: #475569;
+  font-size: .72rem;
+  line-height: 1.05;
+}

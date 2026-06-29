@@ -174,6 +174,361 @@
       "totalGoals": 90
     },
     "source": "tipy-playoff-ms-2026.xlsx",
+    "isSeed": true,
+    "displayName": "Libor"
+  },
+  {
+    "id": "seed-manual-michal-konvalinka-konvalinka-michal-at-gmail-com-20260628",
+    "submittedAt": "2026-06-28T21:24:00.000Z",
+    "name": "Michal_Konvalinka",
+    "email": "konvalinka.michal@gmail.com",
+    "betType": "silver",
+    "consent": true,
+    "predictions": {
+      "A": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Kanada"
+      },
+      "B": {
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "winner": "Německo"
+      },
+      "C": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Maroko"
+      },
+      "D": {
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "winner": "Brazílie"
+      },
+      "E": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Francie"
+      },
+      "F": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Norsko"
+      },
+      "G": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Mexiko"
+      },
+      "H": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Anglie"
+      },
+      "I": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Spojené státy"
+      },
+      "J": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Senegal"
+      },
+      "K": {
+        "homeGoals": 3,
+        "awayGoals": 2,
+        "winner": "Portugalsko"
+      },
+      "L": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Španělsko"
+      },
+      "M": {
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "winner": "Švýcarsko"
+      },
+      "N": {
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "winner": "Argentina"
+      },
+      "O": {
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "winner": "Kolumbie"
+      },
+      "P": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "winner": "Egypt"
+      },
+      "Q": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Německo"
+      },
+      "R": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Maroko"
+      },
+      "S": {
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "winner": "Brazílie"
+      },
+      "T": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Anglie"
+      },
+      "U": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Španělsko"
+      },
+      "V": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Senegal"
+      },
+      "W": {
+        "homeGoals": 3,
+        "awayGoals": 0,
+        "winner": "Argentina"
+      },
+      "X": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Kolumbie"
+      },
+      "Y": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Německo"
+      },
+      "Z": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Španělsko"
+      },
+      "AA": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Brazílie"
+      },
+      "AB": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Argentina"
+      },
+      "AC": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Španělsko"
+      },
+      "AD": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Argentina"
+      },
+      "BR": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Německo"
+      },
+      "FIN": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Španělsko"
+      }
+    },
+    "bonuses": {
+      "extraTimes": 3,
+      "penaltyShootouts": 2,
+      "totalGoals": 88
+    },
+    "source": "manual-seed-v8",
+    "isSeed": true
+  },
+  {
+    "id": "seed-manual-chatgpt-malis-at-btlnet-com-20260628",
+    "submittedAt": "2026-06-28T21:24:00.000Z",
+    "name": "Dan Mališ",
+    "email": "malis@btlnet.com",
+    "betType": "gold",
+    "consent": true,
+    "predictions": {
+      "A": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Jižní Afrika"
+      },
+      "B": {
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "winner": "Německo"
+      },
+      "C": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Nizozemsko"
+      },
+      "D": {
+        "homeGoals": 3,
+        "awayGoals": 1,
+        "winner": "Brazílie"
+      },
+      "E": {
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "winner": "Francie"
+      },
+      "F": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "winner": "Norsko"
+      },
+      "G": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Mexiko"
+      },
+      "H": {
+        "homeGoals": 3,
+        "awayGoals": 0,
+        "winner": "Anglie"
+      },
+      "I": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "USA"
+      },
+      "J": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Belgie"
+      },
+      "K": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Portugalsko"
+      },
+      "L": {
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "winner": "Španělsko"
+      },
+      "M": {
+        "homeGoals": 1,
+        "awayGoals": 0,
+        "winner": "Švýcarsko"
+      },
+      "N": {
+        "homeGoals": 3,
+        "awayGoals": 0,
+        "winner": "Argentina"
+      },
+      "O": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "winner": "Kolumbie"
+      },
+      "P": {
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "winner": "Austrálie"
+      },
+      "Q": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Německo"
+      },
+      "R": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Nizozemsko"
+      },
+      "S": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Brazílie"
+      },
+      "T": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Anglie"
+      },
+      "U": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Portugalsko"
+      },
+      "V": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Belgie"
+      },
+      "W": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Argentina"
+      },
+      "X": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Kolumbie"
+      },
+      "Y": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Německo"
+      },
+      "Z": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Brazílie"
+      },
+      "AA": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Portugalsko"
+      },
+      "AB": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Argentina"
+      },
+      "AC": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Brazílie"
+      },
+      "AD": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Argentina"
+      },
+      "BR": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Portugalsko"
+      },
+      "FIN": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "winner": "Argentina"
+      }
+    },
+    "bonuses": {
+      "extraTimes": 2,
+      "penaltyShootouts": 3,
+      "totalGoals": 180
+    },
+    "source": "manual-seed-v8",
     "isSeed": true
   }
 ]
