@@ -155,6 +155,13 @@ def clean(value: Any) -> str:
     return "" if value is None else str(value).strip()
 
 
+def display_name(value: Any) -> str:
+    name = clean(value)
+    if name.lower().replace(" ", "") == "chatgpt":
+        return "Dan Mališ"
+    return name
+
+
 def concrete_options(match: dict[str, Any]) -> list[str]:
     options = match.get("winnerOptions") or []
     if options:
@@ -467,7 +474,7 @@ def latest_submissions_by_email(items: list[dict[str, Any]]) -> list[dict[str, A
         if not previous or clean(item.get("submittedAt")) >= clean(previous.get("submittedAt")):
             latest[key] = item
     rows = [*seeded_rows, *latest.values()]
-    return sorted(rows, key=lambda x: (clean(x.get("name")).lower(), clean(x.get("submittedAt"))))
+    return sorted(rows, key=lambda x: (display_name(x.get("name")).lower(), clean(x.get("submittedAt"))))
 
 
 def public_submission(item: dict[str, Any]) -> dict[str, Any]:
@@ -479,7 +486,7 @@ def public_submission(item: dict[str, Any]) -> dict[str, Any]:
     return {
         "id": clean(item.get("id")),
         "submittedAt": clean(item.get("submittedAt")),
-        "name": clean(item.get("name")),
+        "name": display_name(item.get("name")),
         "betType": clean(item.get("betType")),
         "source": clean(item.get("source")),
         "isSeed": bool(item.get("isSeed")),
@@ -551,19 +558,20 @@ def export_rows(submissions: list[dict[str, Any]]) -> dict[str, list[list[Any]]]
 
     for submission in submissions:
         predictions = submission.get("predictions", {})
-        summary = [submission.get("submittedAt"), submission.get("name"), submission.get("email"), bet_label(submission.get("betType", ""))]
+        player_name = display_name(submission.get("name"))
+        summary = [submission.get("submittedAt"), player_name, submission.get("email"), bet_label(submission.get("betType", ""))]
         for match in PLAYOFF_DATA["matches"]:
             pred = predictions.get(match["id"], {})
             summary.extend([f"{pred.get('homeGoals', '')}:{pred.get('awayGoals', '')}", pred.get("winner", "")])
             tip_rows.append([
-                submission.get("submittedAt"), submission.get("name"), submission.get("email"), bet_label(submission.get("betType", "")),
+                submission.get("submittedAt"), player_name, submission.get("email"), bet_label(submission.get("betType", "")),
                 match.get("round"), match.get("id"), match.get("dateTime"), match.get("home"), match.get("away"),
                 f"{pred.get('homeGoals', '')}:{pred.get('awayGoals', '')}", pred.get("winner", ""), ", ".join(entrants(match, predictions)),
             ])
         for field in PLAYOFF_DATA.get("bonusFields", []):
             summary.append(submission.get("bonuses", {}).get(field.get("id"), ""))
         summary_rows.append(summary)
-        bonus_rows.append([submission.get("submittedAt"), submission.get("name"), submission.get("email"), bet_label(submission.get("betType", "")), *[submission.get("bonuses", {}).get(field.get("id"), "") for field in PLAYOFF_DATA.get("bonusFields", [])]])
+        bonus_rows.append([submission.get("submittedAt"), player_name, submission.get("email"), bet_label(submission.get("betType", "")), *[submission.get("bonuses", {}).get(field.get("id"), "") for field in PLAYOFF_DATA.get("bonusFields", [])]])
 
     scoring_rows = [["Pravidlo"], *[[rule] for rule in PLAYOFF_DATA.get("scoring", [])]]
     return {"Souhrn": summary_rows, "Tipy": tip_rows, "Bonusy": bonus_rows, "Bodování": scoring_rows}

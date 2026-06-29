@@ -24,7 +24,7 @@ DATA_PATH = STATIC_DIR / "data.json"
 PORT = int(os.environ.get("PORT", "8000"))
 CACHE_TTL_SECONDS = int(os.environ.get("SCORES_CACHE_SECONDS", "60"))
 LIVE_CACHE_TTL_SECONDS = int(os.environ.get("LIVE_SCORES_CACHE_SECONDS", "15"))
-PLAYOFF_PATCH_VERSION = "playoff-results-v7-scoring-rules"
+PLAYOFF_PATCH_VERSION = "playoff-results-v9-regulation-score-display-names"
 
 with DATA_PATH.open("r", encoding="utf-8") as fh:
     SITE_DATA = json.load(fh)
@@ -101,14 +101,44 @@ def parse_espn_events(document: dict[str, Any]) -> list[dict[str, Any]]:
         completed = bool(status_type.get("completed")) or state == "post"
         live = state == "in"
 
-        def score_of(competitor: dict[str, Any]) -> int | None:
-            raw = competitor.get("score")
+        def int_score(raw: Any) -> int | None:
             if isinstance(raw, dict):
                 raw = raw.get("value") or raw.get("displayValue")
             try:
                 return int(float(raw))
             except (TypeError, ValueError):
                 return None
+
+        def score_of(competitor: dict[str, Any]) -> int | None:
+            return int_score(competitor.get("score"))
+
+        def shootout_score_of(competitor: dict[str, Any]) -> int | None:
+            # ESPN používá pro penalty podle feedu různé názvy; necháváme robustní fallback.
+            for key in ("shootoutScore", "penaltyScore", "penalties", "penaltyShootoutScore"):
+                value = int_score(competitor.get(key))
+                if value is not None:
+                    return value
+            return None
+
+        def regulation_score_of(competitor: dict[str, Any]) -> int | None:
+            """Vrací skóre po 90 minutách, pokud ho feed poskytuje.
+
+            Pro soccer ESPN typicky posílá linescores za jednotlivé poločasy/prodloužení.
+            Do soutěžního bodování se mají počítat jen první dva poločasy.
+            Když linescores chybí, fallback je celkové skóre, aby tabulka dál fungovala.
+            """
+            lines = competitor.get("linescores") or []
+            period_values: list[int] = []
+            if isinstance(lines, list):
+                for line in lines:
+                    if not isinstance(line, dict):
+                        continue
+                    value = int_score(line.get("value") if "value" in line else line.get("displayValue"))
+                    if value is not None:
+                        period_values.append(value)
+            if len(period_values) >= 2:
+                return period_values[0] + period_values[1]
+            return score_of(competitor)
 
         status_text = (
             status_type.get("shortDetail")
@@ -120,15 +150,22 @@ def parse_espn_events(document: dict[str, Any]) -> list[dict[str, Any]]:
         display_clock = status.get("displayClock") or competition.get("status", {}).get("displayClock") or ""
         period = status.get("period") or competition.get("status", {}).get("period")
 
-        home_score = score_of(home)
-        away_score = score_of(away)
+        # total skóre = stav po prodloužení, pokud se hrálo; penalty jsou zvlášť.
+        final_home_score = score_of(home)
+        final_away_score = score_of(away)
+        # homeScore/awayScore v API necháváme jako skóre základní hrací doby pro bodování.
+        home_score = regulation_score_of(home)
+        away_score = regulation_score_of(away)
+        home_penalty_score = shootout_score_of(home)
+        away_penalty_score = shootout_score_of(away)
+
         winner_name = None
         if home.get("winner") is True:
             winner_name = mapped_home
         elif away.get("winner") is True:
             winner_name = mapped_away
-        elif completed and isinstance(home_score, int) and isinstance(away_score, int) and home_score != away_score:
-            winner_name = mapped_home if home_score > away_score else mapped_away
+        elif completed and isinstance(final_home_score, int) and isinstance(final_away_score, int) and final_home_score != final_away_score:
+            winner_name = mapped_home if final_home_score > final_away_score else mapped_away
 
         parsed.append(
             {
@@ -138,6 +175,12 @@ def parse_espn_events(document: dict[str, Any]) -> list[dict[str, Any]]:
                 "away": mapped_away,
                 "homeScore": home_score,
                 "awayScore": away_score,
+                "regulationHomeScore": home_score,
+                "regulationAwayScore": away_score,
+                "finalHomeScore": final_home_score,
+                "finalAwayScore": final_away_score,
+                "homePenaltyScore": home_penalty_score,
+                "awayPenaltyScore": away_penalty_score,
                 "winner": winner_name,
                 "completed": completed,
                 "live": live,
@@ -195,6 +238,12 @@ def embedded_results() -> list[dict[str, Any]]:
                     "away": match["away"],
                     "homeScore": fallback["home"],
                     "awayScore": fallback["away"],
+                    "regulationHomeScore": fallback["home"],
+                    "regulationAwayScore": fallback["away"],
+                    "finalHomeScore": fallback["home"],
+                    "finalAwayScore": fallback["away"],
+                    "homePenaltyScore": None,
+                    "awayPenaltyScore": None,
                     "winner": match["home"] if fallback["home"] > fallback["away"] else match["away"] if fallback["away"] > fallback["home"] else None,
                     "completed": True,
                     "live": False,
