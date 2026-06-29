@@ -491,37 +491,59 @@ def submission_primary_key(item: dict[str, Any]) -> str:
     return f"id:{clean(item.get('id'))}"
 
 
+def submission_source_kind(item: dict[str, Any]) -> str:
+    """Human-friendly source kind used for priority/dedup/admin output."""
+    if item.get("isSeed") is True or clean(item.get("source")) in {"xls-import", "tipy-playoff-ms-2026.xlsx"}:
+        return "seed"
+    source = clean(item.get("source")).lower()
+    if "sheet" in source:
+        return "googleSheets"
+    return "form"
+
+
+def submission_source_priority(item: dict[str, Any]) -> int:
+    """Public table priority: live/form/Sheets rows beat bundled XLS seed rows."""
+    kind = submission_source_kind(item)
+    if kind == "seed":
+        return 10
+    if kind == "googleSheets":
+        return 30
+    return 40
+
+
+def _submitted_sort_value(item: dict[str, Any]) -> str:
+    return clean(item.get("submittedAt"))
+
+
 def latest_submissions_by_email(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Return rows for public tables.
+    """Return deduplicated rows for public tables.
 
-    Live form/Google Sheets submissions are collapsed to the latest row per
-    e-mail/name. XLS seed rows are kept only when no live row for the same
-    player exists, so the table does not show duplicate rows like
-    "Michal_Konvalinka · XLS" next to Michal's real saved tip.
+    Priority is explicit and conservative:
+    1. live/local form rows,
+    2. Google Sheets rows,
+    3. XLS/seed fallback rows.
+
+    Within the same source priority the newest submittedAt wins. Identity is
+    matched by e-mail first and then by normalized displayed name. This keeps
+    the public table clean when an XLS fallback row and a real form row exist
+    for the same person.
     """
-    latest_live: dict[str, dict[str, Any]] = {}
-    latest_seed: dict[str, dict[str, Any]] = {}
+    candidates = [item for item in items if isinstance(item, dict)]
+    candidates.sort(
+        key=lambda item: (submission_source_priority(item), _submitted_sort_value(item), clean(item.get("id"))),
+        reverse=True,
+    )
 
-    for item in items:
-        if not isinstance(item, dict):
+    accepted: list[dict[str, Any]] = []
+    used_keys: set[str] = set()
+    for item in candidates:
+        keys = submission_identity_keys(item) or {submission_primary_key(item)}
+        if keys & used_keys:
             continue
-        key = submission_primary_key(item)
-        bucket = latest_seed if (item.get("source") == "xls-import" or item.get("isSeed") is True) else latest_live
-        previous = bucket.get(key)
-        if not previous or clean(item.get("submittedAt")) >= clean(previous.get("submittedAt")):
-            bucket[key] = item
+        accepted.append(item)
+        used_keys.update(keys)
 
-    live_identity_keys: set[str] = set()
-    for item in latest_live.values():
-        live_identity_keys.update(submission_identity_keys(item))
-
-    seed_rows = [
-        item
-        for item in latest_seed.values()
-        if not (submission_identity_keys(item) & live_identity_keys)
-    ]
-    rows = [*seed_rows, *latest_live.values()]
-    return sorted(rows, key=lambda x: (display_name(x.get("name")).lower(), clean(x.get("submittedAt"))))
+    return sorted(accepted, key=lambda x: (display_name(x.get("name")).lower(), clean(x.get("submittedAt"))))
 
 
 def public_submission(item: dict[str, Any]) -> dict[str, Any]:
@@ -553,6 +575,99 @@ def public_table_payload() -> dict[str, Any]:
         "seedSubmissions": len(read_initial_submissions()),
         "storedSubmissions": len(read_submissions()),
         "submissions": [public_submission(item) for item in latest],
+    }
+
+
+def mask_email(value: Any) -> str:
+    email = clean(value).lower()
+    if "@" not in email:
+        return ""
+    local, domain = email.split("@", 1)
+    if not local:
+        return f"*@{domain}"
+    shown = local[:2] if len(local) > 3 else local[:1]
+    return f"{shown}{'*' * max(2, len(local) - len(shown))}@{domain}"
+
+
+def duplicate_groups(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    groups: dict[str, list[dict[str, Any]]] = {}
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        email = clean(item.get("email")).lower()
+        if email:
+            key = f"email:{email}"
+            label = mask_email(email)
+        else:
+            name_key = normalize_person_key(display_name(item.get("name")))
+            if not name_key:
+                continue
+            key = f"name:{name_key}"
+            label = display_name(item.get("name"))
+        groups.setdefault(key, []).append(item)
+
+    output: list[dict[str, Any]] = []
+    for key, rows in groups.items():
+        if len(rows) < 2:
+            continue
+        output.append({
+            "key": key.split(":", 1)[0],
+            "label": mask_email(rows[0].get("email")) or display_name(rows[0].get("name")),
+            "count": len(rows),
+            "names": sorted({display_name(row.get("name")) for row in rows if clean(row.get("name"))}),
+            "sources": sorted({submission_source_kind(row) for row in rows}),
+            "kept": display_name(latest_submissions_by_email(rows)[0].get("name")) if latest_submissions_by_email(rows) else "",
+        })
+    return sorted(output, key=lambda item: (-int(item.get("count", 0)), clean(item.get("label"))))
+
+
+def admin_summary_payload() -> dict[str, Any]:
+    seeded = read_initial_submissions()
+    stored = read_submissions()
+    sheets = read_google_sheets_submissions(force=True)
+    merged = all_submissions()
+    public_rows = latest_submissions_by_email(merged)
+
+    counts_by_source = {"seed": 0, "googleSheets": 0, "form": 0}
+    for item in merged:
+        kind = submission_source_kind(item)
+        counts_by_source[kind] = counts_by_source.get(kind, 0) + 1
+
+    duplicates = duplicate_groups(merged)
+    cfg = smtp_config()
+    return {
+        "ok": True,
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "counts": {
+            "totalRaw": len(merged),
+            "publicRows": len(public_rows),
+            "seed": len(seeded),
+            "stored": len(stored),
+            "googleSheets": len(sheets),
+            "bySource": counts_by_source,
+        },
+        "duplicates": {
+            "count": len(duplicates),
+            "hiddenRows": max(0, len(merged) - len(public_rows)),
+            "groups": duplicates[:12],
+        },
+        "sourcePriority": [
+            "form/live JSON",
+            "Google Sheets",
+            "XLS/seed fallback",
+        ],
+        "googleSheets": google_sheets_status(),
+        "mail": {
+            "enabled": bool(cfg.get("enabled")),
+            "owner": cfg.get("owner"),
+            "lastKnown": "SMTP je doplňkové; neúspěšný e-mail nemá blokovat uložený tip.",
+        },
+        "storage": {
+            "dataDir": str(DATA_DIR),
+            "requestedDataDir": REQUESTED_DATA_DIR,
+            "dataDirWarning": DATA_DIR_WARNING,
+            "submissionsPath": str(SUBMISSIONS_PATH),
+        },
     }
 
 def bet_label(bet_id: str) -> str:

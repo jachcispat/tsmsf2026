@@ -24,7 +24,7 @@ DATA_PATH = STATIC_DIR / "data.json"
 PORT = int(os.environ.get("PORT", "8000"))
 CACHE_TTL_SECONDS = int(os.environ.get("SCORES_CACHE_SECONDS", "60"))
 LIVE_CACHE_TTL_SECONDS = int(os.environ.get("LIVE_SCORES_CACHE_SECONDS", "15"))
-PLAYOFF_PATCH_VERSION = "playoff-results-v10-hide-seed-duplicates"
+PLAYOFF_PATCH_VERSION = "playoff-results-v11-top5-improvements"
 
 with DATA_PATH.open("r", encoding="utf-8") as fh:
     SITE_DATA = json.load(fh)
@@ -429,6 +429,14 @@ class Handler(BaseHTTPRequestHandler):
                 "dataDirWarning": playoff_backend.DATA_DIR_WARNING,
                 "initialSubmissionsPath": str(playoff_backend.INITIAL_SUBMISSIONS_PATH),
             })
+            return
+        if parsed.path == "/api/playoff-admin-summary":
+            try:
+                payload = playoff_backend.admin_summary_payload()
+                payload["version"] = PLAYOFF_PATCH_VERSION
+                self.send_json(payload)
+            except Exception as exc:
+                self.send_json({"ok": False, "error": f"Admin souhrn se nepodařilo sestavit: {exc}", "version": PLAYOFF_PATCH_VERSION}, status=500)
             return
         if parsed.path == "/api/playoff-debug":
             cfg = playoff_backend.smtp_config()
